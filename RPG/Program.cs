@@ -32,7 +32,7 @@ namespace RPG
             }
             else
             {
-                Console.WriteLine("OK! Then u'll be a fucking slave. Fortunately, it's the end of game.");
+                Console.WriteLine("OK! Fortunately, it's the end of game.");
             }
 
 
