@@ -1,0 +1,13 @@
+﻿C:\Users\Вячеслав\source\repos\RPG\RPG\GameFunctionality\FirstSetup.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\GameFunctionality\RegularSetup.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\Player\classes\classArcher.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\Player\classes\classWarrior.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\Player\classes\classWizard.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\Player\classes\gameClass.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\Player\inventory\inventory.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\Player\inventory\Item.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\Player\inventory\Weapon.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\Player\Player.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\Program.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\WorkWithData.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\data.json
