@@ -109,8 +109,8 @@
     <Property Name="sonar.auth.gitlab.url">https://gitlab.com</Property>
     <Property Name="sonaranalyzer-vbnet.pluginKey">vbnet</Property>
     <Property Name="sonar.updatecenter.url">https://update.sonarsource.org/update-center.properties</Property>
-    <Property Name="sonar.core.startTime">26.11.2021 15:39:30</Property>
     <Property Name="sonar.core.id">BF41A1F2-AX1cQglSIKmLHJeGDgOr</Property>
+    <Property Name="sonar.core.startTime">27.11.2021 12:01:24</Property>
   </ServerSettings>
   <LocalSettings>
     <Property Name="sonar.host.url">http://localhost:9000</Property>

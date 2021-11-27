@@ -1,24 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RPG
 {
-    static class FirstSetup 
+    class FirstSetup : Setup
     {
-        public static void startGame()
+        public override void startGame()
         {
             greet();
-            chooseName();
+            createPlayer();
         }
-        private static void greet()
+        private void greet()
         {
             Console.WriteLine("Hello! It's amazing place to spend your time.");
             Console.WriteLine("Introduce yourself and choose your class!");
             //will be a story, maybe
         }
 
-        private static void chooseName()
+        private void createPlayer()
+        {
+            chooseName();
+            chooseClass();
+            Console.WriteLine($"Nice to meet you {Player.PlayerClass} {Player.Name}!");
+        }
+
+        private void chooseName()
         {
             string enteredName = askForName();
             string confirmedName = "";
@@ -38,7 +43,7 @@ namespace RPG
 
             Player.Name = confirmedName;
         }
-        private static string askForName()
+        private string askForName()
         {
 
             Console.WriteLine("Write your name: ");
@@ -46,32 +51,47 @@ namespace RPG
             string enteredName = Console.ReadLine();
             return enteredName;
         }
-        private static bool confirmName(string name)
+        private bool confirmName(string name)
         {
             Console.WriteLine($"Are you sure to be {name}? yes/no");
 
             string answer = Console.ReadLine();
 
             return answer.ToLower() == "yes";
-            
+
         }
 
-        private static void chooseClass()
+        private void chooseClass()
         {
-            
 
+            gameClass enteredClass = askForClass();
+            gameClass confirmedClass = null;
 
+            while (confirmedClass == null)
+            {
+
+                if (confirmClass(enteredClass))
+                {
+                    confirmedClass = enteredClass;
+                }
+                else
+                {
+                    enteredClass = askForClass();
+                }
+            }
+
+            Player.PlayerClass = confirmedClass;
         }
         private static gameClass askForClass()
         {
             Console.WriteLine("Choose class: 0 - warrior, 1 - wizard, 2 - archer");
 
-            int numdOfClass = -1;
+            int numbOfClass = -1;
             gameClass chosenClass = null;
-            bool userMadeChoose = int.TryParse(Console.ReadLine(), out numdOfClass);
-            if (userMadeChoose && numdOfClass > -1 && numdOfClass < 4)
+            bool userMadeChoose = int.TryParse(Console.ReadLine(), out numbOfClass);
+            if (userMadeChoose && numbOfClass > -1 && numbOfClass < 4)
             {
-                chosenClass = gameClass.Classes[numdOfClass];
+                chosenClass = gameClass.Classes[numbOfClass];
             }
             else
             {
@@ -80,7 +100,16 @@ namespace RPG
             }
 
             return chosenClass;
-            
+
+        }
+        private bool confirmClass(gameClass enteredClass)
+
+        {
+            Console.WriteLine($"Are you sure to be {enteredClass.ToString()}? yes/no");
+
+            string answer = Console.ReadLine();
+
+            return answer.ToLower() == "yes";
         }
 
     }

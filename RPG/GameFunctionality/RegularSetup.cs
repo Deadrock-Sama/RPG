@@ -4,11 +4,21 @@ using System.Text;
 
 namespace RPG
 {
-    static class RegularSetup
+     class RegularSetup : Setup
     {
-        public static void greet()
+        public override void startGame()
+        {
+            greet();
+        }
+        private void greet()
         {
             Console.WriteLine("Welcome. Again.");
         }
+        private void loadPlayer()
+        {
+            throw new Exception();
+        }
+       
+
     }
 }

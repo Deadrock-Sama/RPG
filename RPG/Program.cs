@@ -9,10 +9,12 @@ namespace RPG
 
             bool firstStart = true;
 
+            Setup setup = new RegularSetup();
             if (firstStart)
             {
-                FirstSetup.startGame();
+               setup = new FirstSetup();              
             }
+            setup.startGame();
 
             Console.ReadLine();
         }
@@ -38,10 +40,7 @@ namespace RPG
 
         }
 
-        private static void greetFirstTime()
-        {
-           
-        }
+     
 
        
 

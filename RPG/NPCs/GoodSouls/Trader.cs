@@ -5,6 +5,9 @@ namespace RPG.NPCs
 {
     internal class Trader : GoodSoul
     {
+        //to do
+        //1. type of trader
+        //2. random range of items
 
         private List<Item> range;
         public List<Item> Range
@@ -14,7 +17,6 @@ namespace RPG.NPCs
                 return range;
             }
         }
-
         public bool buy(Item chosenItem)
         {
             Predicate<Item> predicate = delegate (Item item) { return item.UID == chosenItem.UID; };
