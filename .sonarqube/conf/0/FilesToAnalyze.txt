@@ -1,7 +1,9 @@
 ﻿C:\Users\Вячеслав\source\repos\RPG\RPG\GameFunctionality\FirstSetup.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\GameFunctionality\RegularSetup.cs
-C:\Users\Вячеслав\source\repos\RPG\RPG\NPCs\GoodSoul.cs
-C:\Users\Вячеслав\source\repos\RPG\RPG\NPCs\Trader.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\GameFunctionality\Setup.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\NPCs\GoodSouls\BlackSmith.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\NPCs\GoodSouls\GoodSoul.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\NPCs\GoodSouls\Trader.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\Player\classes\classArcher.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\Player\classes\classWarrior.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\Player\classes\classWizard.cs
