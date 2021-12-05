@@ -3,7 +3,9 @@
     Empty,
     GoodSoul,
     BadSoul,
-    Treasure
+    Treasure,
+    Exit,
+    Boss
 }
 
 enum direction

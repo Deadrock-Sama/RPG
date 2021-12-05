@@ -4,58 +4,70 @@ using System.Text;
 
 namespace RPG.World
 {
-    struct Position
+    class Position
     {
-        public int X {
-            get {
-                return X;
-            }
-            set {
-                setX(value);
-            } 
-        }
-        public int Y
-        {
-            get
-            {
-                return Y;
-            }
-            set
-            {
-                setY(value);
-            }
-        }
 
+        private int X;
+        private int Y;
+  
         public Position(int X, int Y)
         {
-            setX(X);
             setY(Y);
+            setX(X);
         }
 
-        public bool moveX(int movement) => setX(X + movement);
+        public bool Move(direction? direction) {
 
-        public bool moveY(int movement) => setY(Y + movement);
+            bool isMoved = false;
+
+            switch (direction)
+            {
+                case global::direction.top:
+                    isMoved = moveY(1);
+                    break;
+                case global::direction.down:
+                    isMoved = moveY(-1);
+                    break;
+                case global::direction.left:
+                    isMoved = moveX(-1);
+                    break;
+                case global::direction.right:
+                    isMoved = moveX(1);
+                    break;
+                default:
+                    break;
+            }
+            writePosition();
+            return isMoved;
+        }
+
+        private bool moveX(int movement) => setX(X + movement);
+
+        private bool moveY(int movement) => setY(Y + movement);
         
-        private bool setX(int X)
+        private bool setX(int x)
         {
-            bool setIsAble = isCordAble(X);
+            bool setIsAble = IsCordAble(X);
             if (setIsAble)
             {
-                this.X = X;
+                X = x;
             }
             return setIsAble;
         }
-        private bool setY(int Y)
+        private bool setY(int y)
         {
-            bool setIsAble = isCordAble(Y);
+            bool setIsAble = IsCordAble(Y);
             if (setIsAble)
             {
-                this.Y = Y;
+                Y = y;
             }
             return setIsAble;
         }
 
-        private bool isCordAble(int cord) => (cord <= 100) && (cord >= 0);
-
+        private bool IsCordAble(int cord) { return (cord < 100) && (cord > 0); }
+        private void writePosition()
+        {
+            Console.WriteLine($"[{X},{Y}]");        
+        }
     }
 }

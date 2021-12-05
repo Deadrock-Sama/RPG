@@ -4,12 +4,18 @@ using System.Text;
 
 namespace RPG.World
 {
-    internal class Map
+    static class Map
     {
-        private Cell[,] cells;
-        private Position Position = new Position(0, 0);
+        static private Cell[,] cells = new Cell[100, 100];
+        static private Position Position = new Position(0, 0);
+        static public void generateMap()
+        {
+            generateCells();
+            startMoving();
 
-        private void generateMap()
+        }
+
+        static private void generateCells()
         {
             for (int i = 0; i < 100; i++)
             {
@@ -18,26 +24,26 @@ namespace RPG.World
 
                     cells[i, j] = new Cell();
 
-
                 }
             }
-        
+
         }
 
-        public bool move() 
+        static public bool move()
         {
             direction? directionOfMove = recieveDirection();
+            bool isMoved = Position.Move(directionOfMove);
 
-            return true;
+            return isMoved;
         }
-        private direction? recieveDirection()
+        static private direction? recieveDirection()
         {
             char key = char.ToLower(Console.ReadKey().KeyChar);
 
             switch (key)
             {
                 case 'w':
-                    return direction.top;     
+                    return direction.top;
                 case 's':
                     return direction.down;
                 case 'a':
@@ -47,6 +53,16 @@ namespace RPG.World
                 default:
                     return null;
             };
+
+        }
+
+        static private void startMoving()
+        {
+            Console.WriteLine("Use w/s/a/d to move");
+            while (true)
+            {
+                move();
+            }
 
         }
 

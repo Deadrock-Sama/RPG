@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using RPG.World;
 
 namespace RPG
 {
-    abstract class Setup 
+    class Setup 
     {
-        public abstract void startGame();
+        public virtual void startGame() 
+        {
+            Map.generateMap();
+        }
+
     }
+
 }

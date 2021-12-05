@@ -7,7 +7,8 @@ namespace RPG
         public override void startGame()
         {
             greet();
-            createPlayer();
+           // createPlayer();
+            base.startGame();
         }
         private void greet()
         {

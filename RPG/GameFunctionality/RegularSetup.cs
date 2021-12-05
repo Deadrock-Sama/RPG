@@ -9,6 +9,7 @@ namespace RPG
         public override void startGame()
         {
             greet();
+            base.startGame();
         }
         private void greet()
         {
