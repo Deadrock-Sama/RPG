@@ -1,9 +1,6 @@
 ﻿C:\Users\Вячеслав\source\repos\RPG\RPG\GameFunctionality\FirstSetup.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\GameFunctionality\RegularSetup.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\GameFunctionality\Setup.cs
-C:\Users\Вячеслав\source\repos\RPG\RPG\NPCs\GoodSouls\BlackSmith.cs
-C:\Users\Вячеслав\source\repos\RPG\RPG\NPCs\GoodSouls\GoodSoul.cs
-C:\Users\Вячеслав\source\repos\RPG\RPG\NPCs\GoodSouls\Trader.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\Player\classes\classArcher.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\Player\classes\classWarrior.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\Player\classes\classWizard.cs
@@ -14,4 +11,11 @@ C:\Users\Вячеслав\source\repos\RPG\RPG\Player\inventory\Weapon.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\Player\Player.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\Program.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\WorkWithData.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\World\Cell.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\World\EnumsOfMap.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\World\Map.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\World\NPCs\GoodSouls\BlackSmith.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\World\NPCs\GoodSouls\GoodSoul.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\World\NPCs\GoodSouls\Trader.cs
+C:\Users\Вячеслав\source\repos\RPG\RPG\World\Position.cs
 C:\Users\Вячеслав\source\repos\RPG\RPG\data.json

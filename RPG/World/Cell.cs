@@ -23,6 +23,9 @@ namespace RPG.World
             Random generator = new Random();
             return (TypesOfCells)generator.Next(0, 3);
         }
-
+        public TypesOfCells getTypeOfCell()
+        {
+            return typeOfCell;
+        }
     }
 }

@@ -29,12 +29,15 @@ namespace RPG.World
 
         }
 
-        static public bool move()
+        static public statusOfMovement move()
         {
             direction? directionOfMove = recieveDirection();
-            bool isMoved = Position.Move(directionOfMove);
 
-            return isMoved;
+            if (directionOfMove == null) { return statusOfMovement.end; };
+
+            statusOfMovement status = Position.Move(directionOfMove);
+
+            return status;
         }
         static private direction? recieveDirection()
         {
@@ -59,11 +62,47 @@ namespace RPG.World
         static private void startMoving()
         {
             Console.WriteLine("Use w/s/a/d to move");
-            while (true)
+            statusOfMovement status = statusOfMovement.successfully;
+            while (status != statusOfMovement.end)
             {
-                move();
+                status = move();
             }
 
+            startStaying();
+
+        }
+
+        static private void startStaying()
+        {
+            Console.WriteLine("1 - interact with cell, 2 - open inventory, 3 - continue moving");
+
+            char key = char.ToLower(Console.ReadKey().KeyChar);
+
+            switch (key)
+            {
+                case '1':
+                    Console.WriteLine("now you work with cell");
+                    break;
+                case '2':
+                    Console.WriteLine("now you work with inventory");
+                    break;
+                case '3':
+                    Console.WriteLine("now you start moving");
+                    startMoving();
+                    break;
+                default:
+                    Console.WriteLine("u didnt do sth");
+                    startStaying();
+                    break;
+            };
+
+
+        }
+
+
+        static public TypesOfCells recieveTypeOfCurrCell()
+        {
+            return cells[Position.getX(), Position.getY()].getTypeOfCell();
         }
 
     }

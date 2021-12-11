@@ -9,42 +9,69 @@ namespace RPG.World
 
         private int X;
         private int Y;
-  
+
+        public int getX() => X;
+        public int getY() => Y;
         public Position(int X, int Y)
         {
             setY(Y);
             setX(X);
         }
 
-        public bool Move(direction? direction) {
+        public statusOfMovement Move(direction? direction)
+        {
 
-            bool isMoved = false;
+            statusOfMovement status = statusOfMovement.successfully;
 
             switch (direction)
             {
                 case global::direction.top:
-                    isMoved = moveY(1);
+                    status = moveY(1);
                     break;
                 case global::direction.down:
-                    isMoved = moveY(-1);
+                    status = moveY(-1);
                     break;
                 case global::direction.left:
-                    isMoved = moveX(-1);
+                    status = moveX(-1);
                     break;
                 case global::direction.right:
-                    isMoved = moveX(1);
+                    status = moveX(1);
                     break;
                 default:
                     break;
             }
             writePosition();
-            return isMoved;
+            return status;
         }
 
-        private bool moveX(int movement) => setX(X + movement);
+        private statusOfMovement moveX(int movement)
+        {
 
-        private bool moveY(int movement) => setY(Y + movement);
-        
+            bool isSetted = setX(X + movement);
+
+            statusOfMovement status = statusOfMovement.successfully;
+            if (!isSetted)
+            {
+                status = statusOfMovement.outOfRange;
+            }
+            return status;
+
+        }
+
+        private statusOfMovement moveY(int movement)
+        {
+
+            bool isSetted = setY(Y + movement);
+
+            statusOfMovement status = statusOfMovement.successfully;
+            if (!isSetted)
+            {
+                status = statusOfMovement.outOfRange;
+            }
+            return status;
+
+        }
+
         private bool setX(int x)
         {
             bool setIsAble = IsCordAble(X);
@@ -64,10 +91,13 @@ namespace RPG.World
             return setIsAble;
         }
 
-        private bool IsCordAble(int cord) { return (cord < 100) && (cord > 0); }
+        private bool IsCordAble(int cord) { return (cord < 100) && (cord > -1); }
         private void writePosition()
         {
-            Console.WriteLine($"[{X},{Y}]");        
+            Console.WriteLine($"[{X},{Y}], {Map.recieveTypeOfCurrCell()}");
+
         }
+
+
     }
 }

@@ -15,3 +15,12 @@ enum direction
     left,
     right
 }
+
+enum statusOfMovement
+{
+    successfully,
+    end,
+    outOfRange,
+    exit
+ 
+}
