@@ -40,7 +40,11 @@ namespace RPG.World
                 default:
                     break;
             }
-            writePosition();
+            if(status == statusOfMovement.successfully)
+            {
+                writePosition();
+            }
+            
             return status;
         }
 
@@ -74,7 +78,7 @@ namespace RPG.World
 
         private bool setX(int x)
         {
-            bool setIsAble = IsCordAble(X);
+            bool setIsAble = IsCordAble(x);
             if (setIsAble)
             {
                 X = x;
@@ -83,7 +87,7 @@ namespace RPG.World
         }
         private bool setY(int y)
         {
-            bool setIsAble = IsCordAble(Y);
+            bool setIsAble = IsCordAble(y);
             if (setIsAble)
             {
                 Y = y;

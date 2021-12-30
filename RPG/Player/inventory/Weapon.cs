@@ -36,6 +36,12 @@ namespace RPG
             }
 
         }
-    
+
+        public int getATK() => ATK;
+
+        public Weapon(int ATK)
+        {
+            this.ATK = ATK;
+        }
     }
 }

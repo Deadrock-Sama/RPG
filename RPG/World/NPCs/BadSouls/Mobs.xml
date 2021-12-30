@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mobs>
+<mob id="zombie">
+	<name>Zombie</name>
+	<HP>100</HP>
+	<ATK>5</ATK>
+</mob>
+</mobs>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPG.World.NPCs.BadSouls;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -72,6 +73,49 @@ namespace RPG.World
 
         }
 
+        static private void startInteractWithCell()
+        {
+            TypesOfCells currTypeOfCell = recieveTypeOfCurrCell();
+
+            switch (currTypeOfCell)
+            {
+                case TypesOfCells.Empty:
+                    break;
+                case TypesOfCells.GoodSoul:
+                    break;
+                case TypesOfCells.BadSoul:
+                    startFight();
+                    break;
+                case TypesOfCells.Treasure:
+                    break;
+                case TypesOfCells.Exit:
+                    break;
+                case TypesOfCells.Boss:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        static private void startFight()
+        {
+            BadSoul enemy = new BadSoul();
+            enemy.createEnemy();
+
+            Fight fight = new Fight(enemy);
+            StatusOfFight status = fight.startFight();
+
+            if (status == StatusOfFight.win)
+            {
+                Console.WriteLine("Congrats, u won!");
+                startStaying();
+            }
+            else
+            {
+                Console.WriteLine("hmm... It cannot be true");
+            }
+        }
+
         static private void startStaying()
         {
             Console.WriteLine("1 - interact with cell, 2 - open inventory, 3 - continue moving");
@@ -81,7 +125,7 @@ namespace RPG.World
             switch (key)
             {
                 case '1':
-                    Console.WriteLine("now you work with cell");
+                    startInteractWithCell();
                     break;
                 case '2':
                     Console.WriteLine("now you work with inventory");
@@ -100,10 +144,15 @@ namespace RPG.World
         }
 
 
+
+
         static public TypesOfCells recieveTypeOfCurrCell()
         {
-            return cells[Position.getX(), Position.getY()].getTypeOfCell();
+            return recieveCurrCell().getTypeOfCell();
         }
+        static private Cell recieveCurrCell() => cells[Position.getX(), Position.getY()];
+
+
 
     }
 }
