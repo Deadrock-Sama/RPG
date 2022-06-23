@@ -2,20 +2,48 @@
 
 namespace RPG
 {
+
     class Program
     {
         static void Main(string[] args)
         {
-            bool firstStart = true;
+            var cm = new ConsoleManager();
 
-            Setup setup = new RegularSetup();
-            if (firstStart)
+
+            var game = new Game();
+            var menuShower = new ConsoleMainMenuShower(game.MainMenu,cm);
+
+            menuShower.Show();
+
+            //cm.ShowAndReadLine("Введите строку");
+
+
+
+            while (true)
             {
-                setup = new FirstSetup();
-            }
-            setup.startGame();
 
-            Console.ReadLine();
+            }
+
+            //bool firstStart = true;
+
+            //Setup setup = new RegularSetup();
+            //if (firstStart)
+            //{
+            //    setup = new FirstSetup();
+            //}
+            //setup.startGame();
+
+            //Console.ReadLine();
+        }
+
+        private static void Cm_LineWritten(string obj)
+        {
+            Console.WriteLine($"Введена строка {obj}");
+        }
+
+        private static void Cm_KeyPressed(ConsoleKey obj)
+        {
+            Console.WriteLine($"Нажата клавиша {obj}");
         }
     }
 }
