@@ -11,7 +11,7 @@ namespace RPG
 
 
             var game = new Game();
-            var menuShower = new ConsoleMainMenuShower(game.MainMenu,cm);
+            var menuShower = new ConsoleMenuShower(game.MainMenu,cm);
 
             menuShower.Show();
 

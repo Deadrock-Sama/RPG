@@ -8,7 +8,7 @@ namespace RPG
 
         public void Open()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Открыт пункт меню {Name}");
         }
     }
 }

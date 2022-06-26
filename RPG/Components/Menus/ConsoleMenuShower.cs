@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using RPG.Components.Menus;
+using System;
 using System.Linq;
 
 namespace RPG
 {
-    public class ConsoleMainMenuShower
+    public class ConsoleMenuShower
     {
         private bool _isMenuOpen;
 
-        private readonly MainMenu _mainMenu;
+        private readonly IMenu _Menu;
         private readonly ConsoleManager _consoleManager;
 
-        public ConsoleMainMenuShower(MainMenu mainMenu, ConsoleManager consoleManager)
+        public ConsoleMenuShower(IMenu mainMenu, ConsoleManager consoleManager)
         {
-            _mainMenu = mainMenu;
+            _Menu = mainMenu;
             _consoleManager = consoleManager;
             _consoleManager.KeyPressed += _consoleManager_KeyPressed;
         }
@@ -37,36 +37,23 @@ namespace RPG
             }
 
 
-            if (numb >= _mainMenu.MenuItems.Count)
+            if (numb >= _Menu.MenuItems.Count)
                 return;
 
 
-            _consoleManager.Show($"Открыт пункт меню {_mainMenu.MenuItems[numb].Name}");
+            _Menu.MenuItems[numb].Open();
+
+            
 
             _isMenuOpen = false;
         }
 
         public void Show()
         {
-            string msg = string.Join(Environment.NewLine, _mainMenu.MenuItems.Select(i => $"{_mainMenu.MenuItems.IndexOf(i)}. {i.Name}"));
+            string msg = string.Join(Environment.NewLine, _Menu.MenuItems.Select(i => $"{_Menu.MenuItems.IndexOf(i)}. {i.Name}"));
             _consoleManager.ShowAndReadKey(msg);
 
             _isMenuOpen = true;
-        }
-    }
-
-    public class MainMenu
-    {
-        public List<IMenuItem> MenuItems { get; }
-
-        public MainMenu()
-        {
-            MenuItems = new IMenuItem[]
-            {
-                new ExitMenuItem(),
-                new SettingsMenuItem(),
-                new StartGameMenuItem(),
-            }.ToList();
         }
     }
 }
