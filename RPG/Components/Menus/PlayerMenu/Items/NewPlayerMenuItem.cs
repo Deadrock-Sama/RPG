@@ -1,11 +1,8 @@
-﻿using RPG.Components.PlayerComponent;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace RPG.Components.Menus.PlayerMenu.Items
 {
-    internal class NewPlayerMenuItem : IMenuItem
+    internal class NewPlayerMenuItem : IPlayerMenuItem
     {
  
         public string Name => "Новый игрок";

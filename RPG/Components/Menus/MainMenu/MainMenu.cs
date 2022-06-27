@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace RPG
-{    public class MainMenu : IMenu
+{
+
+    public class MainMenu : IMenu
     {
         public List<IMenuItem> MenuItems { get; }
 
-        public MainMenu()
+        public MainMenu(IEnumerable<IMainMenuItem> mainMenuItems)
         {
-            MenuItems = new IMenuItem[]
-            {
-                new ExitMenuItem(),
-                new SettingsMenuItem(),
-                new StartGameMenuItem(),
-            }.ToList();
+            MenuItems = mainMenuItems.OfType<IMenuItem>().ToList();
+           
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace RPG
 {
-    public class ExitMenuItem : IMenuItem
+    public class ExitMenuItem : IMainMenuItem
     {
         public string Name => "Выйти"; 
 

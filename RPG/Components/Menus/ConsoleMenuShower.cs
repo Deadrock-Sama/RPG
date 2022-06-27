@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace RPG
 {
-    public class ConsoleMenuShower
+    public class ConsoleMenuShower :IShowing
     {
         private bool _isMenuOpen;
 

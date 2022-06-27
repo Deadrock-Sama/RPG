@@ -2,7 +2,7 @@
 
 namespace RPG
 {
-    public class SettingsMenuItem : IMenuItem
+    public class SettingsMenuItem : IMainMenuItem
     {
         public string Name => "Настройки";
 

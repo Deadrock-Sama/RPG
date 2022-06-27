@@ -4,13 +4,20 @@ using System.Text;
 
 namespace RPG.Components.PlayerComponent
 {
-    public class Player
+    public class PlayerBasicInfo
     {
         public string Name { get; set; }
 
+    }
+
+    public class Player
+    {
+
+        public PlayerBasicInfo Info { get; set; }
+
         public Player(string name)
         {
-            Name = name;
+            Info = new PlayerBasicInfo { Name = name };
         }
 
     }

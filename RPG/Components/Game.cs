@@ -5,9 +5,9 @@
 
         public MainMenu MainMenu { get; }
 
-        public Game()
+        public Game(MainMenu mainMenu)
         {
-            MainMenu = new MainMenu();
+            MainMenu = mainMenu;
         }
 
         public void Start()

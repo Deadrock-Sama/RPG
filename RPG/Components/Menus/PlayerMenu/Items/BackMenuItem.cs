@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RPG.Components.Menus.PlayerMenu.Items
 {
-    internal class BackMenuItem : IMenuItem
+    internal class BackMenuItem : IPlayerMenuItem
     {
         public string Name => "Назад";
 

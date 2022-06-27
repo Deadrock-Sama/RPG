@@ -1,35 +1,26 @@
 ﻿using RPG.Components.Menus.PlayerMenu.Items;
 using RPG.Components.PlayerComponent;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace RPG.Components.Menus.PlayerMenu
 {
+
     public class PlayerMenu : IMenu
     {
-        public List<IMenuItem> MenuItems { get; }
+        public List<IMenuItem> MenuItems { get; } = new List<IMenuItem>();
 
 
-        public PlayerMenu()
+        public PlayerMenu(IEnumerable<IPlayerMenuItem> playerMenuItems, PlayerRepository repository)
         {
-            PlayerDB players = new PlayerDB();
-            List<IMenuItem> preMenuItems = new List<IMenuItem>();
- 
-            foreach (Player player in players.Players)
+            foreach (PlayerBasicInfo player in repository.BasicInfos)
             {
-                preMenuItems.Add(new PlayerMenuItem(player));
+                MenuItems.Add(new PlayerMenuItem(player, repository));
             }
-
-            if (players.Players.Count < 6)
+            foreach (var item in playerMenuItems)
             {
-                preMenuItems.Add(new NewPlayerMenuItem()); 
+                MenuItems.Add(item);
             }
-
-            preMenuItems.Add(new BackMenuItem());
-
-            MenuItems = preMenuItems;
-
         }
     }
 }

@@ -3,25 +3,24 @@ using System;
 
 namespace RPG
 {
-    public class StartGameMenuItem : IMenuItem
+    public class StartGameMenuItem : IMainMenuItem
     {
-        public string Name => "Старт"; 
+        private readonly PlayerMenuShower _playerMenu;
+
+        public string Name => "Старт";
+
+
+        public StartGameMenuItem(PlayerMenuShower playerMenu)
+        {
+            _playerMenu = playerMenu;
+        }
 
         public void Open()
         {
             Console.WriteLine($"Открыт пункт меню {Name}");
 
-            var cm = new ConsoleManager();
+            _playerMenu.Show();
 
-            var menu = new PlayerMenu();
-            var menuShower = new ConsoleMenuShower(menu, cm);
-
-            menuShower.Show();
-
-            while (true)
-            {
-
-            }
         }
     }
 }
