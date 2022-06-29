@@ -8,7 +8,7 @@ namespace RPG
 
         public void Open()
         {
-            Console.WriteLine("Вы уверерены, что хотите выйти?");
+            Environment.Exit(0);
         }
     }
 }

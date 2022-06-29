@@ -7,35 +7,10 @@ using RPG.Components.Menus.PlayerMenu;
 using RPG.Components.Menus.PlayerMenu.Items;
 using RPG.Components.PlayerComponent;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace RPG
 {
-    public interface INavigatorContent { }
-    public interface IShowing: INavigatorContent
-    {
-        void Show();
-    }
-    public interface IHidding: INavigatorContent
-    {
-        void OnHide();
-    }
-    class AppNavigator
-    {
-        private List<INavigatorContent> _stack {get;}
-
-        public INavigatorContent Current { get; }
-        public void Show(INavigatorContent content)
-        {
-
-        }
-
-        public void Back()
-        {
-
-        }
-    }
 
     class Program
     {
@@ -69,24 +44,12 @@ namespace RPG
                     .ImplementedBy<BackMenuItem>(),
                 Component.For<IWindsorContainer>()
                     .Instance(container),
-                Component.For<PlayerRepository>());
+                Component.For<PlayerRepository>(),
+                Component.For<AppNavigator>());
 
-
-
-
-
+            var navigator = container.Resolve<AppNavigator>();
             var mainMenuShower = container.Resolve<MainMenuShower>();
-
-
-            mainMenuShower.Show();
-
-            //cm.ShowAndReadLine("Введите строку");
-
-
-
-
-            container.Resolve<Game>();
-
+            navigator.Show(mainMenuShower);
 
             while (true)
             {

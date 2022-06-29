@@ -19,6 +19,7 @@ namespace RPG.Components.Menus.PlayerMenu.Items
 
             var child = new WindsorContainer();
             _container.AddChildContainer(child);
+
             Console.WriteLine($"Вы выбрали игрока {Name}") ;
         }
 

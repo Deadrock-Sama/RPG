@@ -4,21 +4,20 @@ using System.Linq;
 
 namespace RPG
 {
-    public class ConsoleMenuShower :IShowing
+    public class ConsoleMenuShower : INavigatorContent
     {
         private bool _isMenuOpen;
-
         private readonly IMenu _Menu;
         private readonly ConsoleManager _consoleManager;
 
         public ConsoleMenuShower(IMenu mainMenu, ConsoleManager consoleManager)
-        {
+        {     
             _Menu = mainMenu;
             _consoleManager = consoleManager;
-            _consoleManager.KeyPressed += _consoleManager_KeyPressed;
+            
         }
 
-        private void _consoleManager_KeyPressed(ConsoleKey obj)
+        protected virtual void _consoleManager_KeyPressed(ConsoleKey obj)
         {
             if (!_isMenuOpen)
                 return;
@@ -41,19 +40,26 @@ namespace RPG
                 return;
 
 
-            _Menu.MenuItems[numb].Open();
+            _consoleManager.KeyPressed -= _consoleManager_KeyPressed;
 
-            
+            _Menu.MenuItems[numb].Open();
 
             _isMenuOpen = false;
         }
 
         public void Show()
         {
+            _consoleManager.KeyPressed += _consoleManager_KeyPressed;
+
             string msg = string.Join(Environment.NewLine, _Menu.MenuItems.Select(i => $"{_Menu.MenuItems.IndexOf(i)}. {i.Name}"));
             _consoleManager.ShowAndReadKey(msg);
 
             _isMenuOpen = true;
+        }
+
+        public void Hide()
+        {
+            _isMenuOpen = false;
         }
     }
 }

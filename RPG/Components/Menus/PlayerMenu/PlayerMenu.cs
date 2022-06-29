@@ -1,4 +1,5 @@
-﻿using RPG.Components.Menus.PlayerMenu.Items;
+﻿using Castle.Windsor;
+using RPG.Components.Menus.PlayerMenu.Items;
 using RPG.Components.PlayerComponent;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace RPG.Components.Menus.PlayerMenu
         {
             foreach (PlayerBasicInfo player in repository.BasicInfos)
             {
-                MenuItems.Add(new PlayerMenuItem(player, repository));
+                MenuItems.Add(new PlayerMenuItem(player, repository, new WindsorContainer()));
             }
             foreach (var item in playerMenuItems)
             {

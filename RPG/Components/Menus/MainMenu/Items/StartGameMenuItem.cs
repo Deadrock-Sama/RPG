@@ -5,13 +5,15 @@ namespace RPG
 {
     public class StartGameMenuItem : IMainMenuItem
     {
+        private AppNavigator _navigator;
         private readonly PlayerMenuShower _playerMenu;
 
         public string Name => "Старт";
 
 
-        public StartGameMenuItem(PlayerMenuShower playerMenu)
+        public StartGameMenuItem(PlayerMenuShower playerMenu, AppNavigator navigator)
         {
+            _navigator = navigator;
             _playerMenu = playerMenu;
         }
 
@@ -19,7 +21,7 @@ namespace RPG
         {
             Console.WriteLine($"Открыт пункт меню {Name}");
 
-            _playerMenu.Show();
+            _navigator.Show(_playerMenu);
 
         }
     }
