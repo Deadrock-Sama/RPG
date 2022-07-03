@@ -1,8 +1,9 @@
-﻿using System;
+﻿using RPG.Components.Menus.PlayerInfoPageComponent;
+using System;
 
 namespace RPG.Components.Menus.PlayerMenu.Items
 {
-    internal class BackMenuItem : IPlayerMenuItem
+    internal class BackMenuItem : IPlayerMenuItem, IPlayerInfoPageMenuItem
     {
         private AppNavigator _navigator;
 

@@ -4,11 +4,6 @@ using System.Text;
 
 namespace RPG.Components.PlayerComponent
 {
-    public class PlayerBasicInfo
-    {
-        public string Name { get; set; }
-
-    }
 
     public class Player
     {

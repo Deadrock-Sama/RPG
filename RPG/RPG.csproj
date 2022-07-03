@@ -16,4 +16,8 @@
     <PackageReference Include="Castle.Windsor" Version="5.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\PlayerComponent\Skills\" />
+  </ItemGroup>
+
 </Project>

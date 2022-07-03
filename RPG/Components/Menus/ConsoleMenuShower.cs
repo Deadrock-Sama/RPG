@@ -35,19 +35,15 @@ namespace RPG
                 return;
             }
 
-
             if (numb >= _Menu.MenuItems.Count)
                 return;
 
-
-            _consoleManager.KeyPressed -= _consoleManager_KeyPressed;
-
             _Menu.MenuItems[numb].Open();
 
-            _isMenuOpen = false;
+            
         }
 
-        public void Show()
+        public virtual void Show()
         {
             _consoleManager.KeyPressed += _consoleManager_KeyPressed;
 
@@ -59,6 +55,7 @@ namespace RPG
 
         public void Hide()
         {
+            _consoleManager.KeyPressed -= _consoleManager_KeyPressed;
             _isMenuOpen = false;
         }
     }
