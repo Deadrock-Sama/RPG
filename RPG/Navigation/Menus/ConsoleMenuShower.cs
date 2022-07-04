@@ -1,8 +1,8 @@
-﻿using RPG.Components.Menus;
+﻿using RPG.Components.Navigation;
 using System;
 using System.Linq;
 
-namespace RPG
+namespace RPG.Components.Menus
 {
     public class ConsoleMenuShower : INavigatorContent
     {
@@ -11,10 +11,10 @@ namespace RPG
         private readonly ConsoleManager _consoleManager;
 
         public ConsoleMenuShower(IMenu mainMenu, ConsoleManager consoleManager)
-        {     
+        {
             _Menu = mainMenu;
             _consoleManager = consoleManager;
-            
+
         }
 
         protected virtual void _consoleManager_KeyPressed(ConsoleKey obj)
@@ -40,7 +40,7 @@ namespace RPG
 
             _Menu.MenuItems[numb].Open();
 
-            
+
         }
 
         public virtual void Show()

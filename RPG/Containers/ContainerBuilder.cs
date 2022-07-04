@@ -11,7 +11,7 @@ namespace RPG.Components.Containers
 {
     public class ContainerBuilder
     {
-        public WindsorContainer Create()
+        public IWindsorContainer Create()
         {
             var container = new WindsorContainer();
 
@@ -26,6 +26,13 @@ namespace RPG.Components.Containers
                     .Instance(container));
 
             return container;
+        }
+
+        public IWindsorContainer CreateChild(IWindsorContainer parrent)
+        {
+            var child = Create();
+            parrent.AddChildContainer(child);
+            return child;
         }
 
     }

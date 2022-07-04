@@ -1,4 +1,5 @@
 ﻿using RPG.Components.Menus.PlayerMenu;
+using RPG.Components.Navigation;
 using System;
 
 namespace RPG

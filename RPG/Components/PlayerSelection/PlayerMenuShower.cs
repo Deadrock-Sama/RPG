@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPG.Components.Navigation;
+using System;
 
 namespace RPG.Components.Menus.PlayerMenu
 {

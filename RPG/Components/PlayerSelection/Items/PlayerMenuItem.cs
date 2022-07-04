@@ -3,6 +3,7 @@ using Castle.Windsor;
 using RPG.Components.Containers;
 using RPG.Components.Menus.PlayerInfoPageComponent;
 using RPG.Components.Menus.PlayerInfoPageComponent.Items;
+using RPG.Components.Navigation;
 using RPG.Components.PlayerComponent;
 using System;
 
@@ -22,9 +23,8 @@ namespace RPG.Components.Menus.PlayerMenu.Items
         {
             var player = _repository.GetPlayerByInfo(_playerInfo);
 
-            var child = new PlayerContainerBuilder(player).Create();
-            _container.AddChildContainer(child);
-
+            var child = new ContainerBuilder().CreateChild(_container);
+            child.Register(new PlayerDependencyProvider(player));
             
             _navigator.Show(child.Resolve<PlayerInfoPageShower>());
 

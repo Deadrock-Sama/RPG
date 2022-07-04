@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RPG.Components.Menus.PlayerInfoPageComponent
 {
-    interface IPlayerInfoPageMenuItem : IMenuItem
+    public interface IPlayerInfoPageMenuItem : IMenuItem
     {
         
     }

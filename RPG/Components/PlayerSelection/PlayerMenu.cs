@@ -1,5 +1,6 @@
 ﻿using Castle.Windsor;
 using RPG.Components.Menus.PlayerMenu.Items;
+using RPG.Components.Navigation;
 using RPG.Components.PlayerComponent;
 using System.Collections.Generic;
 using System.Linq;

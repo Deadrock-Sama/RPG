@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RPG
+namespace RPG.Components.Navigation
 {
     public class AppNavigator
     {
@@ -17,9 +17,9 @@ namespace RPG
                 _history.Push(_current);
             }
             _current = content;
-            
+
             content.Show();
-            
+
         }
 
         public void Back()
