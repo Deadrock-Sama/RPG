@@ -1,13 +1,13 @@
-﻿using Castle.MicroKernel.Registration;
-using Castle.Windsor;
+﻿using Castle.Windsor;
 using RPG.Components.Containers;
-using RPG.Components.Menus.PlayerInfoPageComponent;
-using RPG.Components.Menus.PlayerInfoPageComponent.Items;
-using RPG.Components.Navigation;
-using RPG.Components.PlayerComponent;
+using RPG.Components.PlayerNS;
+using RPG.Components.PlayerNS.PlayerPage;
+using RPG.Components.PlayerNS.PlayerPage.PlayerInfo;
+using RPG.Containers;
+using RPG.Navigation;
 using System;
 
-namespace RPG.Components.Menus.PlayerMenu.Items
+namespace RPG.Components.PlayerSelection.Items
 {
     internal class PlayerMenuItem : IPlayerMenuItem
     {
@@ -17,7 +17,7 @@ namespace RPG.Components.Menus.PlayerMenu.Items
         private readonly IWindsorContainer _container;
         private AppNavigator _navigator;
 
-        public string Name  => _name; 
+        public string Name => _name;
 
         public void Open()
         {
@@ -25,11 +25,11 @@ namespace RPG.Components.Menus.PlayerMenu.Items
 
             var child = new ContainerBuilder().CreateChild(_container);
             child.Register(new PlayerDependencyProvider(player));
-            
-            _navigator.Show(child.Resolve<PlayerInfoPageShower>());
+
+            _navigator.Show(child.Resolve<PlayerPageShower>());
 
 
-            Console.WriteLine($"Вы выбрали игрока {Name}") ;
+            Console.WriteLine($"Вы выбрали игрока {Name}");
         }
 
         public PlayerMenuItem(PlayerBasicInfo playerInfo, PlayerRepository repository, IWindsorContainer container, AppNavigator navigator)

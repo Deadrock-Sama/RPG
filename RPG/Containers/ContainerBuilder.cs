@@ -2,10 +2,7 @@
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.Windsor;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace RPG.Components.Containers
 {

@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Player\Skills\" />
+    <Folder Include="Components\PlayerNS\Skills\" />
   </ItemGroup>
 
 </Project>

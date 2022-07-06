@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RPG
+namespace RPG.Components.MainMenuNS.Items
 {
     public class SettingsMenuItem : IMainMenuItem
     {

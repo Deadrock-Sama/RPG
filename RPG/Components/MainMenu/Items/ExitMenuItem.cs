@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace RPG
+namespace RPG.Components.MainMenuNS.Items
 {
     public class ExitMenuItem : IMainMenuItem
     {
-        public string Name => "Выйти"; 
+        public string Name => "Выйти";
 
         public void Open()
         {

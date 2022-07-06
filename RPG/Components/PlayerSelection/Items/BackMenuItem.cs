@@ -1,8 +1,7 @@
-﻿using RPG.Components.Menus.PlayerInfoPageComponent;
-using RPG.Components.Navigation;
-using System;
+﻿using RPG.Components.PlayerNS.PlayerPage.PlayerActionMenu.Items;
+using RPG.Navigation;
 
-namespace RPG.Components.Menus.PlayerMenu.Items
+namespace RPG.Components.PlayerSelection.Items
 {
     internal class BackMenuItem : IPlayerMenuItem, IPlayerInfoPageMenuItem
     {

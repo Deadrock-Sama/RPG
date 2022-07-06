@@ -1,6 +1,5 @@
-﻿using System;
+﻿using RPG.Components.MainMenuNS.Items;
 using System.Collections.Generic;
-using System.Text;
 
 namespace RPG.Components.Menus
 {

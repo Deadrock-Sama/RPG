@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace RPG
+namespace RPG.ConsoleInteraction
 {
     public class ConsoleManager
     {
@@ -39,7 +39,7 @@ namespace RPG
                 }
                 _isWaiting = true;
             }
-            
+
 
             var line = Console.ReadLine();
 
@@ -48,7 +48,7 @@ namespace RPG
                 LineWritten.Invoke(line);
 
                 _isWaiting = false;
-            }                
+            }
         }
         private void WaitKey()
         {
@@ -60,7 +60,7 @@ namespace RPG
                 }
                 _isWaiting = true;
             }
-              
+
 
             ConsoleKeyInfo key = Console.ReadKey();
             Console.WriteLine();
@@ -69,8 +69,8 @@ namespace RPG
                 KeyPressed.Invoke(key.Key);
 
                 _isWaiting = false;
-            }               
-            
+            }
+
         }
 
     }

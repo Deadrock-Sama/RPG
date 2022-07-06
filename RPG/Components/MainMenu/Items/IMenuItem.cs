@@ -1,4 +1,4 @@
-﻿namespace RPG
+﻿namespace RPG.Components.MainMenuNS.Items
 {
     public interface IMenuItem
     {

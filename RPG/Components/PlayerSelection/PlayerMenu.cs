@@ -1,11 +1,13 @@
 ﻿using Castle.Windsor;
-using RPG.Components.Menus.PlayerMenu.Items;
-using RPG.Components.Navigation;
-using RPG.Components.PlayerComponent;
+using RPG.Components.MainMenuNS.Items;
+using RPG.Components.Menus;
+using RPG.Components.PlayerNS;
+using RPG.Components.PlayerNS.PlayerPage.PlayerInfo;
+using RPG.Components.PlayerSelection.Items;
+using RPG.Navigation;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace RPG.Components.Menus.PlayerMenu
+namespace RPG.Components.PlayerSelection
 {
 
     public class PlayerMenu : IMenu

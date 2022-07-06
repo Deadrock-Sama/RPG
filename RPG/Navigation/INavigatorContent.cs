@@ -1,4 +1,4 @@
-﻿namespace RPG.Components.Navigation
+﻿namespace RPG.Navigation
 {
     public interface INavigatorContent
     {

@@ -1,4 +1,6 @@
-﻿namespace RPG
+﻿using RPG.Components.MainMenuNS;
+
+namespace RPG.Components
 {
     public class Game
     {

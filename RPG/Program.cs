@@ -1,31 +1,10 @@
-﻿using Castle.MicroKernel.ModelBuilder.Inspectors;
-using Castle.MicroKernel.Registration;
-using Castle.MicroKernel.Resolvers.SpecializedResolvers;
-using Castle.Windsor;
-using RPG.Components.Containers;
-using RPG.Components.Menus;
-using RPG.Components.Menus.PlayerMenu;
-using RPG.Components.Menus.PlayerMenu.Items;
-using RPG.Components.Navigation;
-using RPG.Components.PlayerComponent;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using RPG.Components.Containers;
+using RPG.Components.MainMenuNS;
+using RPG.Containers;
+using RPG.Navigation;
 
 namespace RPG
 {
-    public static class ContainerExtensions
-    {
-        public static IWindsorContainer Register(this IWindsorContainer container, IDependencyProvider provider)
-        {
-            return container.Register(provider.GetRegistrations().ToArray());
-        }
-        public static IWindsorContainer Register(this IWindsorContainer container, IEnumerable<IRegistration> registrations)
-        {
-            return container.Register(registrations.ToArray());
-        }
-    }
-
 
     class Program
     {

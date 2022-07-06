@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RPG.Components.Navigation
+namespace RPG.Navigation
 {
     public class AppNavigator
     {

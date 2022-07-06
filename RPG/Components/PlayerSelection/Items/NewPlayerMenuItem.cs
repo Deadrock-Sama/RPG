@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace RPG.Components.Menus.PlayerMenu.Items
+namespace RPG.Components.PlayerSelection.Items
 {
     internal class NewPlayerMenuItem : IPlayerMenuItem
     {
- 
+
         public string Name => "Новый игрок";
 
         public void Open()

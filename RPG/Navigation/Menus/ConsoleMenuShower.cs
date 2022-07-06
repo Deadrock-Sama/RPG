@@ -1,4 +1,5 @@
-﻿using RPG.Components.Navigation;
+﻿using RPG.ConsoleInteraction;
+using RPG.Navigation;
 using System;
 using System.Linq;
 

@@ -1,7 +1,8 @@
 ﻿using RPG.Components.Menus;
+using RPG.ConsoleInteraction;
 using System;
 
-namespace RPG
+namespace RPG.Components.MainMenuNS
 {
     public class MainMenuShower : ConsoleMenuShower
     {
@@ -15,7 +16,7 @@ namespace RPG
 
             if (obj == ConsoleKey.Escape)
             {
-               Environment.Exit(0);
+                Environment.Exit(0);
             }
 
         }

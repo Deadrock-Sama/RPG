@@ -1,8 +1,8 @@
-﻿using RPG.Components.Menus.PlayerMenu;
-using RPG.Components.Navigation;
+﻿using RPG.Components.PlayerSelection;
+using RPG.Navigation;
 using System;
 
-namespace RPG
+namespace RPG.Components.MainMenuNS.Items
 {
     public class StartGameMenuItem : IMainMenuItem
     {

@@ -1,7 +1,9 @@
-﻿using RPG.Components.Navigation;
+﻿using RPG.Components.Menus;
+using RPG.ConsoleInteraction;
+using RPG.Navigation;
 using System;
 
-namespace RPG.Components.Menus.PlayerMenu
+namespace RPG.Components.PlayerSelection
 {
     public class PlayerMenuShower : ConsoleMenuShower
     {
@@ -9,7 +11,7 @@ namespace RPG.Components.Menus.PlayerMenu
 
         public PlayerMenuShower(PlayerMenu playerMenu, ConsoleManager consoleManager, AppNavigator navigator) : base(playerMenu, consoleManager)
         {
-            _navigator = navigator;//?
+            _navigator = navigator;
         }
 
         protected override void _consoleManager_KeyPressed(ConsoleKey obj)
