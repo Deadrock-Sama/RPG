@@ -3,9 +3,9 @@ using System;
 
 namespace RPG.Components.PlayerNS.Inventory.Equipment.Amulets
 {
-    internal class Necklace : IAmulet
+    public class Necklace : IAmulet
     {
-        public IStatsInfo Stats => throw new NotImplementedException();
+       
 
         public void Craft()
         {

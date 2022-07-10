@@ -2,9 +2,7 @@
 {
     public interface IInventoryItem
     {
-        void Craft();
-        void Disassemble();
-        void ThrowAway();
+      
 
     }
 }

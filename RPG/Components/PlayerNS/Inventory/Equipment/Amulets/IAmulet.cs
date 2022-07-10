@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RPG.Components.PlayerNS.Inventory.Equipment.Amulets
 {
-    internal interface IAmulet : IEquipment, IEquipmentStatsController
+     interface IAmulet : IEquipment, IEquipmentStatsController
     {
     }
 }

@@ -1,14 +1,16 @@
 ﻿using RPG.Components.PlayerNS.Characteristics;
 using RPG.Components.PlayerNS.Inventory.Equipment.Armor;
+using RPG.Components.PlayerNS.Sets;
+using RPG.Components.PlayerNS.Sets.EquipmentSets;
 
 namespace RPG.Components.PlayerNS.Inventory.Equipment.Sets
 {
-    internal class ArmorSet
+    public class ArmorSet : ISet
     {
-        private readonly IArmor _Helmet;
-        private readonly IArmor _Chest;
-        private readonly IArmor _Leggins;
-        private readonly IArmor _Boots;
+        private readonly IStatsController _Helmet;
+        private readonly IStatsController _Chest;
+        private readonly IStatsController _Leggins;
+        private readonly IStatsController _Boots;
 
         public ArmorSet(Helmet helmet, Chest chest, Leggins leggins, Boots boots)
         {
@@ -21,12 +23,7 @@ namespace RPG.Components.PlayerNS.Inventory.Equipment.Sets
         public StatsBonus recieveStatsBonus()
         {
             var bonus = new StatsBonus();
-            bonus.HPMultiplier = (_Helmet.HPMultiplier + _Chest.HPMultiplier + _Leggins.HPMultiplier + _Boots.HPMultiplier) - 3;
-            bonus.MPMultiplier = (_Helmet.MPMultiplier + _Chest.MPMultiplier + _Leggins.MPMultiplier + _Boots.MPMultiplier) - 3;
-            bonus.XPMultiplier = (_Helmet.XPMultiplier + _Chest.XPMultiplier + _Leggins.XPMultiplier + _Boots.XPMultiplier) - 3;
-            bonus.HPBonus = (_Helmet.HPBonus + _Chest.HPBonus + _Leggins.HPBonus + _Boots.HPBonus);
-            bonus.MPBonus = (_Helmet.MPBonus + _Chest.MPBonus + _Leggins.MPBonus + _Boots.MPBonus);
-            bonus.XPBonus = (_Helmet.XPBonus + _Chest.XPBonus + _Leggins.XPBonus + _Boots.XPBonus);
+            bonus = bonus + _Helmet + _Chest + _Leggins + _Boots;
 
             return bonus;
         }

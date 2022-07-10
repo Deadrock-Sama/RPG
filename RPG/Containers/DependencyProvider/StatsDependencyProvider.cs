@@ -41,7 +41,7 @@ namespace RPG.Containers.DependencyProvider
 
             yield return Component.For<EquipmentSet>();
 
-            yield return Component.For<CharacteristicsSet>();
+            yield return Component.For<Characteristics>();
 
 
 

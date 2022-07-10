@@ -3,9 +3,9 @@ using System;
 
 namespace RPG.Components.PlayerNS.Inventory.Equipment.Armor
 {
-    internal class Boots : IArmor
+    public class Boots : IArmor
     {
-        public IStatsInfo Stats => throw new NotImplementedException();
+        
 
         public void Craft()
         {

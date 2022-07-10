@@ -1,6 +1,6 @@
 ﻿namespace RPG.Components.PlayerNS.Inventory.Resources.Materials
 {
-    internal class Iron
+    public class Iron : IMaterial
     {
     }
 }

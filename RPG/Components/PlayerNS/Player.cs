@@ -12,7 +12,7 @@ namespace RPG.Components.PlayerNS
         public PlayerBasicInfo Info { get; set; }
         public IPlayerClass PlayerClass { get; set; }
         public EquipmentSet Equipment { get; set; }
-        public CharacteristicsSet  CharacteristicsSet { get; set; }
+        public Sets.PlayerSets.Characteristics  CharacteristicsSet { get; set; }
         public SkillsSet SkillsSet { get; set; }
         public Player(string name)
         {

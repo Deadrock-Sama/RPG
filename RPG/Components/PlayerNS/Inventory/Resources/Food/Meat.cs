@@ -1,6 +1,10 @@
 ﻿namespace RPG.Components.PlayerNS.Inventory.Resources.Food
 {
-    internal class Meat
+    public class Meat : IFood
     {
+        public void Eat()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

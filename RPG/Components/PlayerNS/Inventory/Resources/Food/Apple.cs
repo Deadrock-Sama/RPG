@@ -1,6 +1,10 @@
 ﻿namespace RPG.Components.PlayerNS.Inventory.Resources.Food
 {
-    internal class Apple
+    public class Apple : IFood
     {
+        public void Eat()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

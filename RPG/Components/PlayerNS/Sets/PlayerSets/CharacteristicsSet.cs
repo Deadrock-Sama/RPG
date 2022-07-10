@@ -2,7 +2,7 @@
 
 namespace RPG.Components.PlayerNS.Sets.PlayerSets
 {
-    public class CharacteristicsSet
+    public class Characteristics
     {
         public int BaseHP => 100;
         public int BaseMP => 100;
@@ -14,7 +14,7 @@ namespace RPG.Components.PlayerNS.Sets.PlayerSets
 
         public EquipmentSet EquipmentSet { get; set; }
 
-        public CharacteristicsSet(EquipmentSet equipmentSet)
+        public Characteristics(EquipmentSet equipmentSet)
         {
             this.EquipmentSet = equipmentSet;
 
