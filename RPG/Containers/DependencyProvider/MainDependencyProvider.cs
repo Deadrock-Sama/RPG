@@ -1,4 +1,5 @@
 ﻿using Castle.MicroKernel.Registration;
+using NHibernate;
 using RPG.Components.MainMenuNS;
 using RPG.Components.MainMenuNS.Items;
 using RPG.Components.Menus;
@@ -14,8 +15,26 @@ namespace RPG.Components.Containers
 {
     public class MainDependencyProvider : IDependencyProvider
     {
+        private readonly IRepositoryShell _repository;
+        private readonly ISessionFactory _sessionFactory;
+
+        public MainDependencyProvider(IRepositoryShell repository, ISessionFactory sessionFactory)
+        {
+            _repository = repository;
+            _sessionFactory = sessionFactory;
+        }
+
+
+
+
         public IEnumerable<IRegistration> GetRegistrations()
         {
+            yield return Component.For<ISessionFactory>()
+                .Instance(_sessionFactory);
+
+            yield return Component.For<IRepositoryShell>()
+               .Instance(_repository);
+
             yield return Component.For<Game>();
             
             yield return Component.For<ConsoleManager>();

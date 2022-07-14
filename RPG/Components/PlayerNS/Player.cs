@@ -6,18 +6,18 @@ using RPG.Components.PlayerNS.Sets.PlayerSets;
 namespace RPG.Components.PlayerNS
 {
 
-    public class Player
+    public class Player : DbEntity
     {
-
-        public PlayerBasicInfo Info { get; set; }
-        public IPlayerClass PlayerClass { get; set; }
-        public EquipmentSet Equipment { get; set; }
-        public Sets.PlayerSets.Characteristics  CharacteristicsSet { get; set; }
-        public SkillsSet SkillsSet { get; set; }
+        public virtual PlayerBasicInfo Info { get; set; }
+        public virtual IPlayerClass PlayerClass { get; set; }
+        public virtual EquipmentSet Equipment { get; set; }
+        public virtual Sets.PlayerSets.Characteristics  CharacteristicsSet { get; set; }
+        public virtual SkillsSet SkillsSet { get; set; }
         public Player(string name)
         {
             Info = new PlayerBasicInfo { Name = name };
         }
+        public Player() { }
 
     }
 }

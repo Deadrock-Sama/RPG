@@ -6,25 +6,34 @@ namespace RPG.Components.PlayerNS
 {
     public class PlayerRepository
     {
-
-        public List<PlayerBasicInfo> BasicInfos => Players.Select(p => p.Info).ToList();
-
-        private List<Player> Players { get; }
+        private readonly IRepositoryShell _repository;
+        private readonly List<Player> _players;
 
 
-        public PlayerRepository()
+        public List<PlayerBasicInfo> BasicInfos => _players.Select(p => p.Info).ToList();
+
+
+
+        public PlayerRepository(IRepositoryShell repository)
         {
-            Players = new List<Player>() { 
-                new Player("Deadrock"),
-                new Player("Felto"),
-                new Player("Dextevir")   
-            };
- 
+            _repository = repository;
+
+            _players = repository.GetAll<Player>();
+        }
+
+        public Player CreateNewPlayer(string name)
+        {
+            var newPlayer = new Player(name);
+
+            _players.Add(newPlayer);
+            _repository.Add(newPlayer);
+
+            return newPlayer;
         }
 
         public Player GetPlayerByInfo(PlayerBasicInfo info)
         {
-            return Players.FirstOrDefault(p => p.Info == info);
+            return _players.FirstOrDefault(p => p.Info == info);
         }
 
     }

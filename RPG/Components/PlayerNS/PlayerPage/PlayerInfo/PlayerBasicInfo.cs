@@ -1,10 +1,26 @@
-﻿namespace RPG.Components.PlayerNS.PlayerPage.PlayerInfo
-{
-    public class PlayerBasicInfo
-    {
-        public string Name { get; set; } = "Test info player";
+﻿using FluentNHibernate.Mapping;
 
-        public string Description { get; set; } = "This player was created to test info showing";
+namespace RPG.Components.PlayerNS.PlayerPage.PlayerInfo
+{
+
+
+    public class PlayerBasicInfoMapping : ClassMap<PlayerBasicInfo>
+    {
+
+        public PlayerBasicInfoMapping()
+        {
+            Id(c => c.Id);
+
+            Map(c => c.Name);
+            Map(c => c.Description);
+        }
+    }
+
+    public class PlayerBasicInfo : DbEntity
+    {
+        public virtual string Name { get; set; }
+
+        public virtual string Description { get; set; }
 
     }
 }
