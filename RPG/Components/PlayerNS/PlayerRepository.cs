@@ -1,4 +1,5 @@
 ﻿using RPG.Components.PlayerNS.PlayerPage.PlayerInfo;
+using RPG.DBInteraction;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,8 +12,6 @@ namespace RPG.Components.PlayerNS
 
 
         public List<PlayerBasicInfo> BasicInfos => _players.Select(p => p.Info).ToList();
-
-
 
         public PlayerRepository(IRepositoryShell repository)
         {

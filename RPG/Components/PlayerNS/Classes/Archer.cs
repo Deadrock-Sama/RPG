@@ -2,5 +2,8 @@
 {
     public class Archer : IPlayerClass
     {
+
+        public virtual string Name { get; set; }
+
     }
 }

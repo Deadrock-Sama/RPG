@@ -1,4 +1,4 @@
-﻿using RPG.Components.PlayerNS.Inventory.Equipment;
+﻿using RPG.Components.PlayerNS.Sets.EquipmentSets;
 
 namespace RPG.Components.PlayerNS.Sets.PlayerSets
 {

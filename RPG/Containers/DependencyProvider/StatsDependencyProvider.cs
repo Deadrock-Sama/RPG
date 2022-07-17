@@ -1,11 +1,10 @@
 ﻿using Castle.MicroKernel.Registration;
 using RPG.Components.Containers;
-using RPG.Components.PlayerNS.Inventory.Equipment;
-using RPG.Components.PlayerNS.Inventory.Equipment.Amulets;
-using RPG.Components.PlayerNS.Inventory.Equipment.Armor;
-using RPG.Components.PlayerNS.Inventory.Equipment.Sets;
-using RPG.Components.PlayerNS.Inventory.Equipment.Weapons;
+using RPG.Components.PlayerNS.InventoryNS.Equipment.Amulets;
+using RPG.Components.PlayerNS.InventoryNS.Equipment.Armor;
+using RPG.Components.PlayerNS.InventoryNS.Equipment.Weapons;
 using RPG.Components.PlayerNS.Sets;
+using RPG.Components.PlayerNS.Sets.EquipmentSets;
 using RPG.Components.PlayerNS.Sets.PlayerSets;
 using System;
 using System.Collections.Generic;

@@ -1,9 +1,8 @@
 ﻿using RPG.Components.PlayerNS.Characteristics;
-using RPG.Components.PlayerNS.Inventory.Equipment.Armor;
+using RPG.Components.PlayerNS.InventoryNS.Equipment.Armor;
 using RPG.Components.PlayerNS.Sets;
-using RPG.Components.PlayerNS.Sets.EquipmentSets;
 
-namespace RPG.Components.PlayerNS.Inventory.Equipment.Sets
+namespace RPG.Components.PlayerNS.Sets.EquipmentSets
 {
     public class ArmorSet : ISet
     {

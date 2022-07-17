@@ -1,4 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
+using RPG.DBInteraction.Mappings;
 
 namespace RPG.Components.PlayerNS.PlayerPage.PlayerInfo
 {
