@@ -8,7 +8,9 @@ namespace RPG.Components.PlayerNS
         {
             Id(e => e.Id);
 
-            References(e => e.Info).Cascade.AllDeleteOrphan();
+            References(e => e.Info)
+                .Cascade.AllDeleteOrphan()
+                .Not.LazyLoad();
         }
     }
 }

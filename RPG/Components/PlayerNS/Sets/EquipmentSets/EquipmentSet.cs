@@ -10,7 +10,7 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
 
         public StatsBonus recieveStatsBonus()
         {
-            var amuletsBonus = _AmuletsSet.recieveStatsBonus();
+            var amuletsBonus = _AmuletsSet.RrecieveStatsBonus();
             var armorBonus = _ArmorSet.recieveStatsBonus() * amuletsBonus;
             var weaponBonus = _Weapon.recieveStatsBonus();
 

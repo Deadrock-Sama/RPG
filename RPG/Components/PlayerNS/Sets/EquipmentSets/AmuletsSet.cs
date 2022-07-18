@@ -11,6 +11,8 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
         private readonly IStatsController _Earring;
         private readonly IStatsController _Bracelet;
 
+        public StatsBonus StatsBonus => RrecieveStatsBonus();
+
         public AmuletsSet(Ring ring, Necklace necklace, Earring earring, Bracelet bracelet)
         {
             _Ring = ring;
@@ -19,7 +21,8 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
             _Bracelet = bracelet;
         }
 
-        public StatsBonus recieveStatsBonus()
+
+        private StatsBonus RrecieveStatsBonus()
         {
             var bonus = new StatsBonus();
             bonus = bonus + _Ring + _Necklace + _Earring + _Bracelet;
