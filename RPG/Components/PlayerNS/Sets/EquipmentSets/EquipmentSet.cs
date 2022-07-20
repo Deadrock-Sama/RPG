@@ -8,11 +8,13 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
         private readonly AmuletsSet _AmuletsSet;
         private readonly WeaponSet _Weapon;
 
-        public StatsBonus recieveStatsBonus()
+        public StatsBonus StatsBonus => recieveStatsBonus();
+
+        private StatsBonus recieveStatsBonus()
         {
-            var amuletsBonus = _AmuletsSet.RrecieveStatsBonus();
-            var armorBonus = _ArmorSet.recieveStatsBonus() * amuletsBonus;
-            var weaponBonus = _Weapon.recieveStatsBonus();
+            var amuletsBonus = _AmuletsSet.StatsBonus;
+            var armorBonus = _ArmorSet.StatsBonus * amuletsBonus;
+            var weaponBonus = _Weapon.StatsBonus;
 
             var bonus = new StatsBonus();
             bonus = armorBonus + amuletsBonus + weaponBonus;

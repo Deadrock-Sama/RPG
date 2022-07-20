@@ -1,44 +1,30 @@
-﻿using System;
+﻿using FluentNHibernate.Mapping;
+using System;
 
 namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Amulets
 {
-    public class Necklace : IAmulet
+    public class Necklace : Amulet
     {
 
 
-        public void Craft()
-        {
-            throw new NotImplementedException();
-        }
 
-        public void Disassemble()
-        {
-            throw new NotImplementedException();
-        }
+    }
 
-        public bool isAbleToWear()
+    public class NecklaceMapping : ClassMap<Necklace>
+    {
+        public NecklaceMapping()
         {
-            throw new NotImplementedException();
-        }
+            Id(e => e.Id);
+            Map(e => e.Name);
+            Map(e => e.Description);
+            Map(e => e.XPMultiplier);
+            Map(e => e.HPMultiplier);
+            Map(e => e.MPMultiplier);
+            Map(e => e.XPBonus);
+            Map(e => e.HPBonus);
+            Map(e => e.MPBonus);
 
-        public void TakeOff()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ThrowAway()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Upgrade()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Wear()
-        {
-            throw new NotImplementedException();
         }
     }
+
 }

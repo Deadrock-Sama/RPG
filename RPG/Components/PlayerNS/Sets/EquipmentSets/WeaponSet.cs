@@ -10,12 +10,13 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
      {
         public IWeapon Weapon { get; set; }
 
+        public StatsBonus StatsBonus => recieveStatsBonus();
         public WeaponSet(IWeapon weapon)
         {
             Weapon = weapon;
         }
 
-        public StatsBonus recieveStatsBonus()
+        private StatsBonus recieveStatsBonus()
         {
             var bonus = new StatsBonus(Weapon);
             return bonus;

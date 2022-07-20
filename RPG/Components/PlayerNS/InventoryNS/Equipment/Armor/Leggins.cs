@@ -1,44 +1,28 @@
-﻿using System;
+﻿using FluentNHibernate.Mapping;
+using System;
 
 namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Armor
 {
-    public class Leggins : IArmor
+    public class Leggins : ArmorPart
     {
 
 
-        public void Craft()
-        {
-            throw new NotImplementedException();
-        }
+    }
 
-        public void Disassemble()
+    public class LegginsMapping : ClassMap<Leggins>
+    {
+        public LegginsMapping()
         {
-            throw new NotImplementedException();
-        }
+            Id(e => e.Id);
+            Map(e => e.Name);
+            Map(e => e.Description);
+            Map(e => e.XPMultiplier);
+            Map(e => e.HPMultiplier);
+            Map(e => e.MPMultiplier);
+            Map(e => e.XPBonus);
+            Map(e => e.HPBonus);
+            Map(e => e.MPBonus);
 
-        public bool isAbleToWear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TakeOff()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ThrowAway()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Upgrade()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Wear()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace RPG.Components.PlayerNS.Sets.PlayerSets
         {
             this.EquipmentSet = equipmentSet;
 
-            var bonus = equipmentSet.recieveStatsBonus();
+            var bonus = equipmentSet.StatsBonus;
 
             HP = (int)(BaseHP * bonus.HPMultiplier) + bonus.HPBonus;
             MP = (int)(BaseMP * bonus.MPMultiplier) + bonus.MPBonus;

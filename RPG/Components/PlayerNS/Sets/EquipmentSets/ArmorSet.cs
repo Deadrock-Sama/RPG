@@ -11,6 +11,8 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
         private readonly IStatsController _Leggins;
         private readonly IStatsController _Boots;
 
+        public StatsBonus StatsBonus => recieveStatsBonus();
+
         public ArmorSet(Helmet helmet, Chest chest, Leggins leggins, Boots boots)
         {
             _Helmet = helmet;
@@ -19,7 +21,7 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
             _Boots = boots;
         }
 
-        public StatsBonus recieveStatsBonus()
+        private StatsBonus recieveStatsBonus()
         {
             var bonus = new StatsBonus();
             bonus = bonus + _Helmet + _Chest + _Leggins + _Boots;

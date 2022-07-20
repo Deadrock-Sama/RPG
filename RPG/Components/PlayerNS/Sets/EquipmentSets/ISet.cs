@@ -7,7 +7,7 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
 {
     interface ISet
     {
-        StatsBonus recieveStatsBonus();
+        StatsBonus StatsBonus { get; }
 
     }
 }
