@@ -1,5 +1,4 @@
-﻿using FluentNHibernate.Mapping;
-using RPG.DBInteraction.Mappings;
+﻿using RPG.DBInteraction.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,5 +29,5 @@ namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Amulets
         }
     }
 
-    
+
 }

@@ -1,5 +1,4 @@
-﻿using FluentNHibernate.Mapping;
-using System;
+﻿using System;
 
 namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Armor
 {
@@ -7,15 +6,5 @@ namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Armor
     {
 
 
-    }
-
-    public class ChestMapping : SubclassMap<Chest>
-    {
-        public ChestMapping()
-        {
-            Table("fwafwad");
-
-            KeyColumn("trrrr");           
-        }
     }
 }

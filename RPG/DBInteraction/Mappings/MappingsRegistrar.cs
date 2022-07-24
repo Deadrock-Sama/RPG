@@ -19,14 +19,17 @@ namespace RPG.DBInteraction.Mappings
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<MealMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<MaterialMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<PotionMapping>());
+            mappingConfigurator.AddMapping(c => c.FluentMappings.Add<Amulet>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<BraceletMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<EarringMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<NecklaceMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<RingMapping>());
+            mappingConfigurator.AddMapping(c => c.FluentMappings.Add<ArmorPartMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<BootsMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<ChestMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<HelmetMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<LegginsMapping>());
+            mappingConfigurator.AddMapping(c => c.FluentMappings.Add<Weapon>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<BowMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<WandMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<SwordMapping>());

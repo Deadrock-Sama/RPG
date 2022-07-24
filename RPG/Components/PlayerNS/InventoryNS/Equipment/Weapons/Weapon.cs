@@ -1,4 +1,5 @@
-﻿using RPG.DBInteraction.Mappings;
+﻿using FluentNHibernate.Mapping;
+using RPG.DBInteraction.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,6 +27,24 @@ namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Weapons
         public virtual bool isAbleToWear()
         {
             throw new NotImplementedException();
+        }
+    }
+
+    public class WeaponMapping : ClassMap<Weapon>
+    {
+        public WeaponMapping()
+        {
+            Id(e => e.Id);
+            Map(e => e.Name);
+            Map(e => e.Description);
+            Map(e => e.XPMultiplier);
+            Map(e => e.HPMultiplier);
+            Map(e => e.MPMultiplier);
+            Map(e => e.XPBonus);
+            Map(e => e.HPBonus);
+            Map(e => e.MPBonus);
+
+            UseUnionSubclassForInheritanceMapping();
         }
     }
 }
