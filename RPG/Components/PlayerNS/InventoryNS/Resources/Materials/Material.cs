@@ -1,11 +1,10 @@
-﻿using RPG.DBInteraction.Mappings;
+﻿using RPG.Components.PlayerNS.InventoryNS.Resources.Food;
+using RPG.DBInteraction.Mappings;
 
 namespace RPG.Components.PlayerNS.InventoryNS.Resources.Materials
 {
-    public class Material : DbEntity, IInventoryItem
+    public class Material : Item, IResource
     {
-        public virtual string Name { get; set; }
-        public virtual string Description { get; set; }
 
     }
 

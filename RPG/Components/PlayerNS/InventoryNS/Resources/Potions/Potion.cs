@@ -1,12 +1,10 @@
-﻿using RPG.DBInteraction.Mappings;
+﻿using RPG.Components.PlayerNS.InventoryNS.Resources.Food;
+using RPG.DBInteraction.Mappings;
 
 namespace RPG.Components.PlayerNS.InventoryNS.Resources.Potions
 {
-    public class Potion : DbEntity, IInventoryItem
+    public class Potion : Item, IResource
     {
-
-        public virtual string Name { get; set; }
-        public virtual string Description { get; set; }
 
     }
 

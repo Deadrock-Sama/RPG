@@ -15,10 +15,10 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
 
         public ArmorSet(Helmet helmet, Chest chest, Leggins leggins, Boots boots)
         {
-            _Helmet = helmet;
-            _Chest = chest;
-            _Leggins = leggins;
-            _Boots = boots;
+            _Helmet = helmet.Stats;
+            _Chest = chest.Stats;
+            _Leggins = leggins.Stats;
+            _Boots = boots.Stats;
         }
 
         private StatsBonus recieveStatsBonus()

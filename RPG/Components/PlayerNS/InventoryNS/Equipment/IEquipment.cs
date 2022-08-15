@@ -2,7 +2,7 @@
 
 namespace RPG.Components.PlayerNS.InventoryNS.Equipment
 {
-    public interface IEquipment : IInventoryItem, IStatsController
+    public interface IEquipment : IInventoryItem, IEquipmentStatsController
     {
 
 

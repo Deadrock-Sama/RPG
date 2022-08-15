@@ -7,7 +7,7 @@ namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Weapons
         public WandMapping()
         {
             Table("Wands");
-            KeyColumn("WandID");
+            KeyColumn("Id");
 
         }
     }

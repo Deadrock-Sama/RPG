@@ -1,9 +1,8 @@
 ﻿namespace RPG.Components.PlayerNS.InventoryNS.Resources.Food
 {
 
-    public class Meal : Item, IInventoryItem
+    public class Meal : Item, IResource
     {
-        public virtual string Description { get; set; }
     }
 
 }

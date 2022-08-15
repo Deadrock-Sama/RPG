@@ -12,9 +12,9 @@ namespace RPG.Components.PlayerNS.Sets.PlayerSets
         public int MP;
         public int XP;
 
-        public EquipmentSet EquipmentSet { get; set; }
+        public EquipmentStatsSet EquipmentSet { get; set; }
 
-        public Characteristics(EquipmentSet equipmentSet)
+        public Characteristics(EquipmentStatsSet equipmentSet)
         {
             this.EquipmentSet = equipmentSet;
 

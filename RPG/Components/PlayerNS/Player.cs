@@ -4,6 +4,7 @@ using RPG.Components.PlayerNS.Sets.PlayerSets;
 using RPG.DBInteraction.Mappings;
 using RPG.Components.PlayerNS.InventoryNS;
 using RPG.Components.PlayerNS.Sets.EquipmentSets;
+using RPG.Components.Users;
 
 namespace RPG.Components.PlayerNS
 {
@@ -11,10 +12,12 @@ namespace RPG.Components.PlayerNS
     public class Player : DbEntity
     {
         public virtual PlayerBasicInfo Info { get; set; }
-        public virtual IPlayerClass PlayerClass { get; set; }
-        public virtual EquipmentSet Equipment { get; set; }
+        public virtual PlayerClass PlayerClass { get; set; }
+        public virtual EquipmentStatsSet Equipment { get; set; }
         public virtual Sets.PlayerSets.Characteristics CharacteristicsSet { get; set; }
         public virtual SkillsSet SkillsSet { get; set; }
+
+        public virtual User User { get; set; } 
 
         public virtual Inventory Inventory { get; set; }
 
@@ -22,7 +25,9 @@ namespace RPG.Components.PlayerNS
         {
             Info = new PlayerBasicInfo { Name = name };
         }
-        public Player() { }
+        public Player() {
+            //Info = new PlayerBasicInfo { };
+        }
 
     }
 }

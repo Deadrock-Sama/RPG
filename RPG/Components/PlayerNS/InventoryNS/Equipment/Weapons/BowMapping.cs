@@ -7,7 +7,7 @@ namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Weapons
         public BowMapping()
         {
             Table("Bows");
-            KeyColumn("BowID");
+            KeyColumn("Id");
 
         }
     }

@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31402.337
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG", "RPG\RPG.csproj", "{C4A1836E-AC74-4B29-A672-56B55CB95E67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG", "RPG\RPG.csproj", "{C4A1836E-AC74-4B29-A672-56B55CB95E67}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectsCreator", "ObjectsCreator\ObjectsCreator.csproj", "{7FA2D4C2-5D76-439A-96FA-37D19E9DC69B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "WebAndTelegram\Web.csproj", "{7C7CFADC-E1F9-4842-AA78-9B26459EAD2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramAPI", "TelegramAPI\TelegramAPI.csproj", "{C673441B-87F4-4F4C-A844-4DC47358B881}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{C4A1836E-AC74-4B29-A672-56B55CB95E67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4A1836E-AC74-4B29-A672-56B55CB95E67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4A1836E-AC74-4B29-A672-56B55CB95E67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA2D4C2-5D76-439A-96FA-37D19E9DC69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA2D4C2-5D76-439A-96FA-37D19E9DC69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA2D4C2-5D76-439A-96FA-37D19E9DC69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA2D4C2-5D76-439A-96FA-37D19E9DC69B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C7CFADC-E1F9-4842-AA78-9B26459EAD2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C7CFADC-E1F9-4842-AA78-9B26459EAD2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C7CFADC-E1F9-4842-AA78-9B26459EAD2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C7CFADC-E1F9-4842-AA78-9B26459EAD2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C673441B-87F4-4F4C-A844-4DC47358B881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C673441B-87F4-4F4C-A844-4DC47358B881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C673441B-87F4-4F4C-A844-4DC47358B881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C673441B-87F4-4F4C-A844-4DC47358B881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

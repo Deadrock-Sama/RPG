@@ -10,19 +10,34 @@ namespace RPG.DBInteraction
     {
         private readonly ISessionFactory _sessionFactory;
 
+        public RepositoryShell()
+        {
+            string _ConnectionString = "Server=localhost;Database=RPG;User ID=postgres;Password=postgres;";
+            var mappings = new MappingConfigurator();
+            var mappingRegistar = new MappingsRegistrar();
+
+            mappings = mappingRegistar.AddMappings(mappings);
+
+            var dbConfigurator = new DbConfigurator(_ConnectionString, mappings);
+
+            _sessionFactory = dbConfigurator.CreateSessionFactory();
+        }
+
         public RepositoryShell(ISessionFactory sessionFactory)
         {
             _sessionFactory = sessionFactory;
         }
 
+       
         public void AddOrUpdate<T>(T item)
         {
             using var session = _sessionFactory.OpenSession();
             using var transaction = session.BeginTransaction();
 
             session.SaveOrUpdate(item);
+            
             transaction.Commit();
-
+            
             session.Close();
         }
 

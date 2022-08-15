@@ -8,7 +8,7 @@ namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Armor
         {
             Table("Leggins");
 
-            KeyColumn("LegginsID");
+            KeyColumn("Id");
         }
     }
 }

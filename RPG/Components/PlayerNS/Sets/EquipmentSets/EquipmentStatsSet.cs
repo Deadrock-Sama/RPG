@@ -2,7 +2,7 @@
 
 namespace RPG.Components.PlayerNS.Sets.EquipmentSets
 {
-    public class EquipmentSet : ISet
+    public class EquipmentStatsSet : ISet
     {
         private readonly ArmorSet _ArmorSet;
         private readonly AmuletsSet _AmuletsSet;
@@ -19,6 +19,18 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
             var bonus = new StatsBonus();
             bonus = armorBonus + amuletsBonus + weaponBonus;
             return bonus;
+        }
+
+        public EquipmentStatsSet(ArmorSet ArmorSet, AmuletsSet AmuletsSet, WeaponSet Weapon)
+        {
+            _ArmorSet = ArmorSet;
+            _AmuletsSet = AmuletsSet;
+            _Weapon = Weapon;
+        }
+
+        public EquipmentStatsSet()
+        {
+
         }
 
     }

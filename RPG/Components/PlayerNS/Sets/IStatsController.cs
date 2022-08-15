@@ -2,14 +2,19 @@
 {
     public interface IStatsController
     {
-        public double XPMultiplier { get; }
-        public double HPMultiplier { get; }
-        public double MPMultiplier { get; }
+        double XPMultiplier { get; }
+        double HPMultiplier { get; }
+        double MPMultiplier { get; }
+        double ATKMultiplier { get; }
 
-        public int XPBonus { get; }
-        public int HPBonus { get; }
-        public int MPBonus { get; } 
+        int XPBonus { get; }
+        int HPBonus { get; }
+        int MPBonus { get; } 
+        int ATKBonus { get; }
 
-    
+        double CritChance { get; }
+        double CritDMG { get; }
+        
+
     }
 }

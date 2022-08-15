@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RPG.Components.PlayerNS.Sets.EquipmentSets
 {
-    class WeaponSet : ISet
+    public class WeaponSet : ISet
      {
         public IWeapon Weapon { get; set; }
 
@@ -18,8 +18,7 @@ namespace RPG.Components.PlayerNS.Sets.EquipmentSets
 
         private StatsBonus recieveStatsBonus()
         {
-            var bonus = new StatsBonus(Weapon);
-            return bonus;
+            return Weapon.Stats;
         }
 
 

@@ -1,5 +1,4 @@
-﻿using FluentNHibernate.Mapping;
-using System;
+﻿using System;
 
 namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Amulets
 {
@@ -7,17 +6,6 @@ namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Amulets
     {
 
 
-    }
-
-    public class RingMapping : SubclassMap<Ring>
-    {
-        public RingMapping()
-        {
-            Table("Necklaces");
-
-            KeyColumn("NecklaceID");
-
-        }
     }
 
 }

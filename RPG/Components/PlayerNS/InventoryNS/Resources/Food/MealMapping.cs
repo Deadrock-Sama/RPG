@@ -2,11 +2,11 @@
 
 namespace RPG.Components.PlayerNS.InventoryNS.Resources.Food
 {
-    public class MealMapping : ClassMap<Meal>
+    public class MealMapping : SubclassMap<Meal>
     {
         public MealMapping()
         {
-            Id(e => e.Id);
+            KeyColumn("Id");
             Map(e => e.Name);
             Map(e => e.Description);
 

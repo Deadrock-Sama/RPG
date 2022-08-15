@@ -2,7 +2,7 @@
 
 namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Armor
 {
-    internal interface IArmor : IEquipment, IEquipmentStatsController
+    internal interface IArmor : IEquipment
     {
     }
 }

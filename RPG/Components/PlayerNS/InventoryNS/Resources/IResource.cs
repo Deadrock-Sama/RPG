@@ -1,6 +1,6 @@
 ﻿namespace RPG.Components.PlayerNS.InventoryNS.Resources
 {
-    internal interface IResource
+    public interface IResource : IInventoryItem
     {
     }
 }

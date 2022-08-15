@@ -11,6 +11,14 @@ namespace RPG.Components.PlayerNS
             References(e => e.Info)
                 .Cascade.AllDeleteOrphan()
                 .Not.LazyLoad();
+            References(e => e.User)
+                .Cascade.AllDeleteOrphan()
+                .Not.LazyLoad()
+                .Not.Nullable();
+            References(e => e.PlayerClass)
+                .Cascade.AllDeleteOrphan()
+                .Not.LazyLoad()
+                .Not.Nullable();
         }
     }
 }

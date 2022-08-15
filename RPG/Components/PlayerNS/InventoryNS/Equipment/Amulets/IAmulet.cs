@@ -2,7 +2,7 @@
 
 namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Amulets
 {
-    interface IAmulet : IEquipment, IEquipmentStatsController
+    interface IAmulet : IEquipment
     {
     }
 }

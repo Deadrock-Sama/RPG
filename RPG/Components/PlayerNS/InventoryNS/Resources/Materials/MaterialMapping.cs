@@ -2,11 +2,11 @@
 
 namespace RPG.Components.PlayerNS.InventoryNS.Resources.Materials
 {
-    public class MaterialMapping : ClassMap<Material>
+    public class MaterialMapping : SubclassMap<Material>
     {
         public MaterialMapping()
         {
-            Id(e => e.Id);
+            KeyColumn("Id");
             Map(e => e.Name);
             Map(e => e.Description);
 

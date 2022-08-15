@@ -8,7 +8,7 @@ namespace RPG.Components.PlayerNS.InventoryNS.Equipment.Amulets
         {
             Table("Bracelets");
 
-            KeyColumn("BraceletID");
+            KeyColumn("Id");
 
         }
     }
