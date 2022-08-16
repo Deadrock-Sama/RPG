@@ -44,7 +44,6 @@ namespace TelegramAPI.TelegramBotNS
         {
             _Message = message;
 
-
             if (_Message.Type != Telegram.Bot.Types.Enums.MessageType.Text)
             {
                 await SendAboutText();

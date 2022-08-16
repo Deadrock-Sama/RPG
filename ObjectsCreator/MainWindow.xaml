@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:ObjectsCreator"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <StackPanel>
+        <StackPanel.Resources>
+            <ResourceDictionary>
+                <DataTemplate DataType="{x:Type local:AuthorizationViewModel}">
+                    <local:AuthorizationView/>
+                </DataTemplate>
+            </ResourceDictionary>
+        </StackPanel.Resources>
+        <ContentControl x:Name="CControl"/>
+
         <TabControl>
             <TabItem Header="Resources">
                 <TabControl>
@@ -276,5 +285,5 @@
 
             </TabItem>
         </TabControl>
-    </Grid>
+    </StackPanel>
 </Window>

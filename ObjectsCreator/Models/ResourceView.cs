@@ -52,7 +52,7 @@ namespace ObjectsCreator.Models
             set
             {
                 _item.Description = value;
-                NotifyPropertyChanged("Description");
+                NotifyPropertyChanged(nameof(Description));
             }
         }
         public virtual string EffectsMethods

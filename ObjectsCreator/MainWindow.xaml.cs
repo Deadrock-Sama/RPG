@@ -59,14 +59,16 @@ namespace ObjectsCreator
         {
             _repo = new RepositoryShell();
 
-            var authorization = new Authorization(_repo);
+            //var authorization = new Authorization(_repo);
 
-            authorization.ShowDialog();
+            //authorization.ShowDialog();
 
-            if (!authorization.IsAuthorized)
-            {
-                Close();
-            }
+            //if (!authorization.IsAuthorized)
+            //{
+            //    Close();
+            //}
+
+            Loaded += MainWindow_Loaded;
 
             InitializeComponent();
 
@@ -75,6 +77,10 @@ namespace ObjectsCreator
             configureEquipmentGrids();
         }
 
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            CControl.Content = new AuthorizationViewModel();
+        }
 
         void configureEquipmentGrids()
         {

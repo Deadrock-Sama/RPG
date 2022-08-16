@@ -3,17 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:ObjectsCreator"
         mc:Ignorable="d"
         Title="Authorization" Height="168" Width="234">
-    <Grid >
- 
-        <PasswordBox x:Name="Password" Margin="20,64,49,78" Grid.Column="1" />
-        <TextBox x:Name="Login" Margin="20,49,49,93" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
 
-        </TextBox>
-        <Button Visibility="Hidden" x:Name="Register" Content="Register" Margin="60,109,84,23" Click="Register_Click" Grid.Column="1"/>
-        <Button x:Name="LoginButton" Content="Login" Margin="60,84,84,48" Click="Login_Click" Grid.Column="1"/>
+    
+    <StackPanel>
 
-    </Grid>
+        <PasswordBox x:Name="Password" Style="{StaticResource MahApps.Styles.PasswordBox}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:TextBoxHelper.Watermark="Пароль"/>
+        <TextBox x:Name="Login" Style="{StaticResource MahApps.Styles.TextBox}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:TextBoxHelper.Watermark="логин"/>
+        <Button Visibility="Hidden" x:Name="Register" Content="Register" Click="Register_Click"/>
+        <Button x:Name="LoginButton" Content="Login" Click="Login_Click"/>
+
+    </StackPanel>
 </Window>

@@ -15,12 +15,7 @@ using System.Windows.Shapes;
 
 namespace ObjectsCreator
 {
-    /// <summary>
-    /// Interaction logic for Authorization.xaml
-    /// </summary>
 
-   
-    
     public partial class Authorization : Window
     {
         public bool IsAuthorized { get; set; }
