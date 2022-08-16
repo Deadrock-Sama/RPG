@@ -36,17 +36,18 @@ namespace TelegramAPI.TelegramBotNS
 
             var container = new ContainerBuilder().Create();
             container.Register(new TelegramDependencyProvider(repo, sessionFactory, _Bot));
-           
+
             _Reader = container.Resolve<TelegramCommandsReader>();
             _MainCancellationTokenSource = container.Resolve<CancellationTokenSource>();
         }
 
-        public async void Start()
+        public void Start()
         {
-            await Task.Run(() => { _Bot.StartReceiving(_Reader.HandleUpdateAsync, _Reader.HandleErrorAsync, null, _MainCancellationTokenSource.Token); });
-            
-        } 
-    }
+            _Bot.StartReceiving(_Reader.HandleUpdateAsync, _Reader.HandleErrorAsync, null, _MainCancellationTokenSource.Token);
 
+        }
+    }
 }
+
+
 

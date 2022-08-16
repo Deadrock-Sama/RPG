@@ -26,7 +26,7 @@ namespace TelegramAPI.TelegramBotNS
         private Player _Player;
         private CancellationTokenSource _MainCancellationTokenSource;
         private CancellationTokenSource _SubCancellationTokenSource = new CancellationTokenSource();
-        
+
         private string[] _creatingPlayerMessages = new string[4] { "Введи имя:",
                                                                    "Введи описание:",
                                                                    "Выбери класс \n /warrior \n /archer \n /wizard",
@@ -42,10 +42,10 @@ namespace TelegramAPI.TelegramBotNS
 
         public async Task ReadMainCommand(Message message)
         {
-          _Message = message;
-          
+            _Message = message;
 
-          if (_Message.Type != Telegram.Bot.Types.Enums.MessageType.Text)
+
+            if (_Message.Type != Telegram.Bot.Types.Enums.MessageType.Text)
             {
                 await SendAboutText();
                 return;
@@ -59,24 +59,26 @@ namespace TelegramAPI.TelegramBotNS
                     break;
                 case "/createplayer":
                     await StartCreatingPlayer();
-                   
+                    break;
+                case "/startjourney":
+                    await StartJourney();
                     break;
             }
-           
-    
+
+
             _LastCommand = message.Text.ToLower();
 
         }
 
-        private async Task<Message> ExecuteStartCommand() 
+        private async Task<Message> ExecuteStartCommand()
         {
             string name = _Message.From.Username;
             string password = _Message.From.Id.ToString();
             string login = _Message.From.Id.ToString();
 
             string _MessageToSend = "";
-            
-            if (_User != null) 
+
+            if (_User != null)
             {
                 _MessageToSend = $"Вижу ты уже бывалый, {name}! Готов продолжить приключение?";
 
@@ -88,16 +90,16 @@ namespace TelegramAPI.TelegramBotNS
 
                 _User.Login = login;
                 _User.Password = password;
-                
+
                 _Repo.AddOrUpdate(_User);
-                
-                
+
+
                 _MessageToSend = $"Добро пожаловать в наше приключениe, {name}";
-            
+
             }
-            
+
             return await _Bot.SendTextMessageAsync(_Message.Chat, _MessageToSend);
-            
+
         }
 
         private async Task<Message> WriteAboutPlayer()
@@ -113,7 +115,7 @@ namespace TelegramAPI.TelegramBotNS
             }
             return await _Bot.SendTextMessageAsync(_Message.Chat, _MessageToSend);
         }
-        
+
         private async Task<Message> SendAboutText()
         {
             var MessageAboutText = "Хорошо, хорошо, мы все поняли, у тебя есть лишняя хромосома. Теперь пиши нормально, пожалуйста";
@@ -123,28 +125,34 @@ namespace TelegramAPI.TelegramBotNS
         private async Task StartCreatingPlayer()
         {
             _SetCurrentUser();
-            
-            if (_Player != null)
+
+            if (_Player != null && _Player.Id != 0)
             {
                 await _Bot.SendTextMessageAsync(_Message.Chat, "У вас создан персонаж. Для смены имени используйте /name");
+                return;
             }
             _MainCancellationTokenSource.Cancel();
             _Player = new Player();
             _Player.Info = new PlayerBasicInfo();
             _Player.User = _User;
 
-            
-            await StartDialogAboutPlayer();
 
+            await StartDialogAboutPlayer();
+            _MainCancellationTokenSource = new CancellationTokenSource();
             _Bot.StartReceiving(HandleUpdateAsync, HandleErrorAsync, null, _MainCancellationTokenSource.Token);
 
+        }
+
+        private async Task StartJourney()
+        { 
+            
         }
 
         private async Task StartDialogAboutPlayer()
         {
             await _Bot.SendTextMessageAsync(_Message.Chat, _creatingPlayerMessages[0]);
-            _SubCancellationTokenSource = new CancellationTokenSource();
-            _Bot.StartReceiving(CreatingPlayer_HandleUpdateAsync, CreatingPlayer_HandleErrorAsync, null, _SubCancellationTokenSource.Token);
+            //_SubCancellationTokenSource = new CancellationTokenSource();
+            //_Bot.StartReceiving(CreatingPlayer_HandleUpdateAsync, CreatingPlayer_HandleErrorAsync, null, _SubCancellationTokenSource.Token);
         }
 
         private async Task CreatingPlayer_HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
@@ -245,10 +253,8 @@ namespace TelegramAPI.TelegramBotNS
         public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
 
-            if (cancellationToken.IsCancellationRequested)
-            {
-                return;
-            }
+            cancellationToken.ThrowIfCancellationRequested();
+
 
             // Некоторые действия
             if (update.Type == Telegram.Bot.Types.Enums.UpdateType.Message)
