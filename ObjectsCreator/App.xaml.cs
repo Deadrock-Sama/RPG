@@ -20,7 +20,7 @@ namespace ObjectsCreator
             base.OnStartup(e);
             var window = new DefaultWindow();
             var navigator = new AppNavigator();
-            window.CContent.Content = new MainContentViewModel(navigator);
+            window.Content = new MainContentViewModel(navigator);
 
             window.Show();
             navigator.Show(new AuthorizationViewModel());

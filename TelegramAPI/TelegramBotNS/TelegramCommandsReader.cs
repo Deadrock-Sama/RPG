@@ -1,6 +1,10 @@
-﻿using Core.DBInteraction;
+﻿using Castle.MicroKernel.Registration;
+using Castle.Windsor;
+using Core.DBInteraction;
 using Core.PlayerNS;
 using Core.PlayerNS.Classes;
+using RPG.Components.Containers;
+using RPG.Containers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +18,114 @@ using GameUser = Core.Users.User;
 
 namespace TelegramAPI.TelegramBotNS
 {
+
+    public class GameSession
+    {
+
+        private IGameComponent _currentComponent;
+        private readonly Dictionary<string, IGameComponent> _gameComponents = new();
+
+        public GameSession(IEnumerable<IGameComponent> components)
+        {
+            SetComponents(components);
+        }
+        void SetComponents(IEnumerable<IGameComponent> components)
+        {
+            foreach (var component in components)
+            {
+                _gameComponents.Add(component.TranslationCommand, component);
+            }
+        }
+
+        public void HandleCommand(string command)
+        {
+            if (_gameComponents.ContainsKey(command))
+            {
+                if (_currentComponent.IsAnotherComponentAvailable(command))
+                {
+                    _currentComponent = _gameComponents[command];
+                }
+            }
+            else
+            {
+                _currentComponent.HandleCommand(command);
+            }
+           
+        }
+    }
+    public class GameSessionDependencyProvider : IDependencyProvider
+    {
+        private readonly IWindsorContainer _container;
+
+        public GameSessionDependencyProvider(IWindsorContainer container)
+        {
+            _container = container;
+        }
+
+        public IEnumerable<IRegistration> GetRegistrations()
+        {
+            yield return Component
+                .For<GameSession>();
+            yield return Component
+                .For<IWindsorContainer>()
+                .Instance(_container);
+        }
+    }
+
+    public class GameManager
+    {
+        private readonly IWindsorContainer _container;
+        private readonly Dictionary<string, GameSession> _opendSessions = new();
+        private readonly Dictionary<string, IWindsorContainer> _containers = new();
+
+
+        public GameManager(IWindsorContainer container)
+        {
+            _container = container;
+        }
+
+        public void HandleCommand(string command, string userId)
+        {
+            if (_opendSessions.ContainsKey(userId))
+            {
+                _opendSessions[userId].HandleCommand(command);
+            }
+            else
+            {
+                var child = new WindsorContainer();
+                _container.AddChildContainer(child);
+                child.Register(new GameSessionDependencyProvider(child));
+
+
+                _opendSessions.Add(userId, child.Resolve<GameSession>());
+                _containers.Add(userId, child);
+            }
+        }
+    }
+
+    public interface ICommandReader {
+        void HandleCommand(string command);
+        
+    }
+    public interface IGameComponent : ICommandReader { 
+    
+        string TranslationCommand { get; }
+        bool IsAnotherComponentAvailable(string componentName);
+    }
+
+    public class StartGameComponent : IGameComponent
+    {
+        public void HandleCommand(string command)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsAnotherComponentAvailable(string componentName)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class TelegramCommandsReader
     {
 
@@ -34,6 +146,9 @@ namespace TelegramAPI.TelegramBotNS
         private int _messagesCounter = 1;
         public TelegramCommandsReader(ITelegramBotClient Bot, IRepositoryShell repo, CancellationTokenSource MainCancellationTokenSource)
         {
+
+
+
             _Bot = Bot;
             _Repo = repo;
             _MainCancellationTokenSource = MainCancellationTokenSource;
@@ -274,7 +389,6 @@ namespace TelegramAPI.TelegramBotNS
 
             string Login = _Message.From.Id.ToString();
             _User = _Repo.GetAll<GameUser>().FirstOrDefault(u => u.Login == Login);
-
             
 
         }
