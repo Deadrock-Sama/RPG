@@ -1,4 +1,5 @@
-﻿using ObjectsCreator.Models;
+﻿using Core.PlayerNS.InventoryNS.Resources;
+using ObjectsCreator.Models;
 using RPG.Components.PlayerNS.InventoryNS;
 using RPG.Components.PlayerNS.InventoryNS.Resources;
 using System;

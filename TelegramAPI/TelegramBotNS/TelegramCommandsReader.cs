@@ -1,7 +1,6 @@
-﻿using RPG.Components.PlayerNS;
-using RPG.Components.PlayerNS.Classes;
-using RPG.Components.PlayerNS.PlayerPage.PlayerInfo;
-using RPG.DBInteraction;
+﻿using Core.DBInteraction;
+using Core.PlayerNS;
+using Core.PlayerNS.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using TelegramAPI.Views;
-using GameUser = RPG.Components.Users.User;
+using GameUser = Core.Users.User;
 
 namespace TelegramAPI.TelegramBotNS
 {

@@ -1,6 +1,4 @@
-﻿using RPG.Components.Users;
-using RPG.DBInteraction;
-using System.Linq;
+﻿using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Core.DBInteraction;
+using Core.Users;
 
 namespace ObjectsCreator
 {

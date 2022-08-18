@@ -1,4 +1,5 @@
-﻿using RPG.Components.PlayerNS;
+﻿using Core.PlayerNS;
+using RPG.Components.PlayerNS;
 using System;
 using System.Collections.Generic;
 using System.Text;

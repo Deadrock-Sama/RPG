@@ -1,4 +1,5 @@
 ﻿using Castle.Windsor;
+using Core.PlayerNS;
 using RPG.Components.Containers;
 using RPG.Components.PlayerNS;
 using RPG.Components.PlayerNS.PlayerPage;

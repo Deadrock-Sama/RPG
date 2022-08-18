@@ -1,8 +1,8 @@
-﻿using RPG.Components.Containers;
+﻿using Core.DBInteraction;
+using Core.DBInteraction.Mappings;
+using RPG.Components.Containers;
 using RPG.Containers;
 using RPG.Containers.DependencyProvider;
-using RPG.DBInteraction;
-using RPG.DBInteraction.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Text;

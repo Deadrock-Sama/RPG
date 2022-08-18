@@ -1,11 +1,10 @@
 ﻿using Castle.MicroKernel.Registration;
+using Core.PlayerNS.InventoryNS.Equipment.Amulets;
+using Core.PlayerNS.InventoryNS.Equipment.Armor;
+using Core.PlayerNS.InventoryNS.Equipment.Weapons;
+using Core.PlayerNS.Sets.EquipmentSets;
+using Core.PlayerNS.Sets.PlayerSets;
 using RPG.Components.Containers;
-using RPG.Components.PlayerNS.InventoryNS.Equipment.Amulets;
-using RPG.Components.PlayerNS.InventoryNS.Equipment.Armor;
-using RPG.Components.PlayerNS.InventoryNS.Equipment.Weapons;
-using RPG.Components.PlayerNS.Sets;
-using RPG.Components.PlayerNS.Sets.EquipmentSets;
-using RPG.Components.PlayerNS.Sets.PlayerSets;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,21 +15,21 @@ namespace RPG.Containers.DependencyProvider
     {
         public IEnumerable<IRegistration> GetRegistrations()
         {
-            yield return Component.For<IAmulet, Ring>();
+            yield return Component.For<Amulet, Ring>();
             
-            yield return Component.For<IAmulet, Bracelet>();
+            yield return Component.For<Amulet, Bracelet>();
 
-            yield return Component.For<IAmulet,Earring>();
+            yield return Component.For<Amulet,Earring>();
 
-            yield return Component.For<IAmulet, Necklace>();
+            yield return Component.For<Amulet, Necklace>();
 
-            yield return Component.For<IArmor, Helmet>();
+            yield return Component.For<ArmorPart, Helmet>();
 
-            yield return Component.For<IArmor, Chest>();
+            yield return Component.For<ArmorPart, Chest>();
 
-            yield return Component.For<IArmor, Leggins>();
+            yield return Component.For<ArmorPart, Leggins>();
 
-            yield return Component.For<IArmor, Boots>();
+            yield return Component.For<ArmorPart, Boots>();
 
             yield return Component.For<IWeapon>();
 

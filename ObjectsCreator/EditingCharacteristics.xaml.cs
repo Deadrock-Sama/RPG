@@ -1,4 +1,4 @@
-﻿using RPG.Components.PlayerNS.Characteristics;
+﻿using Core.PlayerNS.CharacteristicsNS;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,18 +27,18 @@ namespace ObjectsCreator
         private void Apply(object sender, RoutedEventArgs e)
         {
             stats = new StatsBonus();
-            stats.MPBonus = int.Parse(MPBonus.Text);
-            stats.XPBonus = int.Parse(XPBonus.Text);
-            stats.HPBonus = int.Parse(HPBonus.Text);
-            stats.ATKBonus= int.Parse(ATKBonus.Text);
+            //stats.MPBonus = int.Parse(MPBonus.Text);
+            //stats.XPBonus = int.Parse(XPBonus.Text);
+            //stats.HPBonus = int.Parse(HPBonus.Text);
+            //stats.ATKBonus= int.Parse(ATKBonus.Text);
 
-            stats.MPMultiplier  = double.Parse(MPMultiplier.Text);
-            stats.XPMultiplier  = double.Parse(XPMultiplier.Text);
-            stats.HPMultiplier  = double.Parse(HPMultiplier.Text);
-            stats.ATKMultiplier = double.Parse(ATKMultiplier.Text);
+            //stats.MPMultiplier  = double.Parse(MPMultiplier.Text);
+            //stats.XPMultiplier  = double.Parse(XPMultiplier.Text);
+            //stats.HPMultiplier  = double.Parse(HPMultiplier.Text);
+            //stats.ATKMultiplier = double.Parse(ATKMultiplier.Text);
 
-            stats.CritChance = int.Parse(CritChance.Text);
-            stats.CritDMG = int.Parse(CritDMG.Text);
+            //stats.CritChance = int.Parse(CritChance.Text);
+            //stats.CritDMG = int.Parse(CritDMG.Text);
 
             Close();
         }
@@ -47,18 +47,18 @@ namespace ObjectsCreator
         {
             InitializeComponent();
 
-            MPBonus.Text = stats.MPBonus.ToString();
-            XPBonus.Text = stats.XPBonus.ToString();
-            HPBonus.Text = stats.HPBonus.ToString();
-            ATKBonus.Text = stats.ATKBonus.ToString(); 
+            //MPBonus.Text = stats.MPBonus.ToString();
+            //XPBonus.Text = stats.XPBonus.ToString();
+            //HPBonus.Text = stats.HPBonus.ToString();
+            //ATKBonus.Text = stats.ATKBonus.ToString(); 
 
-            MPMultiplier.Text = stats.MPMultiplier.ToString();
-            XPMultiplier.Text = stats.XPMultiplier.ToString();
-            HPMultiplier.Text = stats.HPMultiplier.ToString();
-            ATKMultiplier.Text = stats.ATKMultiplier.ToString();
+            //MPMultiplier.Text = stats.MPMultiplier.ToString();
+            //XPMultiplier.Text = stats.XPMultiplier.ToString();
+            //HPMultiplier.Text = stats.HPMultiplier.ToString();
+            //ATKMultiplier.Text = stats.ATKMultiplier.ToString();
 
-            CritChance.Text = stats.CritChance.ToString();
-            CritDMG.Text = stats.CritDMG.ToString();
+            //CritChance.Text = stats.CritChance.ToString();
+            //CritDMG.Text = stats.CritDMG.ToString();
 
         }
     }

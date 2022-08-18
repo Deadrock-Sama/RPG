@@ -1,7 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
+using Core.DBInteraction;
 using NHibernate;
 using RPG.Components.Containers;
-using RPG.DBInteraction;
 using System;
 using System.Collections.Generic;
 using System.Text;

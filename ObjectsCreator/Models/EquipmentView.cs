@@ -1,9 +1,7 @@
-﻿using RPG.Components.PlayerNS.Characteristics;
-using RPG.Components.PlayerNS.InventoryNS.Equipment;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Text;
+using Core.PlayerNS.CharacteristicsNS;
+using Core.PlayerNS.InventoryNS.Equipment;
 
 namespace ObjectsCreator.Models
 {

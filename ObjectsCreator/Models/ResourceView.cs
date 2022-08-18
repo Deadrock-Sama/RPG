@@ -1,7 +1,4 @@
-﻿using RPG.Components.PlayerNS.InventoryNS;
-using RPG.Components.PlayerNS.InventoryNS.Resources;
-using RPG.Components.PlayerNS.InventoryNS.Resources.Food;
-using RPG.Components.PlayerNS.InventoryNS.Resources.Materials;
+﻿using Core.PlayerNS.InventoryNS.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
