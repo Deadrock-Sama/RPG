@@ -1,8 +1,8 @@
-﻿using RPG.Components.Containers;
+﻿using Core.DBInteraction;
+using Core.DBInteraction.Mappings;
+using RPG.Components.Containers;
 using RPG.Components.MainMenuNS;
 using RPG.Containers;
-using RPG.DBInteraction;
-using RPG.DBInteraction.Mappings;
 using RPG.Navigation;
 
 namespace RPG.Components

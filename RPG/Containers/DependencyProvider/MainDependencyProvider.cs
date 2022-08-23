@@ -1,4 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
+using Core.DBInteraction;
+using Core.PlayerNS;
 using NHibernate;
 using RPG.Components.MainMenuNS;
 using RPG.Components.MainMenuNS.Items;
@@ -8,7 +10,6 @@ using RPG.Components.PlayerNS.PlayerPage.PlayerActionMenu.Items;
 using RPG.Components.PlayerSelection;
 using RPG.Components.PlayerSelection.Items;
 using RPG.ConsoleInteraction;
-using RPG.DBInteraction;
 using RPG.Navigation;
 using System.Collections.Generic;
 

@@ -1,4 +1,5 @@
 ﻿using Castle.Windsor;
+using Core.PlayerNS;
 using RPG.Components.MainMenuNS.Items;
 using RPG.Components.Menus;
 using RPG.Components.PlayerNS;
