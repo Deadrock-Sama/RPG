@@ -10,7 +10,7 @@ namespace TelegramAPI.TelegramBotNS
         private readonly IWindsorContainer _container;
         private readonly Dictionary<string, GameSession> _opendSessions = new();
         private readonly Dictionary<string, IWindsorContainer> _containers = new();
-
+        //Реализовать закрытие сессий
 
         public GameManager(IWindsorContainer container)
         {
