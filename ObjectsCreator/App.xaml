@@ -1,17 +1,18 @@
 ﻿<Application x:Class="ObjectsCreator.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ObjectsCreator">
+             xmlns:local="clr-namespace:ObjectsCreator"
+             xmlns:views="clr-namespace:ObjectsCreator.MVVM.Views">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/fonts.xaml" />
                 <ResourceDictionary>
-                    <DataTemplate DataType="{x:Type local:AuthorizationViewModel}">
+                    <DataTemplate DataType="{x:Type views:AuthorizationView}">
                         <local:AuthorizationView/>
                     </DataTemplate>
-                    <DataTemplate DataType="{x:Type local:MainContentViewModel}">
+                    <DataTemplate DataType="{x:Type views:MainContentView}">
                         <local:MainContentView/>
                     </DataTemplate>
                 </ResourceDictionary>

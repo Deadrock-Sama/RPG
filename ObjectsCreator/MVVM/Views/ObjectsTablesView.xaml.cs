@@ -11,31 +11,30 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ObjectsCreator
+namespace ObjectsCreator.MVVM.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainContentView.xaml
+    /// Interaction logic for MainWindowView.xaml
     /// </summary>
-    public partial class MainContentView : UserControl
+    public partial class ObjectTablesView : UserControl
     {
-        public MainContentView()
+        public ObjectTablesView()
         {
-            InitializeComponent();
-        }
 
+        }
 
         private void editEffects_Click(object sender, RoutedEventArgs e)
         {
             //EditingCharacteristics editingCharacteristics = new EditingCharacteristics();
 
-            //var a = (int)sender;
+            //var a = (int)sender; 
 
         }
 
         private void editStats_Click(object sender, RoutedEventArgs e)
         {
             ////пробелма с типом, надо как-то 
-            //dynamic item = (currGrid.Items.CurrentItem);
+            //dynamic item = (currGrid.Items.CurrentItem);           
             //var stats = item.Stats;
             //var editingCharacteristics = new EditingCharacteristics();
             //if (stats != null)
@@ -45,7 +44,7 @@ namespace ObjectsCreator
 
             //editingCharacteristics.ShowDialog();
 
-            //item.Stats = editingCharacteristics.stats;
+            //item.Stats = editingCharacteristics.stats;   
         }
 
         private void grid_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -53,10 +52,8 @@ namespace ObjectsCreator
 
 
 
-            //currGrid = (ItemsControl)sender;
+          //  currGrid = (ItemsControl)sender;
 
         }
-
-
     }
 }

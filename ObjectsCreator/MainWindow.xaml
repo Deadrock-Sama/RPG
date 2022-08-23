@@ -1,6 +1,6 @@
 ﻿<Window x:Class="ObjectsCreator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:m="clr-namespace:ObjectsCreator.Models"
+        xmlns:m="clr-namespace:ObjectsCreator.MVVM.Models"
         xmlns:v="clr-namespace:ObjectsCreator.Views"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"

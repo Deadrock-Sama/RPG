@@ -1,5 +1,5 @@
 ﻿using Core.PlayerNS.InventoryNS.Equipment;
-using ObjectsCreator.Models;
+using ObjectsCreator.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,13 +7,13 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Text;
 
-namespace ObjectsCreator
+namespace ObjectsCreator.MVVM.Components
 {
-    class EquipmentObservableCollection<T> : ObservableCollection<EquipmentView<T>> where T : IEquipment, new()
+    class EquipmentObservableCollection<T> : ObservableCollection<EquipmentViewModel<T>> where T : IEquipment, new()
     {
         public EquipmentObservableCollection() : base()
         {
-            this.CollectionChanged +=
+            CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(EcObservableCollection_CollectionChanged);
         }
 
@@ -21,7 +21,7 @@ namespace ObjectsCreator
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                foreach (EquipmentView<T> item in e.NewItems)
+                foreach (EquipmentViewModel<T> item in e.NewItems)
                     item.PropertyChanged += new PropertyChangedEventHandler(item_PropertyChanged);
             }
         }
@@ -29,22 +29,22 @@ namespace ObjectsCreator
         {
             foreach (var item in items)
             {
-                this.Add(new EquipmentView<T>(item));
+                Add(new EquipmentViewModel<T>(item));
             }
         }
 
         void item_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            EcObservableCollectionItemChangedEventArgs<EquipmentView<T>> args =
-                new EcObservableCollectionItemChangedEventArgs<EquipmentView<T>>();
-            args.Item = (EquipmentView<T>)sender;
+            EcObservableCollectionItemChangedEventArgs<EquipmentViewModel<T>> args =
+                new EcObservableCollectionItemChangedEventArgs<EquipmentViewModel<T>>();
+            args.Item = (EquipmentViewModel<T>)sender;
             ItemChanged(this, args);
         }
 
         public event EcObservableCollectionItemChangedEventHandler ItemChanged;
 
         public delegate void EcObservableCollectionItemChangedEventHandler(object sender,
-                                                            EcObservableCollectionItemChangedEventArgs<EquipmentView<T>> args);
+                                                            EcObservableCollectionItemChangedEventArgs<EquipmentViewModel<T>> args);
     }
 
 

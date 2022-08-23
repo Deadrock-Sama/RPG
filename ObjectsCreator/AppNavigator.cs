@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ObjectsCreator.MVVM.Models;
+using System.Collections.Generic;
 
 namespace ObjectsCreator
 {

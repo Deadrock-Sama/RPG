@@ -8,8 +8,8 @@ using Core.PlayerNS.InventoryNS.Resources.Food;
 using Core.PlayerNS.InventoryNS.Resources.Materials;
 using Core.PlayerNS.InventoryNS.Resources.Potions;
 using NHibernate;
-using ObjectsCreator.Models;
-
+using ObjectsCreator.MVVM.Components;
+using ObjectsCreator.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -260,9 +260,9 @@ namespace ObjectsCreator
 
         }
 
-        void resourceGrid_ItemChanged<T>(object sender, EcObservableCollectionItemChangedEventArgs<ResourceView<T>> args) where T : IResource, new()
+        void resourceGrid_ItemChanged<T>(object sender, EcObservableCollectionItemChangedEventArgs<ResourceViewModel<T>> args) where T : IResource, new()
         {
-            foreach(ResourceView<T> c in (ResourceObservableCollection<T>)sender)
+            foreach(ResourceViewModel<T> c in (ResourceObservableCollection<T>)sender)
             {
                 _repo.AddOrUpdate(c.Item);
             }
@@ -275,17 +275,17 @@ namespace ObjectsCreator
             switch (e.Action)
             {
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
-                    foreach (ResourceView<T> c in e.OldItems)
+                    foreach (ResourceViewModel<T> c in e.OldItems)
                     {
                         _repo.Delete(c.Item);
                     }
                     break;
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
-                    foreach (ResourceView<T> c in e.NewItems)
+                    foreach (ResourceViewModel<T> c in e.NewItems)
                         _repo.Add(c.Item);
                     break;
                 default:
-                    foreach (ResourceView<T> c in e.OldItems)
+                    foreach (ResourceViewModel<T> c in e.OldItems)
                         _repo.AddOrUpdate(c.Item);
                     break;
             }
@@ -293,9 +293,9 @@ namespace ObjectsCreator
         }
 
 
-        void equipmentGrid_ItemChanged<T>(object sender, EcObservableCollectionItemChangedEventArgs<EquipmentView<T>> args) where T : IEquipment, new()
+        void equipmentGrid_ItemChanged<T>(object sender, EcObservableCollectionItemChangedEventArgs<EquipmentViewModel<T>> args) where T : IEquipment, new()
         {
-            foreach (EquipmentView<T> c in (EquipmentObservableCollection<T>)sender)
+            foreach (EquipmentViewModel<T> c in (EquipmentObservableCollection<T>)sender)
             {
                 _repo.AddOrUpdate(c.Item);
             }
@@ -308,17 +308,17 @@ namespace ObjectsCreator
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Remove:
-                    foreach (EquipmentView<T> c in e.OldItems)
+                    foreach (EquipmentViewModel<T> c in e.OldItems)
                     {
                         _repo.Delete(c.Item);
                     }
                     break;
                 case NotifyCollectionChangedAction.Add:
-                    foreach (EquipmentView<T> c in e.NewItems)
+                    foreach (EquipmentViewModel<T> c in e.NewItems)
                         _repo.Add(c.Item);
                     break;
                 default:
-                    foreach (EquipmentView<T> c in e.OldItems)
+                    foreach (EquipmentViewModel<T> c in e.OldItems)
                         _repo.AddOrUpdate(c.Item);
                     break;
             }
@@ -328,26 +328,26 @@ namespace ObjectsCreator
 
         private void editEffects_Click(object sender, RoutedEventArgs e)
         {
-            EditingCharacteristics editingCharacteristics = new EditingCharacteristics();
+            //EditingCharacteristics editingCharacteristics = new EditingCharacteristics();
 
-            var a = (int)sender; 
+            //var a = (int)sender; 
 
         }
 
         private void editStats_Click(object sender, RoutedEventArgs e)
         {
-            //пробелма с типом, надо как-то 
-            dynamic item = (currGrid.Items.CurrentItem);           
-            var stats = item.Stats;
-            var editingCharacteristics = new EditingCharacteristics();
-            if (stats != null)
-            {
-                editingCharacteristics = new EditingCharacteristics(stats);
-            }
+            ////пробелма с типом, надо как-то 
+            //dynamic item = (currGrid.Items.CurrentItem);           
+            //var stats = item.Stats;
+            //var editingCharacteristics = new EditingCharacteristics();
+            //if (stats != null)
+            //{
+            //    editingCharacteristics = new EditingCharacteristics(stats);
+            //}
            
-            editingCharacteristics.ShowDialog();
+            //editingCharacteristics.ShowDialog();
 
-            item.Stats = editingCharacteristics.stats;   
+            //item.Stats = editingCharacteristics.stats;   
         }
 
         private void grid_MouseRightButtonDown(object sender, MouseButtonEventArgs e)

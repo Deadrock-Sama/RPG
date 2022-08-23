@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ObjectsCreator
+namespace ObjectsCreator.MVVM.Models
 {
     /// <summary>
     /// Interaction logic for Authorization.xaml

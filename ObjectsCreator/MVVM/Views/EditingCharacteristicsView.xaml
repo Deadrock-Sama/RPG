@@ -22,57 +22,49 @@
 
             <TextBlock HorizontalAlignment="Left" Margin="3,3,0,0" TextWrapping="Wrap" Text="HP Multiplier:" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="78" Height="16">
             </TextBlock>
-            <TextBox x:Name="HPMultiplier" HorizontalAlignment="Left" Margin="82,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="HP Multiplier" RenderTransformOrigin="0.5,0.5" Height="16" Grid.ColumnSpan="2">
+            <TextBox Text ="{Binding HPMultiplier}" x:Name="HPMultiplier" HorizontalAlignment="Left" Margin="82,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="HP Multiplier" RenderTransformOrigin="0.5,0.5" Height="16" Grid.ColumnSpan="2">
             </TextBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Left" Margin="3,22,0,0" TextWrapping="Wrap" Text="XP Multiplier:" VerticalAlignment="Top" Width="78" Height="16"/>
-            <TextBox  x:Name="XPMultiplier" HorizontalAlignment="Left" Margin="82,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"></TextBox>
+            <TextBox Text ="{Binding XPMultiplier}" x:Name="XPMultiplier" HorizontalAlignment="Left" Margin="82,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"></TextBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="MP Multiplier:" VerticalAlignment="Top" Height="16" Width="78"/>
-            <TextBox x:Name="MPMultiplier" HorizontalAlignment="Left" Margin="82,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
+            <TextBox Text ="{Binding MPMultiplier}" x:Name="MPMultiplier" HorizontalAlignment="Left" Margin="82,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="HP Bonus:" VerticalAlignment="Top" Width="59" Height="16"/>
-            <TextBox x:Name="HPBonus" HorizontalAlignment="Left" Margin="82,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
+            <TextBox Text ="{Binding HPBonus}" x:Name="HPBonus" HorizontalAlignment="Left" Margin="82,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
-
             <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="XP Bonus:" VerticalAlignment="Top" Height="16"/>
-            <TextBox x:Name="XPBonus" HorizontalAlignment="Left" Margin="82,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
-
+            <TextBox Text ="{Binding XPBonus}" x:Name="XPBonus" HorizontalAlignment="Left" Margin="82,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
         </StackPanel>
-
-
         <StackPanel HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Left" Margin="3,116,0,0" TextWrapping="Wrap" Text="MP Bonus:" VerticalAlignment="Top" Height="16"/>
-            <TextBox x:Name="MPBonus" HorizontalAlignment="Left" Margin="82,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
-
+            <TextBox Text ="{Binding MPBonus}" x:Name="MPBonus" HorizontalAlignment="Left" Margin="82,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Left" Margin="3,60,0,0" TextWrapping="Wrap" Text="ATK Multiplier:" VerticalAlignment="Top" Width="78" Height="16"/>
-            <TextBox x:Name="ATKMultiplier" HorizontalAlignment="Left" Margin="82,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
-
+            <TextBox Text ="{Binding ATKMultiplier}" x:Name="ATKMultiplier" HorizontalAlignment="Left" Margin="82,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Left" Margin="3,135,0,0" TextWrapping="Wrap" Text="ATK Bonus:" VerticalAlignment="Top" Height="16"/>
-            <TextBox x:Name="ATKBonus" HorizontalAlignment="Left" Margin="82,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
-
+            <TextBox Text ="{Binding ATKBonus}" x:Name="ATKBonus" HorizontalAlignment="Left" Margin="82,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Left" Margin="3,154,0,0" TextWrapping="Wrap" Text="Crit chance%:" VerticalAlignment="Top" Height="16"/>
-            <TextBox x:Name="CritChance" HorizontalAlignment="Left" Margin="82,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
+            <TextBox Text ="{Binding CritChance}" x:Name="CritChance" HorizontalAlignment="Left" Margin="82,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
 
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Left" Margin="3,173,0,0" TextWrapping="Wrap" Text="Crit DMG:" VerticalAlignment="Top" Height="16"/>
-            <TextBox x:Name="CritDMG" HorizontalAlignment="Left" Margin="82,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
-
+            <TextBox Text ="{Binding CritDMG}" x:Name="CritDMG" HorizontalAlignment="Left" Margin="82,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="16" Grid.ColumnSpan="2"/>
         </StackPanel>
-   
 
-        <Button Content="Apply" HorizontalAlignment="Left" Margin="86,204,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="86,204,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Command="{Binding Apply}"/>
 
     </StackPanel>
 </UserControl>

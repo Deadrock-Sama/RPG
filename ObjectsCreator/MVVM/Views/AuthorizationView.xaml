@@ -18,8 +18,8 @@
     <StackPanel>
         <TextBox Text="{Binding Password,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.TextBox}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:TextBoxHelper.Watermark="Пароль"/>
         <TextBox Text="{Binding Login,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MahApps.Styles.TextBox}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:TextBoxHelper.Watermark="логин"/>
-        <Button Visibility="Hidden" Content="Register" Command="{Binding Register}"/>
-        <Button Content="Login" Command="{Binding Authorize}"/>
+        <Button x:Name="RegisterButton" Visibility="{Binding RegisterVisibility}" Content="Register" Command="{Binding Register}"/>
+        <Button x:Name="AuthorizeButton" Visibility="{Binding AuthorizeVisibility}" Content="Login" Command="{Binding Authorize}"/>
 
     </StackPanel>
 </UserControl>

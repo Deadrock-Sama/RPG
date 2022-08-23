@@ -1,12 +1,11 @@
-﻿using Core.PlayerNS.InventoryNS.Resources;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Text;
+using Core.PlayerNS.CharacteristicsNS;
+using Core.PlayerNS.InventoryNS.Equipment;
 
-namespace ObjectsCreator.Models
+namespace ObjectsCreator.MVVM.Models
 {
-    public class ResourceView<T> : INotifyPropertyChanged where T : IResource, new()
+    public class EquipmentViewModel<T> : ViewModel where T : IEquipment, new()
     {
 
 
@@ -14,12 +13,12 @@ namespace ObjectsCreator.Models
 
         public T Item => _item;
 
-        public ResourceView()
+        public EquipmentViewModel()
         {
             _item = new T();
         }
 
-        public ResourceView(T item)
+        public EquipmentViewModel(T item)
         {
             _item = item;
         }
@@ -30,7 +29,7 @@ namespace ObjectsCreator.Models
             set
             {
                 _item.Id = value;
-                NotifyPropertyChanged("Id");
+                Notify();
             }
         }
         public virtual string Name
@@ -39,7 +38,7 @@ namespace ObjectsCreator.Models
             set
             {
                 _item.Name = value;
-                NotifyPropertyChanged("Name");
+                Notify();
             }
         }
 
@@ -49,27 +48,32 @@ namespace ObjectsCreator.Models
             set
             {
                 _item.Description = value;
-                NotifyPropertyChanged(nameof(Description));
+                Notify();
             }
         }
         public virtual string EffectsMethods
         {
-            get 
-            {   
-                return _item.EffectsMethod;               
+            get
+            {
+                return _item.EffectsMethod;
             }
             set
             {
                 _item.EffectsMethod = value;
-                NotifyPropertyChanged("EffectsMethod");
+                Notify();
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void NotifyPropertyChanged(string propertyChanged)
+        public virtual StatsBonus Stats
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyChanged));
+            get
+            {
+                return _item.Stats;
+            }
+            set
+            {
+                _item.Stats = value;
+                Notify();
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Core.PlayerNS.InventoryNS.Resources;
-using ObjectsCreator.Models;
+using ObjectsCreator.MVVM.Models;
 using RPG.Components.PlayerNS.InventoryNS;
 using RPG.Components.PlayerNS.InventoryNS.Resources;
 using System;
@@ -9,13 +9,13 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Text;
 
-namespace ObjectsCreator
+namespace ObjectsCreator.MVVM.Components
 {
-    class ResourceObservableCollection<T> : ObservableCollection<ResourceView<T>> where T : IResource, new()
+    class ResourceObservableCollection<T> : ObservableCollection<ResourceViewModel<T>> where T : IResource, new()
     {
         public ResourceObservableCollection() : base()
         {
-            this.CollectionChanged +=
+            CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(EcObservableCollection_CollectionChanged);
         }
 
@@ -23,7 +23,7 @@ namespace ObjectsCreator
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                foreach (ResourceView<T> item in e.NewItems)
+                foreach (ResourceViewModel<T> item in e.NewItems)
                     item.PropertyChanged += new PropertyChangedEventHandler(item_PropertyChanged);
             }
         }
@@ -31,22 +31,22 @@ namespace ObjectsCreator
         {
             foreach (var item in items)
             {
-                this.Add(new ResourceView<T>(item));
+                Add(new ResourceViewModel<T>(item));
             }
         }
 
         void item_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            EcObservableCollectionItemChangedEventArgs<ResourceView<T>> args =
-                new EcObservableCollectionItemChangedEventArgs<ResourceView<T>>();
-            args.Item = (ResourceView<T>)sender;
+            EcObservableCollectionItemChangedEventArgs<ResourceViewModel<T>> args =
+                new EcObservableCollectionItemChangedEventArgs<ResourceViewModel<T>>();
+            args.Item = (ResourceViewModel<T>)sender;
             ItemChanged(this, args);
         }
 
         public event EcObservableCollectionItemChangedEventHandler ItemChanged;
 
         public delegate void EcObservableCollectionItemChangedEventHandler(object sender,
-                                                            EcObservableCollectionItemChangedEventArgs<ResourceView<T>> args);
+                                                            EcObservableCollectionItemChangedEventArgs<ResourceViewModel<T>> args);
     }
 
     class EcObservableCollectionItemChangedEventArgs<T> : EventArgs

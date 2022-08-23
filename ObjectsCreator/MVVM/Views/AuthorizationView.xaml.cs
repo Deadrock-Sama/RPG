@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ObjectsCreator.Views
+namespace ObjectsCreator.MVVM.Views
 {
     /// <summary>
     /// Логика взаимодействия для AuthorizationView.xaml
@@ -20,7 +20,7 @@ namespace ObjectsCreator.Views
     {
         public AuthorizationView()
         {
-            
+
         }
     }
 }
