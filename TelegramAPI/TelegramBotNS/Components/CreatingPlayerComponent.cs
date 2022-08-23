@@ -9,11 +9,16 @@ using Telegram.Bot;
 
 namespace TelegramAPI.TelegramBotNS
 {
+    // занаследовать от базового, public
     internal class CreatingPlayerComponent : IGameComponent
     {
+        // naming, readonly
         private SessionMessageSender _Sender;
+        // naming, readonly
         private RepositoryShell _Repo;
+        // naming
         private CreatingPlayerStage _CurrentStage = CreatingPlayerStage.Start;
+        // naming, readonly
         private Player _Player;
         public string TranslationCommand => "/createplayer";
 
@@ -112,6 +117,7 @@ namespace TelegramAPI.TelegramBotNS
             _Repo = repo;
         }
     }
+    // можно поместить внутрь класса
     enum CreatingPlayerStage
     {
         Start,

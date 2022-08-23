@@ -18,13 +18,16 @@ namespace TelegramAPI.TelegramBotNS
         public GameSession(IEnumerable<IGameComponent> components, string userID, RepositoryShell repo)
         {
             _Repo = repo;
+
+
+            // пересмотреть систему хранения инфы и старта
             SetUser(userID);
             SetPlayer();
             SetComponents(components);
             SetCurrentComponent();
         }
 
-
+        // вынести выше и добавить user в контейнер
         void SetUser(string userID)
         {
             _User = _Repo.GetAll<User>().FirstOrDefault(u => u.Login == userID);
@@ -47,6 +50,7 @@ namespace TelegramAPI.TelegramBotNS
             _Repo.AddOrUpdate(_User);
 
         }
+        // аналогично с user
 
         void SetPlayer()
         {
@@ -76,6 +80,7 @@ namespace TelegramAPI.TelegramBotNS
             
         }
        
+        // Нет явных модификаторов (private)
         void SetComponents(IEnumerable<IGameComponent> components)
         {
             foreach (var component in components)
@@ -84,6 +89,8 @@ namespace TelegramAPI.TelegramBotNS
             }
         }
 
+
+        // Codestyle методы должны располагаться в порядке public - protected - private, тоже самое относится и к оостальным элементам
         public void HandleCommand(string command)
         {
             if (_gameComponents.ContainsKey(command))

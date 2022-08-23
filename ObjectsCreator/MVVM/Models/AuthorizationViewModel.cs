@@ -49,26 +49,28 @@ namespace ObjectsCreator.MVVM.Models
             Register = new RelayCommand(RegisterAction);
             Authorize = new RelayCommand(AuthorizeAction);
 
-            var admin = _repo.GetAll<User>().FirstOrDefault(p => p.IsAdmin);
+            //var admin = _repo.GetAll<User>().FirstOrDefault(p => p.IsAdmin);
 
-            if (admin == null)
-            {
-                RegisterVisibility = Visibility.Visible;
-                AuthorizeVisibility = Visibility.Hidden;
-            }
-            else
-            {
+            //if (admin == null)
+            //{
+            //    RegisterVisibility = Visibility.Visible;
+            //    AuthorizeVisibility = Visibility.Hidden;
+            //}
+            //else
+            //{
 
-                _bdLogin = admin.Login;
-                _bdPassword = admin.Password;
+            //    _bdLogin = admin.Login;
+            //    _bdPassword = admin.Password;
 
 
-            }
+            //}
         }
 
 
         private void RegisterAction(object parameter)
         {
+
+            //string.IsNullOrEmpty
             if (_login != "" && _password != "")
             {
 
