@@ -17,7 +17,7 @@ namespace TelegramAPI.TelegramBotNS
 
         public void HandleCommand(string command)
         {
-            throw new NotImplementedException();
+            var p = 0;
         }
 
         public bool IsAnotherComponentAvailable(string componentName)
