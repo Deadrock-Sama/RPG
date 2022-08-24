@@ -28,8 +28,8 @@ namespace TelegramAPI.TelegramBotNS
         private string[] _creatingPlayerMessages = new string[5] { "Введи имя:",
                                                                    "Введи описание:",
                                                                    "Выбери класс \n /warrior \n /archer \n /wizard",
-                                                                   "Поздравляю. Теперь вы полноценный игрок!",
-                                                                   "Персонаж уже создан"};
+                                                                   "Поздравляю. Теперь вы полноценный игрок! Начать игру /StartGame",
+                                                                   "Ну хватит дурить, начинай уже игру /StartGame"};
 
         public async void HandleCommand(string command)
         {

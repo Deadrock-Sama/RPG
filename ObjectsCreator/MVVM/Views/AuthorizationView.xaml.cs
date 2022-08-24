@@ -20,7 +20,7 @@ namespace ObjectsCreator.MVVM.Views
     {
         public AuthorizationView()
         {
-
+            InitializeComponent();
         }
     }
 }

@@ -22,6 +22,8 @@ namespace ObjectsCreator.MVVM.Models
         private string _bdPassword;
 
         private RepositoryShell _repo;
+        private readonly AppNavigator _navigator;
+
         public string Password
         {
             get => _password;
@@ -44,10 +46,11 @@ namespace ObjectsCreator.MVVM.Models
         public ICommand Authorize { get; }
 
 
-        public AuthorizationViewModel()
+        public AuthorizationViewModel(AppNavigator navigator)
         {
             Register = new RelayCommand(RegisterAction);
             Authorize = new RelayCommand(AuthorizeAction);
+            _navigator = navigator;
 
             //var admin = _repo.GetAll<User>().FirstOrDefault(p => p.IsAdmin);
 
@@ -69,7 +72,8 @@ namespace ObjectsCreator.MVVM.Models
 
         private void RegisterAction(object parameter)
         {
-
+            _navigator.Show(new ObjectTablesViewModel());
+            return;
             //string.IsNullOrEmpty
             if (_login != "" && _password != "")
             {

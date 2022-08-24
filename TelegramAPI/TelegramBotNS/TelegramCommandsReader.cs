@@ -36,7 +36,7 @@ namespace TelegramAPI.TelegramBotNS
                 await SendAboutText(botClient, message);
                 return;
             }
-
+            return;
             string command = message.Text.ToLower();
             string userID = message.From.Id.ToString();
             Chat chat = message.Chat;

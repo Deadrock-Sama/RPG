@@ -19,7 +19,7 @@ namespace RPG.Components.Containers
             container.Kernel.ComponentModelBuilder.RemoveContributor(propertyResolver);
             container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel, true));
 
-            container.Register(Component.For<WindsorContainer>()
+            container.Register(Component.For<IWindsorContainer,WindsorContainer>()
                     .Instance(container));
 
             return container;

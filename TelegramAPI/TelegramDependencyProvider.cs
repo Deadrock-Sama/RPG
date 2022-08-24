@@ -1,4 +1,5 @@
 ﻿using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 using Core.DBInteraction;
 using NHibernate;
 using RPG.Components.Containers;
@@ -17,17 +18,19 @@ namespace RPG.Containers.DependencyProvider
         private readonly IRepositoryShell _repository;
         private readonly ISessionFactory _sessionFactory;
         private readonly ITelegramBotClient _telegramBotClient;
+        private readonly IWindsorContainer _container;
 
-        public TelegramDependencyProvider(IRepositoryShell repository, ITelegramBotClient bot)
+        public TelegramDependencyProvider(IRepositoryShell repository, ITelegramBotClient bot, IWindsorContainer container)
         {
 
             _repository = repository;
             _telegramBotClient = bot;
-
+            _container = container;
         }
 
         public IEnumerable<IRegistration> GetRegistrations()
         {
+
             yield return Component.For<GameManager>();
 
             yield return Component.For<IRepositoryShell>()

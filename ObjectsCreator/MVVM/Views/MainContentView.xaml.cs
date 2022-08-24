@@ -9,11 +9,7 @@ namespace ObjectsCreator.MVVM.Views
     {
         public MainContentView()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
-
-
-     
-
     }
 }

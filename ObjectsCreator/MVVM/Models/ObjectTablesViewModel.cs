@@ -42,7 +42,7 @@ namespace ObjectsCreator.MVVM.Models
 
         public ObjectTablesViewModel()
         {
-            _repo = new RepositoryShell();
+            //_repo = new RepositoryShell();
 
             //var authorization = new Authorization(_repo);
 
@@ -57,8 +57,8 @@ namespace ObjectsCreator.MVVM.Models
 
 
 
-            configureResourceGrids();
-            configureEquipmentGrids();
+            //configureResourceGrids();
+            //configureEquipmentGrids();
         }
 
         //private void MainWindow_Loaded(object sender, RoutedEventArgs e)

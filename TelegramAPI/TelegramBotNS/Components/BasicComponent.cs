@@ -11,8 +11,8 @@ namespace TelegramAPI.TelegramBotNS.Components
     public class BasicComponent : IGameComponent
     {
         // нейминг, protected, readonly
-        private SessionMessageSender _Sender;
-        private RepositoryShell _Repo;
+        protected readonly SessionMessageSender _Sender;
+        protected readonly RepositoryShell _Repo;
 
         // abstract
         public virtual string TranslationCommand => throw new NotImplementedException();
@@ -32,7 +32,7 @@ namespace TelegramAPI.TelegramBotNS.Components
         // virtual
         public bool IsComponentAvailable()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         // virtual

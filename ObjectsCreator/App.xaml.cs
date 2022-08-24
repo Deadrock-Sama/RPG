@@ -24,7 +24,7 @@ namespace ObjectsCreator
             window.Content = new MainContentViewModel(navigator);
 
             window.Show();
-            navigator.Show(new AuthorizationViewModel());
+            navigator.Show(new AuthorizationViewModel(navigator));
         }
     }
 }
