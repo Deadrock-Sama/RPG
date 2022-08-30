@@ -8,35 +8,35 @@ namespace TelegramAPI.TelegramBotNS.Components
 {
     // идея неплохая но не закончино как я понял
     // по логике класс должен быть абстрактным
-    public class BasicComponent : IGameComponent
+    public abstract class BasicComponent : IGameComponent
     {
         // нейминг, protected, readonly
         protected readonly SessionMessageSender _Sender;
         protected readonly RepositoryShell _Repo;
 
-        // abstract
-        public virtual string TranslationCommand => throw new NotImplementedException();
+        
+        public abstract string TranslationCommand;
 
-        // abstract
-        public virtual void HandleCommand(string command)
+        
+        public abstract void HandleCommand(string command)
         {
             throw new NotImplementedException();
         }
 
         // abstract
-        public virtual bool IsAnotherComponentAvailable(string componentName)
+        public abstract bool IsAnotherComponentAvailable(string componentName)
         {
             throw new NotImplementedException();
         }
 
-        // virtual
-        public bool IsComponentAvailable()
+       
+        public virtual bool IsComponentAvailable()
         {
             return true;
         }
 
-        // virtual
-        public void SendStartMessage()
+
+        public virtual void SendStartMessage()
         {
             throw new NotImplementedException();
         }
