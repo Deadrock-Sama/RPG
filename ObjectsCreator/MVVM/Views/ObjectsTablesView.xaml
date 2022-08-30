@@ -1,32 +1,41 @@
-﻿<UserControl x:Class="ObjectsCreator.Views.MainWindowView"
+﻿<UserControl x:Class="ObjectsCreator.MVVM.Views.ObjectsTablesView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ObjectsCreator.Views"
+             xmlns:local="clr-namespace:ObjectsCreator.MVVM.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/fonts.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <TabControl>
-        <TabItem Header="Resources">
+        <TabItem Header="Resources" Style="{StaticResource MahApps.Styles.TabItem}">
             <TabControl>
-                <TabItem Header="Materials">
+                <TabItem Header="Materials" Style="{StaticResource MahApps.Styles.TabItem}">
                     <Grid Background="#FFE5E5E5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="21*"/>
                             <ColumnDefinition Width="176*"/>
                         </Grid.ColumnDefinitions>
-                        <DataGrid ItemsSource="{Binding Earrings}" x:Name="Materials" CanUserAddRows="True" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                        <DataGrid ItemsSource="{Binding Earrings, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Materials" CanUserAddRows="True" AutoGenerateColumns="False" Grid.ColumnSpan="2">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125" />
                                 <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Meals">
+                <TabItem Header="Meals" Style="{StaticResource MahApps.Styles.TabItem}">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid ItemsSource="{Binding Earrings}" x:Name="Meals" CanUserAddRows="True" AutoGenerateColumns="False">
+                        <DataGrid ItemsSource="{Binding Earrings,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Meals" CanUserAddRows="True" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                 <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -36,9 +45,9 @@
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Potions">
+                <TabItem Header="Potions"  Style="{StaticResource MahApps.Styles.TabItem}"> 
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid ItemsSource="{Binding Earrings}" x:Name="Potions" CanUserAddRows="True" AutoGenerateColumns="False">
+                        <DataGrid ItemsSource="{Binding Earrings,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Potions" CanUserAddRows="True" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                 <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -49,13 +58,13 @@
                 </TabItem>
             </TabControl>
         </TabItem>
-        <TabItem Header="Equipment">
+        <TabItem Header="Equipment"  Style="{StaticResource MahApps.Styles.TabItem}">
             <TabControl>
                 <TabItem Header="Armor">
                     <TabControl>
-                        <TabItem Header="Helmets">
+                        <TabItem Header="Helmets"  Style="{StaticResource MahApps.Styles.TabItem}">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid ItemsSource="{Binding Earrings}" x:Name="Helmets" CanUserAddRows="True" AutoGenerateColumns="False">
+                                <DataGrid ItemsSource="{Binding Earrings,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Helmets" CanUserAddRows="True" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -71,9 +80,9 @@
                                 </DataGrid>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Chests">
+                        <TabItem Header="Chests"  Style="{StaticResource MahApps.Styles.TabItem}">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid ItemsSource="{Binding Earrings}" x:Name="Chests" CanUserAddRows="True" AutoGenerateColumns="False">
+                                <DataGrid ItemsSource="{Binding Earrings,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Chests" CanUserAddRows="True" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -89,9 +98,9 @@
                                 </DataGrid>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Leggins">
+                        <TabItem Header="Leggins"  Style="{StaticResource MahApps.Styles.TabItem}">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid ItemsSource="{Binding Earrings}" x:Name="Leggins" CanUserAddRows="True" AutoGenerateColumns="False">
+                                <DataGrid ItemsSource="{Binding Earrings,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Leggins" CanUserAddRows="True" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -107,9 +116,9 @@
                                 </DataGrid>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Boots">
+                        <TabItem Header="Boots"  Style="{StaticResource MahApps.Styles.TabItem}">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid ItemsSource="{Binding Earrings}" x:Name="Boots" CanUserAddRows="True" AutoGenerateColumns="False">
+                                <DataGrid ItemsSource="{Binding Earrings,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Boots" CanUserAddRows="True" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -127,11 +136,11 @@
                         </TabItem>
                     </TabControl>
                 </TabItem>
-                <TabItem Header="Weapons">
+                <TabItem Header="Weapons"  Style="{StaticResource MahApps.Styles.TabItem}">
                     <TabControl>
                         <TabItem Header="Swords">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid ItemsSource="{Binding Earrings}" x:Name="Swords" CanUserAddRows="True" AutoGenerateColumns="False">
+                                <DataGrid ItemsSource="{Binding Earrings,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Swords" CanUserAddRows="True" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -147,9 +156,9 @@
                                 </DataGrid>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Bows">
+                        <TabItem Header="Bows"  Style="{StaticResource MahApps.Styles.TabItem}">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid ItemsSource="{Binding Earrings}" x:Name="Bows" CanUserAddRows="True" AutoGenerateColumns="False">
+                                <DataGrid ItemsSource="{Binding Earrings, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Bows" CanUserAddRows="True" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -166,9 +175,9 @@
                                 </DataGrid>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Wands">
+                        <TabItem Header="Wands"  Style="{StaticResource MahApps.Styles.TabItem}">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid ItemsSource="{Binding Earrings}" x:Name="Wands" CanUserAddRows="True" AutoGenerateColumns="False">
+                                <DataGrid ItemsSource="{Binding Earrings,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.DataGrid}"  x:Name="Wands" CanUserAddRows="True" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -186,11 +195,11 @@
                         </TabItem>
                     </TabControl>
                 </TabItem>
-                <TabItem Header="Amulets">
+                <TabItem Header="Amulets"  Style="{StaticResource MahApps.Styles.TabItem}">
                     <TabControl>
-                        <TabItem Header="Bracelets">
+                        <TabItem Header="Bracelets"  Style="{StaticResource MahApps.Styles.TabItem}">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid ItemsSource="{Binding Earrings}" x:Name="Bracelets" CanUserAddRows="True" AutoGenerateColumns="False">
+                                <DataGrid ItemsSource="{Binding Earrings,UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MahApps.Styles.DataGrid}"  x:Name="Bracelets" CanUserAddRows="True" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -206,9 +215,9 @@
                                 </DataGrid>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Earrings">
+                        <TabItem Header="Earrings"  Style="{StaticResource MahApps.Styles.TabItem}">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid ItemsSource="{Binding Earrings}" x:Name="Earrings" CanUserAddRows="True" AutoGenerateColumns="False">
+                                <DataGrid ItemsSource="{Binding Earrings,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Earrings" CanUserAddRows="True" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -224,9 +233,9 @@
                                 </DataGrid>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Rings">
+                        <TabItem Header="Rings"  Style="{StaticResource MahApps.Styles.TabItem}">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid ItemsSource="{Binding Necklaces}" x:Name="Rings" CanUserAddRows="True" AutoGenerateColumns="False">
+                                <DataGrid ItemsSource="{Binding Necklaces,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Rings" CanUserAddRows="True" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -242,13 +251,13 @@
                                 </DataGrid>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Necklaces">
+                        <TabItem Header="Necklaces"  Style="{StaticResource MahApps.Styles.TabItem}">
                             <Grid Background="#FFE5E5E5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="71*"/>
                                     <ColumnDefinition Width="711*"/>
                                 </Grid.ColumnDefinitions>
-                                <DataGrid ItemsSource="{Binding Necklaces}" x:Name="Necklaces" CanUserAddRows="True" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                                <DataGrid ItemsSource="{Binding Necklaces,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MahApps.Styles.DataGrid}" x:Name="Necklaces" CanUserAddRows="True" AutoGenerateColumns="False" Grid.ColumnSpan="2">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="125"/>
                                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="*"/>
@@ -271,7 +280,7 @@
 
             </TabControl>
         </TabItem>
-        <TabItem Header="Other">
+        <TabItem Header="Other"  Style="{StaticResource MahApps.Styles.TabItem}">
 
         </TabItem>
     </TabControl>

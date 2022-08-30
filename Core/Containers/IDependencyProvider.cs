@@ -1,7 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using System.Collections.Generic;
 
-namespace RPG.Components.Containers
+namespace Core.Containers
 {
     public interface IDependencyProvider
     {

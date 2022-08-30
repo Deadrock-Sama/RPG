@@ -1,4 +1,6 @@
-﻿using ObjectsCreator.MVVM.Models;
+﻿using Core.Containers;
+using Core.DBInteraction;
+using ObjectsCreator.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,12 +21,17 @@ namespace ObjectsCreator
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var window = new DefaultWindow();
-            var navigator = new AppNavigator();
-            window.Content = new MainContentViewModel(navigator);
+
+            var repo = new RepositoryShell();
+            var container = new ContainerBuilder().Create();
+            container.Register(new ObjectsCreatorDependencyProvider(repo));
+
+            var window = container.Resolve<DefaultWindow>();
+            var navigator = container.Resolve<AppNavigator>();
+            window.Content = container.Resolve<MainContentViewModel>();
 
             window.Show();
-            navigator.Show(new AuthorizationViewModel(navigator));
+            navigator.Show(container.Resolve<AuthorizationViewModel>());
         }
     }
 }

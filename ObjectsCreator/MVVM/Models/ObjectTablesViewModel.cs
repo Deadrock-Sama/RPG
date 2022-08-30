@@ -12,7 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ObjectsCreator.MVVM.Models
 {
@@ -20,45 +22,40 @@ namespace ObjectsCreator.MVVM.Models
     {
 
         private RepositoryShell _repo;
+        private AppNavigator _appNavigator;
 
+        public ResourceObservableCollection<Meal> Meals { get; set; }
+        public ResourceObservableCollection<Potion> Potions { get; set; } = new ResourceObservableCollection<Potion>();
+        public ResourceObservableCollection<Material> Materials { get; set; }
 
-        private ResourceObservableCollection<Meal> meals;
-        private ResourceObservableCollection<Potion> potions;
-        private ResourceObservableCollection<Material> materials;
+        public EquipmentObservableCollection<Helmet> Helmets { get; set; } = new EquipmentObservableCollection<Helmet>();
+        public EquipmentObservableCollection<Chest> Chests { get; set; } = new EquipmentObservableCollection<Chest>();
+        public EquipmentObservableCollection<Leggins> Leggins { get; set; } = new EquipmentObservableCollection<Leggins>();
+        public EquipmentObservableCollection<Boots> Boots { get; set; } = new EquipmentObservableCollection<Boots>();
+        public EquipmentObservableCollection<Sword> Swords { get; set; } = new EquipmentObservableCollection<Sword>();
+        public EquipmentObservableCollection<Bow> Bows { get; set; } = new EquipmentObservableCollection<Bow>();
+        public EquipmentObservableCollection<Wand> Wands { get; set; } = new EquipmentObservableCollection<Wand>();
+        public EquipmentObservableCollection<Earring> Earrings { get; set; } = new EquipmentObservableCollection<Earring>();
+        public EquipmentObservableCollection<Ring> Rings { get; set; } = new EquipmentObservableCollection<Ring>();
+        public EquipmentObservableCollection<Necklace> Necklaces { get; set; } = new EquipmentObservableCollection<Necklace>();
+        public EquipmentObservableCollection<Bracelet> Bracelets { get; set; } = new EquipmentObservableCollection<Bracelet>();
 
-        private EquipmentObservableCollection<Helmet> helmets;
-        private EquipmentObservableCollection<Chest> chests;
-        private EquipmentObservableCollection<Leggins> leggins;
-        private EquipmentObservableCollection<Boots> boots;
-        private EquipmentObservableCollection<Sword> swords;
-        private EquipmentObservableCollection<Bow> bows;
-        private EquipmentObservableCollection<Wand> wands;
-        private EquipmentObservableCollection<Earring> earrings;
-        private EquipmentObservableCollection<Ring> rings;
-        private EquipmentObservableCollection<Necklace> necklaces;
-        private EquipmentObservableCollection<Bracelet> bracelets;
+        private ItemsControl _currGrid;
+
 
         //  private ItemsControl currGrid;
 
-        public ObjectTablesViewModel()
+        public ObjectTablesViewModel(RepositoryShell repo, AppNavigator appNavigator)
+
         {
-            //_repo = new RepositoryShell();
+            _repo = repo;
+            _appNavigator = appNavigator;
 
-            //var authorization = new Authorization(_repo);
-
-            //authorization.ShowDialog();
-
-            //if (!authorization.IsAuthorized)
-            //{
-            //    Close();
-            //}
-
-            // Loaded += MainWindow_Loaded;
-
-
-
-            //configureResourceGrids();
-            //configureEquipmentGrids();
+            EditStats_ClickCommand = new RelayCommand(editStats_Click);
+            Grid_MouseRightButtonDownCommand = new RelayCommand(editStats_Click);
+        
+            configureResourceGrids();
+            configureEquipmentGrids();
         }
 
         //private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -86,122 +83,122 @@ namespace ObjectsCreator.MVVM.Models
 
         private void configureHelmetsGrid()
         {
-            helmets = new EquipmentObservableCollection<Helmet>(_repo.GetAll<Helmet>());
-            helmets.CollectionChanged +=
+            Helmets = new EquipmentObservableCollection<Helmet>(_repo.GetAll<Helmet>());
+            Helmets.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Helmet>);
-            helmets.ItemChanged +=
+            Helmets.ItemChanged +=
                 new EquipmentObservableCollection<Helmet>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Helmets.ItemsSource = helmets;
+           
         }
 
         private void configureChestsGrid()
         {
 
-            chests = new EquipmentObservableCollection<Chest>(_repo.GetAll<Chest>());
-            chests.CollectionChanged +=
+            Chests = new EquipmentObservableCollection<Chest>(_repo.GetAll<Chest>());
+            Chests.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Chest>);
-            chests.ItemChanged +=
+            Chests.ItemChanged +=
                 new EquipmentObservableCollection<Chest>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Chests.ItemsSource = chests;
+            
         }
 
         private void configureLegginsGrid()
         {
 
-            leggins = new EquipmentObservableCollection<Leggins>(_repo.GetAll<Leggins>());
-            leggins.CollectionChanged +=
+            Leggins = new EquipmentObservableCollection<Leggins>(_repo.GetAll<Leggins>());
+            Leggins.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Leggins>);
-            leggins.ItemChanged +=
+            Leggins.ItemChanged +=
                 new EquipmentObservableCollection<Leggins>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Leggins.ItemsSource = leggins;
+            
         }
 
         private void configureBootsGrid()
         {
 
-            boots = new EquipmentObservableCollection<Boots>(_repo.GetAll<Boots>());
-            boots.CollectionChanged +=
+            Boots = new EquipmentObservableCollection<Boots>(_repo.GetAll<Boots>());
+            Boots.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Boots>);
-            boots.ItemChanged +=
+            Boots.ItemChanged +=
                 new EquipmentObservableCollection<Boots>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Boots.ItemsSource = boots;
+            
         }
 
         private void configureSwordsGrid()
         {
 
-            swords = new EquipmentObservableCollection<Sword>(_repo.GetAll<Sword>());
-            swords.CollectionChanged +=
+            Swords = new EquipmentObservableCollection<Sword>(_repo.GetAll<Sword>());
+            Swords.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Sword>);
-            swords.ItemChanged +=
+            Swords.ItemChanged +=
                 new EquipmentObservableCollection<Sword>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Swords.ItemsSource = swords;
+            
         }
 
         private void configureBowsGrid()
         {
 
-            bows = new EquipmentObservableCollection<Bow>(_repo.GetAll<Bow>());
-            bows.CollectionChanged +=
+            Bows = new EquipmentObservableCollection<Bow>(_repo.GetAll<Bow>());
+            Bows.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Bow>);
-            bows.ItemChanged +=
+            Bows.ItemChanged +=
                 new EquipmentObservableCollection<Bow>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Bows.ItemsSource = bows;
+            
         }
 
         private void configureWandsGrid()
         {
 
-            wands = new EquipmentObservableCollection<Wand>(_repo.GetAll<Wand>());
-            wands.CollectionChanged +=
+            Wands = new EquipmentObservableCollection<Wand>(_repo.GetAll<Wand>());
+            Wands.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Wand>);
-            wands.ItemChanged +=
+            Wands.ItemChanged +=
                 new EquipmentObservableCollection<Wand>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Wands.ItemsSource = wands;
+           
         }
 
         private void configureEarringsGrid()
         {
 
-            earrings = new EquipmentObservableCollection<Earring>(_repo.GetAll<Earring>());
-            earrings.CollectionChanged +=
+            Earrings = new EquipmentObservableCollection<Earring>(_repo.GetAll<Earring>());
+            Earrings.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Earring>);
-            earrings.ItemChanged +=
+            Earrings.ItemChanged +=
                 new EquipmentObservableCollection<Earring>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Earrings.ItemsSource = earrings;
+            
         }
 
         private void configureRingsGrid()
         {
 
-            rings = new EquipmentObservableCollection<Ring>(_repo.GetAll<Ring>());
-            rings.CollectionChanged +=
+            Rings = new EquipmentObservableCollection<Ring>(_repo.GetAll<Ring>());
+            Rings.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Ring>);
-            rings.ItemChanged +=
+            Rings.ItemChanged +=
                 new EquipmentObservableCollection<Ring>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Rings.ItemsSource = rings;
+            
         }
 
         private void configureNecklacesGrid()
         {
 
-            necklaces = new EquipmentObservableCollection<Necklace>(_repo.GetAll<Necklace>());
-            necklaces.CollectionChanged +=
+            Necklaces = new EquipmentObservableCollection<Necklace>(_repo.GetAll<Necklace>());
+            Necklaces.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Necklace>);
-            necklaces.ItemChanged +=
+            Necklaces.ItemChanged +=
                 new EquipmentObservableCollection<Necklace>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Necklaces.ItemsSource = necklaces;
+           
         }
 
         private void configureBraceletsGrid()
         {
 
-            bracelets = new EquipmentObservableCollection<Bracelet>(_repo.GetAll<Bracelet>());
-            bracelets.CollectionChanged +=
+            Bracelets = new EquipmentObservableCollection<Bracelet>(_repo.GetAll<Bracelet>());
+            Bracelets.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Bracelet>);
-            bracelets.ItemChanged +=
+            Bracelets.ItemChanged +=
                 new EquipmentObservableCollection<Bracelet>.EcObservableCollectionItemChangedEventHandler(equipmentGrid_ItemChanged);
-            //Bracelets.ItemsSource = bracelets;
+           
         }
 
         void configureResourceGrids()
@@ -215,20 +212,20 @@ namespace ObjectsCreator.MVVM.Models
 
         void configureMealGrid()
         {
-            meals = new ResourceObservableCollection<Meal>(_repo.GetAll<Meal>());
-            meals.CollectionChanged +=
+            Meals = new ResourceObservableCollection<Meal>(_repo.GetAll<Meal>());
+            Meals.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(resourceGrid_CollectionChanged<Meal>);
-            meals.ItemChanged +=
+            Meals.ItemChanged +=
                 new ResourceObservableCollection<Meal>.EcObservableCollectionItemChangedEventHandler(resourceGrid_ItemChanged);
             //Meals.ItemsSource = meals;
         }
 
         void configureMaterialsGrid()
         {
-            materials = new ResourceObservableCollection<Material>(_repo.GetAll<Material>());
-            materials.CollectionChanged +=
+            Materials = new ResourceObservableCollection<Material>(_repo.GetAll<Material>());
+            Materials.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(resourceGrid_CollectionChanged<Material>);
-            materials.ItemChanged +=
+            Materials.ItemChanged +=
                 new ResourceObservableCollection<Material>.EcObservableCollectionItemChangedEventHandler(resourceGrid_ItemChanged);
             //Materials.ItemsSource = materials;
         }
@@ -236,10 +233,10 @@ namespace ObjectsCreator.MVVM.Models
         void configurePotionsGrid()
         {
 
-            potions = new ResourceObservableCollection<Potion>(_repo.GetAll<Potion>());
-            potions.CollectionChanged +=
+            Potions = new ResourceObservableCollection<Potion>(_repo.GetAll<Potion>());
+            Potions.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(resourceGrid_CollectionChanged<Potion>);
-            potions.ItemChanged +=
+            Potions.ItemChanged +=
                 new ResourceObservableCollection<Potion>.EcObservableCollectionItemChangedEventHandler(resourceGrid_ItemChanged);
             //Potions.ItemsSource = potions;
 
@@ -287,7 +284,6 @@ namespace ObjectsCreator.MVVM.Models
             }
 
         }
-
         void equipmentGrid_CollectionChanged<T>(object sender, NotifyCollectionChangedEventArgs e) where T : IEquipment, new()
         {
 
@@ -311,6 +307,40 @@ namespace ObjectsCreator.MVVM.Models
 
         }
 
+
+        private void editEffects_Click(object sender, RoutedEventArgs e)
+        {
+            //EditingCharacteristics editingCharacteristics = new EditingCharacteristics();
+
+            //var a = (int)sender; 
+
+        }
+
+        private void editStats_Click(object sender)
+        {
+            //пробелма с типом, надо как-то 
+            dynamic item = (_currGrid.Items.CurrentItem);
+            var stats = item.Stats;
+            var editingCharacteristics = new EditingCharacteristicsViewModel();
+            if (stats != null)
+            {
+                editingCharacteristics = new EditingCharacteristicsViewModel(stats);
+            }
+
+            _appNavigator.Show(editingCharacteristics);
+
+            item.Stats = editingCharacteristics.Stats;
+        }
+
+        private void grid_MouseRightButtonDown(object sender)
+        {
+
+             _currGrid = (ItemsControl)sender;
+
+        }
+
+        public ICommand EditStats_ClickCommand;
+        public ICommand Grid_MouseRightButtonDownCommand;
 
     }
 }

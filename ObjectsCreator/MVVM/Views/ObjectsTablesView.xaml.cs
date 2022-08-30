@@ -16,44 +16,12 @@ namespace ObjectsCreator.MVVM.Views
     /// <summary>
     /// Interaction logic for MainWindowView.xaml
     /// </summary>
-    public partial class ObjectTablesView : UserControl
+    public partial class ObjectsTablesView : UserControl
     {
-        public ObjectTablesView()
+        public ObjectsTablesView()
         {
-
+            InitializeComponent();
         }
 
-        private void editEffects_Click(object sender, RoutedEventArgs e)
-        {
-            //EditingCharacteristics editingCharacteristics = new EditingCharacteristics();
-
-            //var a = (int)sender; 
-
-        }
-
-        private void editStats_Click(object sender, RoutedEventArgs e)
-        {
-            ////пробелма с типом, надо как-то 
-            //dynamic item = (currGrid.Items.CurrentItem);           
-            //var stats = item.Stats;
-            //var editingCharacteristics = new EditingCharacteristics();
-            //if (stats != null)
-            //{
-            //    editingCharacteristics = new EditingCharacteristics(stats);
-            //}
-
-            //editingCharacteristics.ShowDialog();
-
-            //item.Stats = editingCharacteristics.stats;   
-        }
-
-        private void grid_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-
-
-          //  currGrid = (ItemsControl)sender;
-
-        }
     }
 }

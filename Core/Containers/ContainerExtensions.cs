@@ -1,10 +1,9 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using RPG.Components.Containers;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RPG.Containers
+namespace Core.Containers
 {
     public static class ContainerExtensions
     {

@@ -11,6 +11,8 @@ namespace ObjectsCreator.MVVM.Models
     {
         private StatsBonus _stats { get; set; }
 
+        public StatsBonus Stats => _stats;
+
         public string HPMultiplier
         {
             get => _stats.HPMultiplier.ToString();
@@ -126,9 +128,15 @@ namespace ObjectsCreator.MVVM.Models
             Apply = new RelayCommand(ApplyAction);
 
         }
-
+        public EditingCharacteristicsViewModel()
+        {
+            
+        }
         public void ApplyAction(object parameter)
         {
+
+
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Castle.MicroKernel.Registration;
+using Core.Containers;
 using Core.PlayerNS;
 using RPG.Components.Menus;
 using RPG.Components.PlayerNS;

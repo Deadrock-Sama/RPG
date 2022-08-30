@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ObjectsCreator.MVVM.Views
@@ -15,11 +16,11 @@ namespace ObjectsCreator.MVVM.Views
     /// <summary>
     /// Interaction logic for EditingCharacteristicsView.xaml
     /// </summary>
-    public class EditingCharacteristicsViewB : UserControl
+    public partial class EditingCharacteristicsView : UserControl
     {
-        public EditingCharacteristicsViewB()
+        public EditingCharacteristicsView()
         {
-
+            InitializeComponent();
         }
     }
 }

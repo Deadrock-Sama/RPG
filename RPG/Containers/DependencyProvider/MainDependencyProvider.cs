@@ -1,4 +1,5 @@
 ﻿using Castle.MicroKernel.Registration;
+using Core.Containers;
 using Core.DBInteraction;
 using Core.PlayerNS;
 using NHibernate;

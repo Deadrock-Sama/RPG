@@ -1,6 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using RPG.Components.Containers;
+using Core.Containers;
 using System.Collections.Generic;
 using Telegram.Bot.Types;
 

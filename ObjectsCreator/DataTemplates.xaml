@@ -1,12 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     
-             xmlns:local="clr-namespace:ObjectsCreator.MVVM.Views"
-             xmlns:views="clr-namespace:ObjectsCreator.MVVM.Models">
-    <DataTemplate DataType="{x:Type views:AuthorizationViewModel}">
-        <local:AuthorizationView/>
+             xmlns:views="clr-namespace:ObjectsCreator.MVVM.Views"
+             xmlns:viewModels="clr-namespace:ObjectsCreator.MVVM.Models">
+    <DataTemplate DataType="{x:Type viewModels:AuthorizationViewModel}">
+        <views:AuthorizationView/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type views:MainContentViewModel}">
-        <local:MainContentView/>
+    <DataTemplate DataType="{x:Type viewModels:EditingCharacteristicsViewModel}">
+        <views:EditingCharacteristicsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:ObjectTablesViewModel}">
+        <views:ObjectsTablesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:MainContentViewModel}">
+        <views:MainContentView/>
     </DataTemplate>
 </ResourceDictionary>

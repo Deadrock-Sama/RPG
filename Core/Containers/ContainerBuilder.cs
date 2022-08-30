@@ -4,7 +4,7 @@ using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.Windsor;
 using System.Linq;
 
-namespace RPG.Components.Containers
+namespace Core.Containers
 {
     public class ContainerBuilder
     {
@@ -19,7 +19,7 @@ namespace RPG.Components.Containers
             container.Kernel.ComponentModelBuilder.RemoveContributor(propertyResolver);
             container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel, true));
 
-            container.Register(Component.For<IWindsorContainer,WindsorContainer>()
+            container.Register(Component.For<IWindsorContainer, WindsorContainer>()
                     .Instance(container));
 
             return container;

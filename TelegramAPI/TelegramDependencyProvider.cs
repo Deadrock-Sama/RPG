@@ -1,8 +1,8 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Core.Containers;
 using Core.DBInteraction;
 using NHibernate;
-using RPG.Components.Containers;
 using System;
 using System.Collections.Generic;
 using System.Text;

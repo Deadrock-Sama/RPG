@@ -1,6 +1,7 @@
 ﻿using Core.DBInteraction;
 using Core.Users;
 using ObjectsCreator.MVVM.Components;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -12,17 +13,7 @@ namespace ObjectsCreator.MVVM.Models
     public class AuthorizationViewModel : ViewModel
     {
         public Visibility AuthorizeVisibility { get; }
-        public Visibility RegisterVisibility { get; }
-        public bool IsAuthorized { get; set; }
-
-        private string _login;
-        private string _password;
-
-        private string _bdLogin;
-        private string _bdPassword;
-
-        private RepositoryShell _repo;
-        private readonly AppNavigator _navigator;
+        public Visibility RegisterVisibility { get; } = Visibility.Hidden;
 
         public string Password
         {
@@ -45,48 +36,63 @@ namespace ObjectsCreator.MVVM.Models
         public ICommand Register { get; }
         public ICommand Authorize { get; }
 
+        private string _login;
+        private string _password;
 
-        public AuthorizationViewModel(AppNavigator navigator)
+        private int _adminID;
+
+        private readonly RepositoryShell _repo;
+        private readonly AppNavigator _navigator;
+
+        private readonly ObjectTablesViewModel _objectTablesViewModel;
+
+        public AuthorizationViewModel(AppNavigator navigator, RepositoryShell repo, ObjectTablesViewModel objectTablesViewModel)
         {
+
+            var dependencyObject = new DependencyObject();
+            
+
+            
+            
+            
             Register = new RelayCommand(RegisterAction);
             Authorize = new RelayCommand(AuthorizeAction);
             _navigator = navigator;
+            _repo = repo;
+            _objectTablesViewModel = objectTablesViewModel;
 
-            //var admin = _repo.GetAll<User>().FirstOrDefault(p => p.IsAdmin);
+            var admin = _repo.GetAll<User>().FirstOrDefault(p => p.IsAdmin);
 
-            //if (admin == null)
-            //{
-            //    RegisterVisibility = Visibility.Visible;
-            //    AuthorizeVisibility = Visibility.Hidden;
-            //}
-            //else
-            //{
-
-            //    _bdLogin = admin.Login;
-            //    _bdPassword = admin.Password;
-
-
-            //}
+            if (admin == null)
+            {
+                //Считается ли это, что модель знает, как реализован вид?
+                RegisterVisibility = Visibility.Visible;
+                AuthorizeVisibility = Visibility.Hidden;
+            }
+            else
+            {
+                //По идее, для большей безопасности можно было бы хранить пароли в отдельной таблице?
+                _adminID = admin.Id;
+                
+            }
         }
+
 
 
         private void RegisterAction(object parameter)
         {
-            _navigator.Show(new ObjectTablesViewModel());
-            return;
-            //string.IsNullOrEmpty
-            if (_login != "" && _password != "")
+
+            if (!string.IsNullOrEmpty(_login) && !string.IsNullOrEmpty(_password))
             {
 
                 var newAdmin = new User();
                 newAdmin.IsAdmin = true;
                 newAdmin.Login = _login;
-                newAdmin.Password = _password;
+                newAdmin.Password = CreateMD5(_password);
 
                 _repo.AddOrUpdate(newAdmin);
 
-                IsAuthorized = true;
-                //   Close();
+                _navigator.Show(_objectTablesViewModel);
             }
             else
             {
@@ -97,17 +103,42 @@ namespace ObjectsCreator.MVVM.Models
 
         private void AuthorizeAction(object parameter)
         {
-            if (_login == _bdLogin && _password == _bdPassword)
-            {
-                IsAuthorized = true;
-                //Close();
+            
+            var admin = _repo.GetAll<User>().FirstOrDefault(e => e.Id == _adminID);
 
+            if (admin == null)
+            {
+                MessageBox.Show("Произошла ошибка при обращении к базе данных");
+                Environment.Exit(0);
+            }
+
+            var Password = PasswordBoxAssistant.GetBoundPassword(parameter as DependencyObject);
+            
+
+            if (admin.Login == Login && admin.Password == CreateMD5(Password))
+            {
+                _navigator.Show(_objectTablesViewModel);
             }
             else
             {
                 MessageBox.Show("Неправильные данные");
 
             }
+        }
+
+        private string CreateMD5(string input)
+        {
+
+            var md5 = System.Security.Cryptography.MD5.Create();
+
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] hashBytes = md5.ComputeHash(inputBytes);
+            
+            return BitConverter.ToString(hashBytes)
+                .ToLower()
+                .Replace("-", "");
+
+
         }
     }
 }

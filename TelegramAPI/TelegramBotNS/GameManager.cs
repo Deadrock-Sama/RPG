@@ -1,5 +1,5 @@
 ﻿using Castle.Windsor;
-using RPG.Containers;
+using Core.Containers;
 using System.Collections.Generic;
 using Telegram.Bot.Types;
 
