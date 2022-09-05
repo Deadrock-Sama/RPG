@@ -6,11 +6,11 @@ namespace RPG.Components.MainMenuNS.Items
 {
     public class StartGameMenuItem : IMainMenuItem
     {
-        private AppNavigator _navigator;
-        private readonly PlayerMenuShower _playerMenu;
 
         public string Name => "Старт";
 
+        private readonly AppNavigator _navigator;
+        private readonly PlayerMenuShower _playerMenu;
 
         public StartGameMenuItem(PlayerMenuShower playerMenu, AppNavigator navigator)
         {

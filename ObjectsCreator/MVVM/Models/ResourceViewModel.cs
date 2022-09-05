@@ -9,20 +9,7 @@ namespace ObjectsCreator.MVVM.Models
     public class ResourceViewModel<T> : ViewModel where T : IResource, new()
     {
 
-
-        private T _item;
-
         public T Item => _item;
-
-        public ResourceViewModel()
-        {
-            _item = new T();
-        }
-
-        public ResourceViewModel(T item)
-        {
-            _item = item;
-        }
 
         public virtual int Id
         {
@@ -63,6 +50,19 @@ namespace ObjectsCreator.MVVM.Models
                 _item.EffectsMethod = value;
                 Notify();
             }
+        }
+
+        private T _item;
+
+
+        public ResourceViewModel()
+        {
+            _item = new T();
+        }
+
+        public ResourceViewModel(T item)
+        {
+            _item = item;
         }
 
     }

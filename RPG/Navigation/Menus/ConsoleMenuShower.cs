@@ -7,20 +7,20 @@ namespace RPG.Components.Menus
 {
     public class ConsoleMenuShower : INavigatorContent
     {
-        private bool _isMenuOpen;
-        private readonly IMenu _Menu;
+        private bool _isMenuOpened;
+        private readonly IMenu _menu;
         private readonly ConsoleManager _consoleManager;
 
         public ConsoleMenuShower(IMenu mainMenu, ConsoleManager consoleManager)
         {
-            _Menu = mainMenu;
+            _menu = mainMenu;
             _consoleManager = consoleManager;
 
         }
 
         protected virtual void _consoleManager_KeyPressed(ConsoleKey obj)
         {
-            if (!_isMenuOpen)
+            if (!_isMenuOpened)
                 return;
 
             var strKey = obj.ToString();
@@ -36,11 +36,10 @@ namespace RPG.Components.Menus
                 return;
             }
 
-            if (numb >= _Menu.MenuItems.Count)
+            if (numb >= _menu.MenuItems.Count)
                 return;
 
-            _Menu.MenuItems[numb].Open();
-
+            _menu.MenuItems[numb].Open();
 
         }
 
@@ -48,16 +47,16 @@ namespace RPG.Components.Menus
         {
             _consoleManager.KeyPressed += _consoleManager_KeyPressed;
 
-            string msg = string.Join(Environment.NewLine, _Menu.MenuItems.Select(i => $"{_Menu.MenuItems.IndexOf(i)}. {i.Name}"));
+            string msg = string.Join(Environment.NewLine, _menu.MenuItems.Select(i => $"{_menu.MenuItems.IndexOf(i)}. {i.Name}"));
             _consoleManager.ShowAndReadKey(msg);
 
-            _isMenuOpen = true;
+            _isMenuOpened = true;
         }
 
         public void Hide()
         {
             _consoleManager.KeyPressed -= _consoleManager_KeyPressed;
-            _isMenuOpen = false;
+            _isMenuOpened = false;
         }
     }
 }

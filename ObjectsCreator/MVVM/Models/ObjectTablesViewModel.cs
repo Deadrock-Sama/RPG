@@ -21,13 +21,9 @@ namespace ObjectsCreator.MVVM.Models
     public class ObjectTablesViewModel : ViewModel
     {
 
-        private RepositoryShell _repo;
-        private AppNavigator _appNavigator;
-
         public ResourceObservableCollection<Meal> Meals { get; set; }
         public ResourceObservableCollection<Potion> Potions { get; set; } = new ResourceObservableCollection<Potion>();
         public ResourceObservableCollection<Material> Materials { get; set; }
-
         public EquipmentObservableCollection<Helmet> Helmets { get; set; } = new EquipmentObservableCollection<Helmet>();
         public EquipmentObservableCollection<Chest> Chests { get; set; } = new EquipmentObservableCollection<Chest>();
         public EquipmentObservableCollection<Leggins> Leggins { get; set; } = new EquipmentObservableCollection<Leggins>();
@@ -41,6 +37,8 @@ namespace ObjectsCreator.MVVM.Models
         public EquipmentObservableCollection<Bracelet> Bracelets { get; set; } = new EquipmentObservableCollection<Bracelet>();
 
         private ItemsControl _currGrid;
+        private RepositoryShell _repositoryShell;
+        private AppNavigator _appNavigator;
 
 
         //  private ItemsControl currGrid;
@@ -48,7 +46,7 @@ namespace ObjectsCreator.MVVM.Models
         public ObjectTablesViewModel(RepositoryShell repo, AppNavigator appNavigator)
 
         {
-            _repo = repo;
+            _repositoryShell = repo;
             _appNavigator = appNavigator;
 
             EditStats_ClickCommand = new RelayCommand(editStats_Click);
@@ -83,7 +81,7 @@ namespace ObjectsCreator.MVVM.Models
 
         private void configureHelmetsGrid()
         {
-            Helmets = new EquipmentObservableCollection<Helmet>(_repo.GetAll<Helmet>());
+            Helmets = new EquipmentObservableCollection<Helmet>(_repositoryShell.GetAll<Helmet>());
             Helmets.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Helmet>);
             Helmets.ItemChanged +=
@@ -94,7 +92,7 @@ namespace ObjectsCreator.MVVM.Models
         private void configureChestsGrid()
         {
 
-            Chests = new EquipmentObservableCollection<Chest>(_repo.GetAll<Chest>());
+            Chests = new EquipmentObservableCollection<Chest>(_repositoryShell.GetAll<Chest>());
             Chests.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Chest>);
             Chests.ItemChanged +=
@@ -105,7 +103,7 @@ namespace ObjectsCreator.MVVM.Models
         private void configureLegginsGrid()
         {
 
-            Leggins = new EquipmentObservableCollection<Leggins>(_repo.GetAll<Leggins>());
+            Leggins = new EquipmentObservableCollection<Leggins>(_repositoryShell.GetAll<Leggins>());
             Leggins.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Leggins>);
             Leggins.ItemChanged +=
@@ -116,7 +114,7 @@ namespace ObjectsCreator.MVVM.Models
         private void configureBootsGrid()
         {
 
-            Boots = new EquipmentObservableCollection<Boots>(_repo.GetAll<Boots>());
+            Boots = new EquipmentObservableCollection<Boots>(_repositoryShell.GetAll<Boots>());
             Boots.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Boots>);
             Boots.ItemChanged +=
@@ -127,7 +125,7 @@ namespace ObjectsCreator.MVVM.Models
         private void configureSwordsGrid()
         {
 
-            Swords = new EquipmentObservableCollection<Sword>(_repo.GetAll<Sword>());
+            Swords = new EquipmentObservableCollection<Sword>(_repositoryShell.GetAll<Sword>());
             Swords.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Sword>);
             Swords.ItemChanged +=
@@ -138,7 +136,7 @@ namespace ObjectsCreator.MVVM.Models
         private void configureBowsGrid()
         {
 
-            Bows = new EquipmentObservableCollection<Bow>(_repo.GetAll<Bow>());
+            Bows = new EquipmentObservableCollection<Bow>(_repositoryShell.GetAll<Bow>());
             Bows.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Bow>);
             Bows.ItemChanged +=
@@ -149,7 +147,7 @@ namespace ObjectsCreator.MVVM.Models
         private void configureWandsGrid()
         {
 
-            Wands = new EquipmentObservableCollection<Wand>(_repo.GetAll<Wand>());
+            Wands = new EquipmentObservableCollection<Wand>(_repositoryShell.GetAll<Wand>());
             Wands.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Wand>);
             Wands.ItemChanged +=
@@ -160,7 +158,7 @@ namespace ObjectsCreator.MVVM.Models
         private void configureEarringsGrid()
         {
 
-            Earrings = new EquipmentObservableCollection<Earring>(_repo.GetAll<Earring>());
+            Earrings = new EquipmentObservableCollection<Earring>(_repositoryShell.GetAll<Earring>());
             Earrings.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Earring>);
             Earrings.ItemChanged +=
@@ -171,7 +169,7 @@ namespace ObjectsCreator.MVVM.Models
         private void configureRingsGrid()
         {
 
-            Rings = new EquipmentObservableCollection<Ring>(_repo.GetAll<Ring>());
+            Rings = new EquipmentObservableCollection<Ring>(_repositoryShell.GetAll<Ring>());
             Rings.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Ring>);
             Rings.ItemChanged +=
@@ -182,7 +180,7 @@ namespace ObjectsCreator.MVVM.Models
         private void configureNecklacesGrid()
         {
 
-            Necklaces = new EquipmentObservableCollection<Necklace>(_repo.GetAll<Necklace>());
+            Necklaces = new EquipmentObservableCollection<Necklace>(_repositoryShell.GetAll<Necklace>());
             Necklaces.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Necklace>);
             Necklaces.ItemChanged +=
@@ -193,7 +191,7 @@ namespace ObjectsCreator.MVVM.Models
         private void configureBraceletsGrid()
         {
 
-            Bracelets = new EquipmentObservableCollection<Bracelet>(_repo.GetAll<Bracelet>());
+            Bracelets = new EquipmentObservableCollection<Bracelet>(_repositoryShell.GetAll<Bracelet>());
             Bracelets.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(equipmentGrid_CollectionChanged<Bracelet>);
             Bracelets.ItemChanged +=
@@ -212,7 +210,7 @@ namespace ObjectsCreator.MVVM.Models
 
         void configureMealGrid()
         {
-            Meals = new ResourceObservableCollection<Meal>(_repo.GetAll<Meal>());
+            Meals = new ResourceObservableCollection<Meal>(_repositoryShell.GetAll<Meal>());
             Meals.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(resourceGrid_CollectionChanged<Meal>);
             Meals.ItemChanged +=
@@ -222,7 +220,7 @@ namespace ObjectsCreator.MVVM.Models
 
         void configureMaterialsGrid()
         {
-            Materials = new ResourceObservableCollection<Material>(_repo.GetAll<Material>());
+            Materials = new ResourceObservableCollection<Material>(_repositoryShell.GetAll<Material>());
             Materials.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(resourceGrid_CollectionChanged<Material>);
             Materials.ItemChanged +=
@@ -233,7 +231,7 @@ namespace ObjectsCreator.MVVM.Models
         void configurePotionsGrid()
         {
 
-            Potions = new ResourceObservableCollection<Potion>(_repo.GetAll<Potion>());
+            Potions = new ResourceObservableCollection<Potion>(_repositoryShell.GetAll<Potion>());
             Potions.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(resourceGrid_CollectionChanged<Potion>);
             Potions.ItemChanged +=
@@ -247,7 +245,7 @@ namespace ObjectsCreator.MVVM.Models
         {
             foreach (ResourceViewModel<T> c in (ResourceObservableCollection<T>)sender)
             {
-                _repo.AddOrUpdate(c.Item);
+                _repositoryShell.AddOrUpdate(c.Item);
             }
 
         }
@@ -260,16 +258,16 @@ namespace ObjectsCreator.MVVM.Models
                 case NotifyCollectionChangedAction.Remove:
                     foreach (ResourceViewModel<T> c in e.OldItems)
                     {
-                        _repo.Delete(c.Item);
+                        _repositoryShell.Delete(c.Item);
                     }
                     break;
                 case NotifyCollectionChangedAction.Add:
                     foreach (ResourceViewModel<T> c in e.NewItems)
-                        _repo.Add(c.Item);
+                        _repositoryShell.Add(c.Item);
                     break;
                 default:
                     foreach (ResourceViewModel<T> c in e.OldItems)
-                        _repo.AddOrUpdate(c.Item);
+                        _repositoryShell.AddOrUpdate(c.Item);
                     break;
             }
 
@@ -280,7 +278,7 @@ namespace ObjectsCreator.MVVM.Models
         {
             foreach (EquipmentViewModel<T> c in (EquipmentObservableCollection<T>)sender)
             {
-                _repo.AddOrUpdate(c.Item);
+                _repositoryShell.AddOrUpdate(c.Item);
             }
 
         }
@@ -292,16 +290,16 @@ namespace ObjectsCreator.MVVM.Models
                 case NotifyCollectionChangedAction.Remove:
                     foreach (EquipmentViewModel<T> c in e.OldItems)
                     {
-                        _repo.Delete(c.Item);
+                        _repositoryShell.Delete(c.Item);
                     }
                     break;
                 case NotifyCollectionChangedAction.Add:
                     foreach (EquipmentViewModel<T> c in e.NewItems)
-                        _repo.Add(c.Item);
+                        _repositoryShell.Add(c.Item);
                     break;
                 default:
                     foreach (EquipmentViewModel<T> c in e.OldItems)
-                        _repo.AddOrUpdate(c.Item);
+                        _repositoryShell.AddOrUpdate(c.Item);
                     break;
             }
 

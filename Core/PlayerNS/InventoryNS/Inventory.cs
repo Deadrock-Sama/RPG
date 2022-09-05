@@ -10,18 +10,15 @@ namespace Core.PlayerNS.InventoryNS
         private readonly IRepositoryShell _repositoryShell;
         private List<ItemController> _inventory;
 
-
         public Inventory(IRepositoryShell repositoryShell)
         {
             _repositoryShell = repositoryShell;
-
-
             _inventory = _repositoryShell.GetAll<ItemController>();
         }
 
         public void AddItem(Item item, int count)
         {
-            var controller = _inventory.FirstOrDefault(ei => ei.Item == item);
+            var controller = _inventory.FirstOrDefault(e => e.Item == item);
 
             if (controller == null)
             {

@@ -13,13 +13,22 @@ namespace RPG.Components.PlayerSelection.Items
 {
     internal class PlayerMenuItem : IPlayerMenuItem
     {
+        public string Name => _name;
+
         private readonly string _name;
         private readonly PlayerBasicInfo _playerInfo;
         private readonly PlayerRepository _repository;
         private readonly IWindsorContainer _container;
-        private AppNavigator _navigator;
+        private readonly AppNavigator _navigator;
 
-        public string Name => _name;
+        public PlayerMenuItem(PlayerBasicInfo playerInfo, PlayerRepository repository, IWindsorContainer container, AppNavigator navigator)
+        {
+            _name = playerInfo.Name;
+            _playerInfo = playerInfo;
+            _repository = repository;
+            _container = container;
+            _navigator = navigator;
+        }
 
         public void Open()
         {
@@ -30,17 +39,9 @@ namespace RPG.Components.PlayerSelection.Items
 
             _navigator.Show(child.Resolve<PlayerPageShower>());
 
-
             Console.WriteLine($"Вы выбрали игрока {Name}");
         }
 
-        public PlayerMenuItem(PlayerBasicInfo playerInfo, PlayerRepository repository, IWindsorContainer container, AppNavigator navigator)
-        {
-            _name = playerInfo.Name;
-            _playerInfo = playerInfo;
-            _repository = repository;
-            _container = container;
-            _navigator = navigator;
-        }
+      
     }
 }

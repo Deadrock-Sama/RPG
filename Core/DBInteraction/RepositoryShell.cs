@@ -12,13 +12,13 @@ namespace Core.DBInteraction
 
         public RepositoryShell()
         {
-            string _ConnectionString = "Server=localhost;Database=RPG;User ID=postgres;Password=postgres;";
+            var connectionString = "Server=localhost;Database=RPG;User ID=postgres;Password=postgres;";
             var mappings = new MappingConfigurator();
             var mappingRegistar = new MappingsRegistrar();
 
             mappings = mappingRegistar.AddMappings(mappings);
 
-            var dbConfigurator = new DbConfigurator(_ConnectionString, mappings);
+            var dbConfigurator = new DbConfigurator(connectionString, mappings);
 
             _sessionFactory = dbConfigurator.CreateSessionFactory();
         }

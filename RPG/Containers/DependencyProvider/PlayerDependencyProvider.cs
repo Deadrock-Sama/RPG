@@ -13,12 +13,11 @@ namespace RPG.Components.Containers
 {
     public class PlayerDependencyProvider : IDependencyProvider
     {
-        private Player _player;
+        private readonly Player _player;
 
         public PlayerDependencyProvider(Player player)
         {
-            _player = player;
-            
+            _player = player;           
         }
 
         public IEnumerable<IRegistration> GetRegistrations()

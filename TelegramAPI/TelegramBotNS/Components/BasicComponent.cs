@@ -6,45 +6,26 @@ using Telegram.Bot;
 
 namespace TelegramAPI.TelegramBotNS.Components
 {
-    // идея неплохая но не закончино как я понял
-    // по логике класс должен быть абстрактным
     public abstract class BasicComponent : IGameComponent
     {
-        // нейминг, protected, readonly
-        protected readonly SessionMessageSender _Sender;
-        protected readonly RepositoryShell _Repo;
+   
+        public abstract string TranslationCommand { get; }
 
+        public abstract void HandleCommand(string command);
         
-        public abstract string TranslationCommand;
+        public abstract bool IsAnotherComponentAvailable(string componentName);
 
-        
-        public abstract void HandleCommand(string command)
+        public abstract void SendStartMessage();
+
+        public virtual bool IsComponentAvailable() => true;     
+
+        protected readonly SessionMessageSender _sender;
+        protected readonly RepositoryShell _repositoryShell;
+
+        public BasicComponent(SessionMessageSender sender, RepositoryShell repositoryShell)
         {
-            throw new NotImplementedException();
-        }
-
-        // abstract
-        public abstract bool IsAnotherComponentAvailable(string componentName)
-        {
-            throw new NotImplementedException();
-        }
-
-       
-        public virtual bool IsComponentAvailable()
-        {
-            return true;
-        }
-
-
-        public virtual void SendStartMessage()
-        {
-            throw new NotImplementedException();
-        }
-
-        public BasicComponent(SessionMessageSender sender, RepositoryShell repo)
-        {
-            _Sender = sender;
-            _Repo = repo;
+            _sender = sender;
+            _repositoryShell = repositoryShell;
         }
     }
 }

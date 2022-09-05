@@ -19,11 +19,11 @@ namespace Core.DBInteraction
 
         public ISessionFactory CreateSessionFactory()
         {
-            var sf = Fluently.Configure()
+            var sessionFactory = Fluently.Configure()
                 .Mappings(c => _mappingConfigurator.Register(c))
-                .ExposeConfiguration(cfg =>
+                .ExposeConfiguration(configaration =>
                 {
-                    cfg.Properties = new Dictionary<string, string>()
+                    configaration.Properties = new Dictionary<string, string>()
                     {
                         { "connection.provider", "NHibernate.Connection.DriverConnectionProvider" },
                         { "connection.connection_string", _connectionString},
@@ -31,18 +31,18 @@ namespace Core.DBInteraction
                         { "connection.driver_class","NHibernate.Driver.NpgsqlDriver" }
                     };
 
-                    cfg.DataBaseIntegration(x =>
+                    configaration.DataBaseIntegration(x =>
                     {
                         x.LogFormattedSql = true;
                         x.AutoCommentSql = true;
                     });
 
 
-                    new SchemaUpdate(cfg).Execute(false, true);
+                    new SchemaUpdate(configaration).Execute(false, true);
                 })
                 .BuildSessionFactory();
 
-            return sf;
+            return sessionFactory;
         }
     }
 }

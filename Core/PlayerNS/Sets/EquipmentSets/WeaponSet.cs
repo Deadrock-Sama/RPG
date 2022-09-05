@@ -9,14 +9,14 @@ namespace Core.PlayerNS.Sets.EquipmentSets
     public class WeaponSet : ISet
     {
         public IWeapon Weapon { get; set; }
+        public StatsBonus StatsBonus => RecieveStatsBonus();
 
-        public StatsBonus StatsBonus => recieveStatsBonus();
         public WeaponSet(IWeapon weapon)
         {
             Weapon = weapon;
         }
 
-        private StatsBonus recieveStatsBonus()
+        private StatsBonus RecieveStatsBonus()
         {
             return Weapon.Stats;
         }

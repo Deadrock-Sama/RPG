@@ -2,40 +2,29 @@
 using System;
 using Telegram.Bot;
 
-namespace TelegramAPI.TelegramBotNS
+namespace TelegramAPI.TelegramBotNS.Components
 {
-    public class StartGameComponent : IGameComponent
+    public class StartGameComponent : BasicComponent
     {
-        private SessionMessageSender _Sender;
-        private RepositoryShell _Repo;
+        public StartGameComponent(SessionMessageSender sender, RepositoryShell repositoryShell) : base(sender, repositoryShell)
+        {
+        }
 
-        public string TranslationCommand => throw new NotImplementedException();
+        public override string TranslationCommand => throw new NotImplementedException();
 
-        public void HandleCommand(string command)
+        public override void HandleCommand(string command)
         {
             throw new NotImplementedException();
         }
 
-        public bool IsAnotherComponentAvailable(string componentName)
+        public override bool IsAnotherComponentAvailable(string componentName)
         {
             throw new NotImplementedException();
         }
 
-        public void SendStartMessage()
-        { 
-            
-        
-        }
-
-        public bool IsComponentAvailable()
+        public override void SendStartMessage()
         {
             throw new NotImplementedException();
-        }
-
-        public StartGameComponent(SessionMessageSender sender, RepositoryShell repo)
-        {
-            _Sender = sender;
-            _Repo = repo;
         }
     }
 }

@@ -7,21 +7,17 @@ using System.Linq;
 using System.Text;
 using Telegram.Bot;
 
-namespace TelegramAPI.TelegramBotNS
+namespace TelegramAPI.TelegramBotNS.Components
 {
     // занаследовать от базового, public
-    internal class CreatingPlayerComponent : IGameComponent
+    public class CreatingPlayerComponent : BasicComponent
     {
-        // naming, readonly
-        private SessionMessageSender _Sender;
-        // naming, readonly
-        private RepositoryShell _Repo;
-        // naming
-        private CreatingPlayerStage _CurrentStage = CreatingPlayerStage.Start;
-        // naming, readonly
-        private Player _Player;
-        public string TranslationCommand => "/createplayer";
 
+        // naming
+        private CreatingPlayerStage _currentStage = CreatingPlayerStage.Start;
+        // naming, readonly
+        private readonly Player _player;
+        public override string TranslationCommand => "/createplayer";
 
         private string[] _availableComponents = new string[1] { "/start" };
 
@@ -31,9 +27,9 @@ namespace TelegramAPI.TelegramBotNS
                                                                    "Поздравляю. Теперь вы полноценный игрок! Начать игру /StartGame",
                                                                    "Ну хватит дурить, начинай уже игру /StartGame"};
 
-        public async void HandleCommand(string command)
+        public override async void HandleCommand(string command)
         {
-            switch (_CurrentStage)
+            switch (_currentStage)
             {
                 case CreatingPlayerStage.Start:
                     HandleStart();
@@ -56,31 +52,31 @@ namespace TelegramAPI.TelegramBotNS
         private async void HandleStart()
         {
             await _Sender.SendMessage(_creatingPlayerMessages[0]);
-            _CurrentStage = CreatingPlayerStage.SettingName;
+            _currentStage = CreatingPlayerStage.SettingName;
         }
 
         private async void HandleSettingName(string name)
         {
-            _Player.Info.Name = name;
-            _Repo.AddOrUpdate(_Player.Info);
+            _player.Info.Name = name;
+            _Repo.AddOrUpdate(_player.Info);
             await _Sender.SendMessage($"Установлено имя: {name}!");
             await _Sender.SendMessage(_creatingPlayerMessages[1]);
-            _CurrentStage = CreatingPlayerStage.SettingDescription;
+            _currentStage = CreatingPlayerStage.SettingDescription;
         }
 
         private async void HandleSettingDescription(string description)
         {
-            _Player.Info.Description = description;
-            _Repo.AddOrUpdate(_Player.Info);
+            _player.Info.Description = description;
+            _Repo.AddOrUpdate(_player.Info);
             await _Sender.SendMessage($"Установлено описание: {description}!");
             await _Sender.SendMessage(_creatingPlayerMessages[2]);
-            _CurrentStage = CreatingPlayerStage.SettingClass;
+            _currentStage = CreatingPlayerStage.SettingClass;
 
         }
 
         private async void HandleSettingClass(string gameClass)
-        { 
-           
+        {
+
             Dictionary<string, PlayerClass> classes = new Dictionary<string, PlayerClass>();
 
 
@@ -89,12 +85,12 @@ namespace TelegramAPI.TelegramBotNS
             classes.Add("/wizard", new Wizard());
 
             var ChosenClass = classes[gameClass];
-            
-            _Player.PlayerClass = ChosenClass;
-            _Repo.AddOrUpdate(_Player.Info);
+
+            _player.PlayerClass = ChosenClass;
+            _Repo.AddOrUpdate(_player.Info);
             await _Sender.SendMessage($"Установлен класс: {ChosenClass.ToString()}!");
             await _Sender.SendMessage(_creatingPlayerMessages[3]);
-            _CurrentStage = CreatingPlayerStage.Completed;
+            _currentStage = CreatingPlayerStage.Completed;
         }
 
         private async void HandleCommandAfterCompletion()
@@ -102,28 +98,27 @@ namespace TelegramAPI.TelegramBotNS
             await _Sender.SendMessage(_creatingPlayerMessages[4]);
         }
 
-        public bool IsAnotherComponentAvailable(string componentName) => _availableComponents.Contains(componentName);
+        public override bool IsAnotherComponentAvailable(string componentName) => _availableComponents.Contains(componentName);
 
-        public bool IsComponentAvailable() => _CurrentStage != CreatingPlayerStage.Completed;
+        public override bool IsComponentAvailable() => _currentStage != CreatingPlayerStage.Completed;
 
-        public void SendStartMessage()
+        public override async void SendStartMessage()
         {
-            throw new NotImplementedException();
+           await _Sender.SendMessage("Создаем игрока!");
         }
 
-        public CreatingPlayerComponent(SessionMessageSender sender, RepositoryShell repo)
+        public CreatingPlayerComponent(SessionMessageSender sender, RepositoryShell repositoryShell) : base(sender, repositoryShell)
         {
-            _Sender = sender;
-            _Repo = repo;
+       
+        }
+        enum CreatingPlayerStage
+        {
+            Start,
+            SettingName,
+            SettingDescription,
+            SettingClass,
+            Completed
         }
     }
-    // можно поместить внутрь класса
-    enum CreatingPlayerStage
-    {
-        Start,
-        SettingName,
-        SettingDescription,
-        SettingClass,
-        Completed
-    }
+ 
 }

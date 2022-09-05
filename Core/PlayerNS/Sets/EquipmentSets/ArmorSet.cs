@@ -5,25 +5,25 @@ namespace Core.PlayerNS.Sets.EquipmentSets
 {
     public class ArmorSet : ISet
     {
-        private readonly IStatsController _Helmet;
-        private readonly IStatsController _Chest;
-        private readonly IStatsController _Leggins;
-        private readonly IStatsController _Boots;
+        public StatsBonus StatsBonus => RecieveStatsBonus();
 
-        public StatsBonus StatsBonus => recieveStatsBonus();
+        private readonly IStatsController _helmet;
+        private readonly IStatsController _chest;
+        private readonly IStatsController _leggins;
+        private readonly IStatsController _boots;
 
         public ArmorSet(Helmet helmet, Chest chest, Leggins leggins, Boots boots)
         {
-            _Helmet = helmet.Stats;
-            _Chest = chest.Stats;
-            _Leggins = leggins.Stats;
-            _Boots = boots.Stats;
+            _helmet = helmet.Stats;
+            _chest = chest.Stats;
+            _leggins = leggins.Stats;
+            _boots = boots.Stats;
         }
 
-        private StatsBonus recieveStatsBonus()
+        private StatsBonus RecieveStatsBonus()
         {
             var bonus = new StatsBonus();
-            bonus = bonus + _Helmet + _Chest + _Leggins + _Boots;
+            bonus = bonus + _helmet + _chest + _leggins + _boots;
 
             return bonus;
         }

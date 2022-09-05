@@ -22,24 +22,24 @@ namespace TelegramAPI.TelegramBotNS
 
             cancellationToken.ThrowIfCancellationRequested();
 
-            bool UpdateIsMessage = update.Type == Telegram.Bot.Types.Enums.UpdateType.Message;
+            var updateIsMessage = (update.Type == Telegram.Bot.Types.Enums.UpdateType.Message);
 
-            if (!UpdateIsMessage)
+            if (!updateIsMessage)
             {
                 return;
             }
             var message = update.Message;
-            bool MessageIsText = message.Type == Telegram.Bot.Types.Enums.MessageType.Text;
+            var messageIsText = (message.Type == Telegram.Bot.Types.Enums.MessageType.Text);
 
-            if (!MessageIsText)
+            if (!messageIsText)
             {
                 await SendAboutText(botClient, message);
                 return;
             }
-            return;
-            string command = message.Text.ToLower();
-            string userID = message.From.Id.ToString();
-            Chat chat = message.Chat;
+           
+            var command = message.Text.ToLower();
+            var userID = message.From.Id.ToString();
+            var chat = message.Chat;
             _gameManager.HandleCommand(command, userID, chat);
 
         }
@@ -47,11 +47,10 @@ namespace TelegramAPI.TelegramBotNS
         {
             Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(exception));
         }
-
         private async Task<Message> SendAboutText(ITelegramBotClient botClient, Message message)
         {
-            var MessageAboutText = "Хорошо, хорошо, мы все поняли, у тебя есть лишняя хромосома. Теперь пиши нормально, пожалуйста";
-            return await botClient.SendTextMessageAsync(message.Chat, MessageAboutText);
+            var messageAboutText = "Хорошо, хорошо, мы все поняли, у тебя есть лишняя хромосома. Теперь пиши нормально, пожалуйста";
+            return await botClient.SendTextMessageAsync(message.Chat, messageAboutText);
         }
     }
 }

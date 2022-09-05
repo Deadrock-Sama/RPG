@@ -25,10 +25,10 @@ namespace Core.Containers
             return container;
         }
 
-        public IWindsorContainer CreateChild(IWindsorContainer parrent)
+        public IWindsorContainer CreateChild(IWindsorContainer parent)
         {
             var child = Create();
-            parrent.AddChildContainer(child);
+            parent.AddChildContainer(child);
             return child;
         }
 

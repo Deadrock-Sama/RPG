@@ -6,17 +6,17 @@ namespace Core.PlayerNS
 {
     public class PlayerRepository
     {
+        public List<PlayerBasicInfo> BasicInfos => _players.Select(p => p.Info).ToList();
+
         private readonly IRepositoryShell _repository;
         private readonly List<Player> _players;
 
-
-        public List<PlayerBasicInfo> BasicInfos => _players.Select(p => p.Info).ToList();
-
         public PlayerRepository(IRepositoryShell repository)
         {
+            
             _repository = repository;
-
             _players = repository.GetAll<Player>();
+
         }
 
         public Player CreateNewPlayer(string name)
