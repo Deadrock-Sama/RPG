@@ -7,7 +7,7 @@ namespace RPG.Components.PlayerSelection
 {
     public class PlayerMenuShower : ConsoleMenuShower
     {
-        private AppNavigator _navigator;
+        private readonly AppNavigator _navigator;
 
         public PlayerMenuShower(PlayerMenu playerMenu, ConsoleManager consoleManager, AppNavigator navigator) : base(playerMenu, consoleManager)
         {

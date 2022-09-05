@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Core.PlayerNS.Sets.EquipmentSets
 {
-    interface ISet
+    public interface ISet
     {
+      
         StatsBonus StatsBonus { get; }
 
     }

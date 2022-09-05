@@ -15,7 +15,6 @@ namespace RPG.Components.PlayerSelection
     {
         public List<IMenuItem> MenuItems { get; } = new List<IMenuItem>();
 
-
         public PlayerMenu(IEnumerable<IPlayerMenuItem> playerMenuItems, PlayerRepository repository, WindsorContainer container, AppNavigator navigator)
         {
             foreach (PlayerBasicInfo player in repository.BasicInfos)

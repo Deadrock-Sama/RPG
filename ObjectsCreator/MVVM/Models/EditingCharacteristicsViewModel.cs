@@ -9,10 +9,12 @@ namespace ObjectsCreator.MVVM.Models
 {
     public class EditingCharacteristicsViewModel : ViewModel
     {
-        private StatsBonus _stats { get; set; }
+        
 
         public StatsBonus Stats => _stats;
-
+        
+        private StatsBonus _stats;
+        
         public string HPMultiplier
         {
             get => _stats.HPMultiplier.ToString();

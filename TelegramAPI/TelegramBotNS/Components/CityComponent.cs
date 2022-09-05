@@ -35,10 +35,10 @@ namespace TelegramAPI.TelegramBotNS
             throw new NotImplementedException();
         }
 
-        public CityComponent(SessionMessageSender sender, RepositoryShell repo)
+        public CityComponent(SessionMessageSender sender, RepositoryShell repositoryShell)
         {
             _Sender = sender;
-            _Repo = repo;
+            _Repo = repositoryShell;
         }
     }
 }

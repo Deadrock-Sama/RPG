@@ -22,9 +22,9 @@ namespace ObjectsCreator
         {
             base.OnStartup(e);
 
-            var repo = new RepositoryShell();
+            var repositoryShell = new RepositoryShell();
             var container = new ContainerBuilder().Create();
-            container.Register(new ObjectsCreatorDependencyProvider(repo));
+            container.Register(new ObjectsCreatorDependencyProvider(repositoryShell));
 
             var window = container.Resolve<DefaultWindow>();
             var navigator = container.Resolve<AppNavigator>();

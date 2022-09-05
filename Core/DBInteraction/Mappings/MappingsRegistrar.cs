@@ -46,7 +46,6 @@ namespace Core.DBInteraction.Mappings
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<WarriorMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<WizardMapping>());
 
-
             return mappingConfigurator;
         }
 

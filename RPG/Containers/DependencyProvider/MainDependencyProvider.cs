@@ -27,9 +27,6 @@ namespace RPG.Components.Containers
             _sessionFactory = sessionFactory;
         }
 
-
-
-
         public IEnumerable<IRegistration> GetRegistrations()
         {
             yield return Component.For<ISessionFactory>()

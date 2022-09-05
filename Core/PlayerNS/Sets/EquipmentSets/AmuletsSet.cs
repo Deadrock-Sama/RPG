@@ -5,26 +5,26 @@ namespace Core.PlayerNS.Sets.EquipmentSets
 {
     public class AmuletsSet : ISet
     {
-        private readonly IStatsController _Ring;
-        private readonly IStatsController _Necklace;
-        private readonly IStatsController _Earring;
-        private readonly IStatsController _Bracelet;
+        public StatsBonus StatsBonus => RecieveStatsBonus();
 
-        public StatsBonus StatsBonus => recieveStatsBonus();
+        private readonly IStatsController _ring;
+        private readonly IStatsController _necklace;
+        private readonly IStatsController _earring;
+        private readonly IStatsController _bracelet;
 
         public AmuletsSet(Ring ring, Necklace necklace, Earring earring, Bracelet bracelet)
         {
-            _Ring = ring.Stats;
-            _Necklace = necklace.Stats;
-            _Earring = earring.Stats;
-            _Bracelet = bracelet.Stats;
+            _ring = ring.Stats;
+            _necklace = necklace.Stats;
+            _earring = earring.Stats;
+            _bracelet = bracelet.Stats;
         }
 
 
-        private StatsBonus recieveStatsBonus()
+        private StatsBonus RecieveStatsBonus()
         {
             var bonus = new StatsBonus();
-            bonus = bonus + _Ring + _Necklace + _Earring + _Bracelet;
+            bonus = bonus + _ring + _necklace + _earring + _bracelet;
 
             return bonus;
         }

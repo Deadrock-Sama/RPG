@@ -7,21 +7,7 @@ namespace ObjectsCreator.MVVM.Models
 {
     public class EquipmentViewModel<T> : ViewModel where T : IEquipment, new()
     {
-
-
-        private T _item;
-
         public T Item => _item;
-
-        public EquipmentViewModel()
-        {
-            _item = new T();
-        }
-
-        public EquipmentViewModel(T item)
-        {
-            _item = item;
-        }
 
         public virtual int Id
         {
@@ -75,5 +61,18 @@ namespace ObjectsCreator.MVVM.Models
                 Notify();
             }
         }
+
+        private T _item;
+       
+        public EquipmentViewModel()
+        {
+            _item = new T();
+        }
+
+        public EquipmentViewModel(T item)
+        {
+            _item = item;
+        }
+        
     }
 }

@@ -41,27 +41,23 @@ namespace ObjectsCreator.MVVM.Models
 
         private int _adminID;
 
-        private readonly RepositoryShell _repo;
+        private readonly RepositoryShell _repositoryShell;
         private readonly AppNavigator _navigator;
 
         private readonly ObjectTablesViewModel _objectTablesViewModel;
 
-        public AuthorizationViewModel(AppNavigator navigator, RepositoryShell repo, ObjectTablesViewModel objectTablesViewModel)
+        public AuthorizationViewModel(AppNavigator navigator, RepositoryShell repositoryShell, ObjectTablesViewModel objectTablesViewModel)
         {
 
             var dependencyObject = new DependencyObject();
-            
-
-            
-            
-            
+               
             Register = new RelayCommand(RegisterAction);
             Authorize = new RelayCommand(AuthorizeAction);
             _navigator = navigator;
-            _repo = repo;
+            _repositoryShell = repositoryShell;
             _objectTablesViewModel = objectTablesViewModel;
 
-            var admin = _repo.GetAll<User>().FirstOrDefault(p => p.IsAdmin);
+            var admin = _repositoryShell.GetAll<User>().FirstOrDefault(p => p.IsAdmin);
 
             if (admin == null)
             {
@@ -77,8 +73,6 @@ namespace ObjectsCreator.MVVM.Models
             }
         }
 
-
-
         private void RegisterAction(object parameter)
         {
 
@@ -90,7 +84,7 @@ namespace ObjectsCreator.MVVM.Models
                 newAdmin.Login = _login;
                 newAdmin.Password = CreateMD5(_password);
 
-                _repo.AddOrUpdate(newAdmin);
+                _repositoryShell.AddOrUpdate(newAdmin);
 
                 _navigator.Show(_objectTablesViewModel);
             }
@@ -104,7 +98,7 @@ namespace ObjectsCreator.MVVM.Models
         private void AuthorizeAction(object parameter)
         {
             
-            var admin = _repo.GetAll<User>().FirstOrDefault(e => e.Id == _adminID);
+            var admin = _repositoryShell.GetAll<User>().FirstOrDefault(e => e.Id == _adminID);
 
             if (admin == null)
             {
@@ -112,10 +106,10 @@ namespace ObjectsCreator.MVVM.Models
                 Environment.Exit(0);
             }
 
-            var Password = PasswordBoxAssistant.GetBoundPassword(parameter as DependencyObject);
+            var password = PasswordBoxAssistant.GetBoundPassword(parameter as DependencyObject);
             
 
-            if (admin.Login == Login && admin.Password == CreateMD5(Password))
+            if (admin.Login == Login && admin.Password == CreateMD5(password))
             {
                 _navigator.Show(_objectTablesViewModel);
             }
@@ -137,7 +131,6 @@ namespace ObjectsCreator.MVVM.Models
             return BitConverter.ToString(hashBytes)
                 .ToLower()
                 .Replace("-", "");
-
 
         }
     }

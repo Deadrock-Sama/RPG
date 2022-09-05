@@ -4,10 +4,11 @@ namespace RPG.Navigation
 {
     public class AppNavigator
     {
-        private Stack<INavigatorContent> _history { get; } = new Stack<INavigatorContent>();
-        private INavigatorContent _current;
-
         public INavigatorContent Current => _current;
+
+        private Stack<INavigatorContent> _history = new Stack<INavigatorContent>();
+        private INavigatorContent _current;
+   
         public void Show(INavigatorContent content)
         {
 

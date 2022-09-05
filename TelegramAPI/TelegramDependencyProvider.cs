@@ -15,15 +15,14 @@ namespace RPG.Containers.DependencyProvider
     internal class TelegramDependencyProvider : IDependencyProvider
     {
 
-        private readonly IRepositoryShell _repository;
+        private readonly IRepositoryShell _repositoryShell;
         private readonly ISessionFactory _sessionFactory;
         private readonly ITelegramBotClient _telegramBotClient;
         private readonly IWindsorContainer _container;
 
-        public TelegramDependencyProvider(IRepositoryShell repository, ITelegramBotClient bot, IWindsorContainer container)
+        public TelegramDependencyProvider(IRepositoryShell repositoryShell, ITelegramBotClient bot, IWindsorContainer container)
         {
-
-            _repository = repository;
+            _repositoryShell = repositoryShell;
             _telegramBotClient = bot;
             _container = container;
         }
@@ -33,8 +32,8 @@ namespace RPG.Containers.DependencyProvider
 
             yield return Component.For<GameManager>();
 
-            yield return Component.For<IRepositoryShell>()
-               .Instance(_repository);
+            yield return Component.For<IRepositoryShell, RepositoryShell>()
+               .Instance(_repositoryShell);
 
             yield return Component.For<ITelegramBotClient>()
                 .Instance(_telegramBotClient);

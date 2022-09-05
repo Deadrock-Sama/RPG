@@ -5,10 +5,10 @@ namespace RPG.Components.PlayerSelection.Items
 {
     internal class BackMenuItem : IPlayerMenuItem, IPlayerInfoPageMenuItem
     {
-        private AppNavigator _navigator;
-
         public string Name => "Назад";
-
+     
+        private readonly AppNavigator _navigator;
+        
         public BackMenuItem(AppNavigator navigator)
         {
             _navigator = navigator;

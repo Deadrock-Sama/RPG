@@ -1,20 +1,23 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Core.Containers;
+using Core.PlayerNS;
 using System.Collections.Generic;
 using Telegram.Bot.Types;
+using TelegramAPI.TelegramBotNS.Components;
+using GameUser = Core.Users.User;
 
 namespace TelegramAPI.TelegramBotNS
 {
     public class GameSessionDependencyProvider : IDependencyProvider
     {
         private readonly IWindsorContainer _container;
-        private readonly string _userID;
+        private readonly GameUser _user;
         private readonly Chat _Chat;
-        public GameSessionDependencyProvider(IWindsorContainer container, string userID, Chat chat)
+        public GameSessionDependencyProvider(IWindsorContainer container, GameUser user, Chat chat)
         {
             _container = container;
-            _userID = userID;
+            _user = user;
             _Chat = chat;
         }
 
@@ -42,9 +45,13 @@ namespace TelegramAPI.TelegramBotNS
 
             yield return Component.For<ShopComponent, IGameComponent>();
 
-            yield return Component.For<string>().Instance(_userID);
+            yield return Component.For<GameUser>()
+                .Instance(_user);
 
-            yield return Component.For<Chat>().Instance(_Chat);
+            yield return Component.For<Player>(); //проверить, подтянется ли пользователь
+
+            yield return Component.For<Chat>()
+                .Instance(_Chat);
 
             yield return Component.For<SessionMessageSender>();
 

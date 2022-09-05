@@ -13,12 +13,15 @@ namespace Core.PlayerNS
         public virtual PlayerBasicInfo Info { get; set; }
         public virtual PlayerClass PlayerClass { get; set; }
         public virtual EquipmentStatsSet Equipment { get; set; }
-        public virtual Sets.PlayerSets.Characteristics CharacteristicsSet { get; set; }
+        public virtual Characteristics CharacteristicsSet { get; set; }
         public virtual SkillsSet SkillsSet { get; set; }
-
         public virtual User User { get; set; }
-
         public virtual Inventory Inventory { get; set; }
+
+        public Player(User user)
+        {
+            User = user; 
+        }
 
         public Player(string name)
         {
@@ -26,7 +29,7 @@ namespace Core.PlayerNS
         }
         public Player()
         {
-            //Info = new PlayerBasicInfo { };
+            
         }
 
     }

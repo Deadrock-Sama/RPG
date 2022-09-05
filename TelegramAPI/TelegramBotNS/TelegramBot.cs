@@ -23,7 +23,7 @@ namespace TelegramAPI.TelegramBotNS
         {
 
             _Bot = new TelegramBotClient("5426691903:AAGMj6d142-lOwy9etsuAn7TV0pfyNbVrtI");
-            var repo = new RepositoryShell();
+            var repositoryShell = new RepositoryShell();
             var container = new ContainerBuilder().Create();
             container.Register(new TelegramDependencyProvider(repo, _Bot, container));
 

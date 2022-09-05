@@ -1,4 +1,5 @@
-﻿using Core.Containers;
+﻿using Castle.Windsor;
+using Core.Containers;
 using Core.DBInteraction;
 using Core.DBInteraction.Mappings;
 using RPG.Components.Containers;
@@ -11,13 +12,11 @@ namespace RPG.Components
     public class Game
     {
 
-        private string _ConnectionString = "Server=localhost;Database=RPG;User ID=postgres;Password=postgres;";
+        private const string _connectionString = "Server=localhost;Database=RPG;User ID=postgres;Password=postgres;";
+       
+        private readonly IWindsorContainer _container;
 
         public Game()
-        {
-        }
-
-        public void Start()
         {
 
             var mappings = new MappingConfigurator();
@@ -25,17 +24,20 @@ namespace RPG.Components
 
             mappings = mappingRegistar.AddMappings(mappings);
 
-            var dbConfigurator = new DbConfigurator(_ConnectionString, mappings);
+            var dbConfigurator = new DbConfigurator(_connectionString, mappings);
             var sessionFactory = dbConfigurator.CreateSessionFactory();
-            var repo = new RepositoryShell(sessionFactory);
+            var repositoryShell = new RepositoryShell(sessionFactory);
 
+            _container = new ContainerBuilder().Create();
+            _container.Register(new MainDependencyProvider(repositoryShell, sessionFactory));
 
-            var container = new ContainerBuilder().Create();
-            container.Register(new MainDependencyProvider(repo, sessionFactory));
+        }
 
-            //Start
-            var navigator = container.Resolve<AppNavigator>();
-            var mainMenuShower = container.Resolve<MainMenuShower>();
+        public void Start()
+        {
+
+            var navigator = _container.Resolve<AppNavigator>();
+            var mainMenuShower = _container.Resolve<MainMenuShower>();
             navigator.Show(mainMenuShower);
 
             while (true)

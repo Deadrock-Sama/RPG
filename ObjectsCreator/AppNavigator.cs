@@ -5,8 +5,6 @@ namespace ObjectsCreator
 {
     public class AppNavigator : ViewModel
     {
-        private Stack<object> _history { get; } = new Stack<object>();
-        private object _current;
 
         public object Current
         {
@@ -17,6 +15,11 @@ namespace ObjectsCreator
                 Notify();
             }
         }
+
+        private Stack<object> _history { get; } = new Stack<object>();
+        private object _current;
+
+        
         public void Show(object content)
         {
 
