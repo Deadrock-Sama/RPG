@@ -15,6 +15,7 @@ namespace ObjectsCreator.MVVM.Models
         public Visibility AuthorizeVisibility { get; }
         public Visibility RegisterVisibility { get; } = Visibility.Hidden;
 
+
         public string Password
         {
             get => _password;
