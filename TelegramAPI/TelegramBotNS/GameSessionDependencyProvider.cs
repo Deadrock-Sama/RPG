@@ -58,8 +58,7 @@ namespace TelegramAPI.TelegramBotNS
             yield return Component.For<GameUser>()
                 .Instance(_user);
 
-            yield return Component
-         .For<GameSession>();
+            yield return Component.For<GameSession>();
 
             if (_player != null)
             {

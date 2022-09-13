@@ -67,7 +67,7 @@ namespace TelegramAPI.TelegramBotNS
         {
             //можно реализовать сохранение и получение компонента из БД
 
-            if (_player == default)
+            if (_player == default || _player.Id == 0)
             {
                 _currentComponent = _gameComponents.GetValueOrDefault("/start");
                 _currentComponent.SendStartMessage();
