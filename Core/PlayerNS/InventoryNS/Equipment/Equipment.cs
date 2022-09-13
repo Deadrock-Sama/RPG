@@ -1,8 +1,4 @@
 ﻿using Core.PlayerNS.CharacteristicsNS;
-using RPG.Components.PlayerNS.InventoryNS.Resources.Food;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Core.PlayerNS.InventoryNS.Equipment
 {

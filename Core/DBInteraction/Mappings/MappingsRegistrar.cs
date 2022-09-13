@@ -1,6 +1,7 @@
 ﻿using Core.PlayerNS;
 using Core.PlayerNS.CharacteristicsNS;
 using Core.PlayerNS.Classes;
+using Core.PlayerNS.InventoryNS;
 using Core.PlayerNS.InventoryNS.Equipment.Amulets;
 using Core.PlayerNS.InventoryNS.Equipment.Armor;
 using Core.PlayerNS.InventoryNS.Equipment.Weapons;
@@ -8,7 +9,6 @@ using Core.PlayerNS.InventoryNS.Resources.Food;
 using Core.PlayerNS.InventoryNS.Resources.Materials;
 using Core.PlayerNS.InventoryNS.Resources.Potions;
 using Core.Users;
-using RPG.Components.PlayerNS.InventoryNS.Resources.Food;
 
 
 namespace Core.DBInteraction.Mappings
