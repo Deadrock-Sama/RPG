@@ -4,6 +4,7 @@ using Core.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TelegramAPI.TelegramBotNS.Components;
 
 namespace TelegramAPI.TelegramBotNS
 {
@@ -66,9 +67,14 @@ namespace TelegramAPI.TelegramBotNS
         {
             //можно реализовать сохранение и получение компонента из БД
 
-            if (_currentComponent == null)
+            if (_player == default)
             {
                 _currentComponent = _gameComponents.GetValueOrDefault("/start");
+                _currentComponent.SendStartMessage();
+            }
+            else
+            {
+                _currentComponent = _gameComponents.GetValueOrDefault("/city");
                 _currentComponent.SendStartMessage();
             }
 
@@ -79,7 +85,7 @@ namespace TelegramAPI.TelegramBotNS
         {
             foreach (var component in components)
             {
-                _gameComponents.Add(component.ToString(), component);
+                _gameComponents.Add(component.TranslationCommand, component);
             }
         }
 

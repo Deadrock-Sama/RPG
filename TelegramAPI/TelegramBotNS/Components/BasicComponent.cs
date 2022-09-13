@@ -12,8 +12,11 @@ namespace TelegramAPI.TelegramBotNS.Components
         public abstract string TranslationCommand { get; }
 
         public abstract void HandleCommand(string command);
-        
-        public abstract bool IsAnotherComponentAvailable(string componentName);
+
+        public virtual bool IsAnotherComponentAvailable(string componentName) 
+        { 
+            return _availableComponents.Contains(componentName);
+        }
 
         public abstract void SendStartMessage();
 
@@ -21,6 +24,7 @@ namespace TelegramAPI.TelegramBotNS.Components
 
         protected readonly SessionMessageSender _sender;
         protected readonly RepositoryShell _repositoryShell;
+        protected List<string> _availableComponents = new List<string>();//хз куда это нести 
 
         public BasicComponent(SessionMessageSender sender, RepositoryShell repositoryShell)
         {

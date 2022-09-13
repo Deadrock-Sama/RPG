@@ -34,8 +34,7 @@ namespace TelegramAPI.TelegramBotNS
             else
             {
                 var user = GetUser(userId);
-                var child = new WindsorContainer();
-                _container.AddChildContainer(child);
+                var child = new ContainerBuilder().CreateChild(_container);
                 child.Register(new GameSessionDependencyProvider(child, user, chat));
 
                 var newSession = child.Resolve<GameSession>();

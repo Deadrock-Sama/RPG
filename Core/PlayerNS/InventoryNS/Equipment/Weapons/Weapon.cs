@@ -11,6 +11,8 @@ namespace Core.PlayerNS.InventoryNS.Equipment.Weapons
     {
         public virtual StatsBonus Stats { get; set; }
 
+        public virtual bool IsStartItem { get; set; }
+
         public virtual bool isAbleToWear()
         {
             throw new NotImplementedException();

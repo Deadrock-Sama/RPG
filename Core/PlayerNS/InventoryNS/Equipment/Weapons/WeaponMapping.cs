@@ -12,6 +12,7 @@ namespace Core.PlayerNS.InventoryNS.Equipment.Weapons
             References(e => e.Stats).Cascade.AllDeleteOrphan()
                .Not.LazyLoad();
             Map(e => e.EffectsMethod);
+            Map(e => e.IsStartItem);
 
             //UseUnionSubclassForInheritanceMapping();
         }

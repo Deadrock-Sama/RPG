@@ -4,40 +4,33 @@ using System.Collections.Generic;
 using System.Text;
 using Telegram.Bot;
 
-namespace TelegramAPI.TelegramBotNS
+namespace TelegramAPI.TelegramBotNS.Components
 {
-    public class BattleComponent : IGameComponent
+    public class BattleComponent : BasicComponent
     {
 
-        private SessionMessageSender _Sender;
-        private RepositoryShell _Repo;
+        public override string TranslationCommand => "/battle";
 
-        public string TranslationCommand => throw new NotImplementedException();
 
-        public void HandleCommand(string command)
+
+        public override void HandleCommand(string command)
         {
-            throw new NotImplementedException();
+            //
         }
 
-        public bool IsAnotherComponentAvailable(string componentName)
+        public override bool IsAnotherComponentAvailable(string componentName)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public bool IsComponentAvailable()
+        public override async void SendStartMessage()
         {
-            throw new NotImplementedException();
+            await base._sender.SendMessage("Бой!");
         }
 
-        public void SendStartMessage()
+        public BattleComponent(SessionMessageSender sender, RepositoryShell repositoryShell) : base(sender, repositoryShell)
         {
-            throw new NotImplementedException();
-        }
-
-        public BattleComponent(SessionMessageSender sender, RepositoryShell repositoryShell)
-        {
-            _Sender = sender;
-            _Repo = repositoryShell;
+           
         }
     }
 }

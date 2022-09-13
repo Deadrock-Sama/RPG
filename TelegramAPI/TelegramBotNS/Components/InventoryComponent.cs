@@ -4,41 +4,27 @@ using System.Collections.Generic;
 using System.Text;
 using Telegram.Bot;
 
-namespace TelegramAPI.TelegramBotNS
+namespace TelegramAPI.TelegramBotNS.Components
 {
-    public class InventoryComponent : IGameComponent
+    public class InventoryComponent : BasicComponent
     {
 
+        public override string TranslationCommand => "/inventory";
 
-        private SessionMessageSender _Sender;
-        private RepositoryShell _Repo;
 
-        public string TranslationCommand => throw new NotImplementedException();
-
-        public void HandleCommand(string command)
+        public override void HandleCommand(string command)
         {
             throw new NotImplementedException();
         }
 
-        public bool IsAnotherComponentAvailable(string componentName)
+        public override async void SendStartMessage()
         {
-            throw new NotImplementedException();
+           await base._sender.SendMessage("Инвентарь:");
         }
 
-        public bool IsComponentAvailable()
+        public InventoryComponent(SessionMessageSender sender, RepositoryShell repo) : base(sender, repo)
         {
-            throw new NotImplementedException();
-        }
-
-        public void SendStartMessage()
-        {
-            throw new NotImplementedException();
-        }
-
-        public InventoryComponent(SessionMessageSender sender, RepositoryShell repo)
-        {
-            _Sender = sender;
-            _Repo = repo;
+         
         }
     }
 }

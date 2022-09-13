@@ -8,23 +8,20 @@ namespace TelegramAPI.TelegramBotNS.Components
     {
         public StartGameComponent(SessionMessageSender sender, RepositoryShell repositoryShell) : base(sender, repositoryShell)
         {
+
+            base._availableComponents.Add("/createplayer");
         }
 
-        public override string TranslationCommand => throw new NotImplementedException();
+        public override string TranslationCommand => "/start";
 
         public override void HandleCommand(string command)
         {
-            throw new NotImplementedException();
+            //пока хз чо сюда закинуть
         }
 
-        public override bool IsAnotherComponentAvailable(string componentName)
+        public override async void SendStartMessage()
         {
-            throw new NotImplementedException();
-        }
-
-        public override void SendStartMessage()
-        {
-            throw new NotImplementedException();
+            await base._sender.SendMessage("Игра началась. Отправь /createPlayer, чтобы создать персонажа");
         }
     }
 }

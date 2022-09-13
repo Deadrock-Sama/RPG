@@ -25,7 +25,7 @@ namespace TelegramAPI.TelegramBotNS
             _Bot = new TelegramBotClient("5426691903:AAGMj6d142-lOwy9etsuAn7TV0pfyNbVrtI");
             var repositoryShell = new RepositoryShell();
             var container = new ContainerBuilder().Create();
-            container.Register(new TelegramDependencyProvider(repo, _Bot, container));
+            container.Register(new TelegramDependencyProvider(repositoryShell, _Bot, container));
 
             _Reader = container.Resolve<TelegramCommandsReader>();
             _MainCancellationTokenSource = container.Resolve<CancellationTokenSource>();

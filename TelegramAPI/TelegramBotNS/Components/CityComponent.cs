@@ -3,42 +3,49 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Telegram.Bot;
+using Telegram.Bot.Types.ReplyMarkups;
 
-namespace TelegramAPI.TelegramBotNS
+namespace TelegramAPI.TelegramBotNS.Components
 {
-    public class CityComponent : IGameComponent
+    public class CityComponent : BasicComponent
     {
+        public override string TranslationCommand => "/city";
+        private readonly IReplyMarkup _markup;
 
-
-        private SessionMessageSender _Sender;
-        private RepositoryShell _Repo;
-
-        public string TranslationCommand => throw new NotImplementedException();
-
-        public void HandleCommand(string command)
+        public override async void HandleCommand(string command)
         {
-            throw new NotImplementedException();
+            //Вероятно будет какая-то общая обработка для команд типа покушать
+            await base._sender.SendMessage("В самой Спирали заняться нечем, нужно куда-то отправляться", _markup);
         }
 
-        public bool IsAnotherComponentAvailable(string componentName)
+        public override async void SendStartMessage()
         {
-            throw new NotImplementedException();
+           await base._sender.SendMessage("Добро пожаловать в Спираль", _markup);
         }
 
-        public bool IsComponentAvailable()
+        public override bool IsAnotherComponentAvailable(string componentName)
         {
-            throw new NotImplementedException();
+            return base.IsAnotherComponentAvailable(componentName);
         }
 
-        public void SendStartMessage()
+        public CityComponent(SessionMessageSender sender, RepositoryShell repositoryShell) : base(sender, repositoryShell)
         {
-            throw new NotImplementedException();
-        }
+            base._availableComponents.Add("/shop");
+            base._availableComponents.Add("/journey");
+            base._availableComponents.Add("/inventory");
+            base._availableComponents.Add("/player");
 
-        public CityComponent(SessionMessageSender sender, RepositoryShell repositoryShell)
-        {
-            _Sender = sender;
-            _Repo = repositoryShell;
+            var markUpButtons = new List<KeyboardButton>();
+
+            //Пока что так. В дальнейшем можно будет перебить на текст для большей красоты. В нашем случае это не особо принципиально
+            foreach (var buttonCommand in _availableComponents)
+            { 
+                markUpButtons.Add(new KeyboardButton(buttonCommand));
+            }
+
+            _markup = new ReplyKeyboardMarkup(markUpButtons) { ResizeKeyboard = true };
+            
+
         }
     }
 }
