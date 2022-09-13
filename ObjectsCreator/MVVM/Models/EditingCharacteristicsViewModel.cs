@@ -105,7 +105,7 @@ namespace ObjectsCreator.MVVM.Models
                 Notify();
             }
         }
-
+       
         public ICommand Apply { get; }
         public ICommand Authorize { get; }
 

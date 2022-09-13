@@ -2,6 +2,7 @@
 using System.Text;
 using Core.PlayerNS.CharacteristicsNS;
 using Core.PlayerNS.InventoryNS.Equipment;
+using Core.PlayerNS.InventoryNS.Equipment.Weapons;
 
 namespace ObjectsCreator.MVVM.Models
 {
@@ -59,6 +60,23 @@ namespace ObjectsCreator.MVVM.Models
             {
                 _item.Stats = value;
                 Notify();
+            }
+        }
+
+        public virtual bool IsStartItem
+        {
+            get
+            {
+                return (_item is IWeapon) ? ((IWeapon)_item).IsStartItem : false ;
+            }
+            set
+            {
+                if (_item is IWeapon) 
+                {
+                    ((IWeapon)_item).IsStartItem = value;
+                    Notify();
+                }              
+                
             }
         }
 

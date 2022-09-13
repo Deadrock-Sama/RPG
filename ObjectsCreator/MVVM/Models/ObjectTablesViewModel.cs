@@ -241,7 +241,6 @@ namespace ObjectsCreator.MVVM.Models
                 new NotifyCollectionChangedEventHandler(resourceGrid_CollectionChanged<Material>);
             Materials.ItemChanged +=
                 new ResourceObservableCollection<Material>.EcObservableCollectionItemChangedEventHandler(resourceGrid_ItemChanged);
-            //Materials.ItemsSource = materials;
         }
 
         void configurePotionsGrid()
@@ -252,7 +251,7 @@ namespace ObjectsCreator.MVVM.Models
                 new NotifyCollectionChangedEventHandler(resourceGrid_CollectionChanged<Potion>);
             Potions.ItemChanged +=
                 new ResourceObservableCollection<Potion>.EcObservableCollectionItemChangedEventHandler(resourceGrid_ItemChanged);
-            //Potions.ItemsSource = potions;
+            
 
         }
 
