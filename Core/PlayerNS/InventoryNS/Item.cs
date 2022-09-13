@@ -1,7 +1,6 @@
 ﻿using Core.DBInteraction.Mappings;
-using Core.PlayerNS.InventoryNS;
 
-namespace RPG.Components.PlayerNS.InventoryNS.Resources.Food
+namespace Core.PlayerNS.InventoryNS
 {
     public class Item : DbEntity, IInventoryItem
     {

@@ -1,6 +1,6 @@
 ﻿using FluentNHibernate.Mapping;
 
-namespace RPG.Components.PlayerNS.InventoryNS.Resources.Food
+namespace Core.PlayerNS.InventoryNS
 {
     public class ItemMapping : ClassMap<Item>
     {
