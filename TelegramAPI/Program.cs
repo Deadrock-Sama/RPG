@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using TelegramAPI.TelegramBotNS;
 
 namespace TelegramAPI

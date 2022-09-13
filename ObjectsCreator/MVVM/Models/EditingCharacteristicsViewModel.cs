@@ -1,8 +1,5 @@
 ﻿using Core.PlayerNS.CharacteristicsNS;
 using ObjectsCreator.MVVM.Components;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace ObjectsCreator.MVVM.Models

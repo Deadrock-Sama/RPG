@@ -1,7 +1,5 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Core.Containers
 {

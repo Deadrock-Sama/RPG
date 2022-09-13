@@ -14,7 +14,6 @@ namespace Core.PlayerNS.InventoryNS.Equipment.Weapons
             Map(e => e.EffectsMethod);
             Map(e => e.IsStartItem);
 
-            //UseUnionSubclassForInheritanceMapping();
         }
     }
 }

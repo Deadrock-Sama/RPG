@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Core.DBInteraction.Mappings;
 using NHibernate;
-using System.Linq;
 using NHibernate.Linq;
-using Core.DBInteraction.Mappings;
 
 namespace Core.DBInteraction
 {

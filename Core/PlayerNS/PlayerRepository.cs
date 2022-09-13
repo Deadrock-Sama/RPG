@@ -1,6 +1,4 @@
 ﻿using Core.DBInteraction;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Core.PlayerNS
 {

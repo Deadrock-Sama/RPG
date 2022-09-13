@@ -1,9 +1,6 @@
 ﻿using Core.DBInteraction.Mappings;
 using Core.PlayerNS.CharacteristicsNS;
 using FluentNHibernate.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Core.PlayerNS.Classes
 {

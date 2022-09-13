@@ -1,8 +1,4 @@
 ﻿using Core.PlayerNS.InventoryNS.Resources;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 
 namespace ObjectsCreator.MVVM.Models
 {

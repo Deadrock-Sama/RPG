@@ -13,7 +13,6 @@ namespace Core.PlayerNS.InventoryNS.Equipment.Amulets
                 .Not.LazyLoad();
             Map(e => e.EffectsMethod);
 
-            //UseUnionSubclassForInheritanceMapping();
         }
     }
 

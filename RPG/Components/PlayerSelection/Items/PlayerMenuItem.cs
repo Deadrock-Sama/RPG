@@ -2,10 +2,7 @@
 using Core.Containers;
 using Core.PlayerNS;
 using RPG.Components.Containers;
-using RPG.Components.PlayerNS;
 using RPG.Components.PlayerNS.PlayerPage;
-using RPG.Components.PlayerNS.PlayerPage.PlayerInfo;
-using RPG.Containers;
 using RPG.Navigation;
 using System;
 

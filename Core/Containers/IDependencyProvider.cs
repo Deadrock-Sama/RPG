@@ -1,5 +1,4 @@
 ﻿using Castle.MicroKernel.Registration;
-using System.Collections.Generic;
 
 namespace Core.Containers
 {

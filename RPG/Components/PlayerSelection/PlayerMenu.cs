@@ -2,8 +2,6 @@
 using Core.PlayerNS;
 using RPG.Components.MainMenuNS.Items;
 using RPG.Components.Menus;
-using RPG.Components.PlayerNS;
-using RPG.Components.PlayerNS.PlayerPage.PlayerInfo;
 using RPG.Components.PlayerSelection.Items;
 using RPG.Navigation;
 using System.Collections.Generic;

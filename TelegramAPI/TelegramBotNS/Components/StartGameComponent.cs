@@ -1,6 +1,4 @@
 ﻿using Core.DBInteraction;
-using System;
-using Telegram.Bot;
 
 namespace TelegramAPI.TelegramBotNS.Components
 {

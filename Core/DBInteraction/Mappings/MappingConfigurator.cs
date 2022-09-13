@@ -1,5 +1,4 @@
 ﻿using FluentNHibernate.Cfg;
-using System;
 
 namespace Core.DBInteraction.Mappings
 {

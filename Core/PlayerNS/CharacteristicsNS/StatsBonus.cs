@@ -1,8 +1,5 @@
 ﻿using Core.DBInteraction.Mappings;
 using Core.PlayerNS.Sets;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Core.PlayerNS.CharacteristicsNS
 {

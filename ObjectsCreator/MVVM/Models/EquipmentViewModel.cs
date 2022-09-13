@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.Text;
-using Core.PlayerNS.CharacteristicsNS;
+﻿using Core.PlayerNS.CharacteristicsNS;
 using Core.PlayerNS.InventoryNS.Equipment;
 using Core.PlayerNS.InventoryNS.Equipment.Weapons;
 

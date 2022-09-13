@@ -3,9 +3,6 @@ using Core.PlayerNS.InventoryNS.Equipment.Amulets;
 using Core.PlayerNS.InventoryNS.Equipment.Armor;
 using Core.PlayerNS.InventoryNS.Equipment.Weapons;
 using FluentNHibernate.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Core.PlayerNS.Sets.EquipmentSets
 {

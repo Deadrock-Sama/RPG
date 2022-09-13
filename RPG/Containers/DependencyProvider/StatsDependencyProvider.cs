@@ -5,9 +5,7 @@ using Core.PlayerNS.InventoryNS.Equipment.Armor;
 using Core.PlayerNS.InventoryNS.Equipment.Weapons;
 using Core.PlayerNS.Sets.EquipmentSets;
 using Core.PlayerNS.Sets.PlayerSets;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace RPG.Containers.DependencyProvider
 {

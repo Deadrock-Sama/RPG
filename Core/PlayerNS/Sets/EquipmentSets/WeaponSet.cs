@@ -1,8 +1,5 @@
 ﻿using Core.PlayerNS.CharacteristicsNS;
 using Core.PlayerNS.InventoryNS.Equipment.Weapons;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Core.PlayerNS.Sets.EquipmentSets
 {

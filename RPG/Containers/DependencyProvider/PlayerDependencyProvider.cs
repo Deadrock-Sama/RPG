@@ -2,7 +2,6 @@
 using Core.Containers;
 using Core.PlayerNS;
 using RPG.Components.Menus;
-using RPG.Components.PlayerNS;
 using RPG.Components.PlayerNS.PlayerPage;
 using RPG.Components.PlayerNS.PlayerPage.PlayerActionMenu;
 using RPG.Components.PlayerNS.PlayerPage.PlayerActionMenu.Items;

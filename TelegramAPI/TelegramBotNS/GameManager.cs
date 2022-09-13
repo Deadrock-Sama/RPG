@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
 using Telegram.Bot.Types;
-using GameUser = Core.Users.User; 
+using GameUser = Core.Users.User;
 
 namespace TelegramAPI.TelegramBotNS
 {

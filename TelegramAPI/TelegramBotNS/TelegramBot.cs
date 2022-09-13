@@ -1,15 +1,8 @@
 ﻿using Core.Containers;
 using Core.DBInteraction;
-using Core.DBInteraction.Mappings;
-using RPG.Containers;
 using RPG.Containers.DependencyProvider;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Telegram.Bot;
-using Telegram.Bot.Types;
 
 namespace TelegramAPI.TelegramBotNS
 {

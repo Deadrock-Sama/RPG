@@ -1,16 +1,13 @@
 ﻿using Core.PlayerNS.InventoryNS.Resources;
 using ObjectsCreator.MVVM.Models;
-using RPG.Components.PlayerNS.InventoryNS;
-using RPG.Components.PlayerNS.InventoryNS.Resources;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Text;
 
 namespace ObjectsCreator.MVVM.Components
 {
-   public class ResourceObservableCollection<T> : ObservableCollection<ResourceViewModel<T>> where T : IResource, new()
+    public class ResourceObservableCollection<T> : ObservableCollection<ResourceViewModel<T>> where T : IResource, new()
     {
         public event EcObservableCollectionItemChangedEventHandler ItemChanged;
 

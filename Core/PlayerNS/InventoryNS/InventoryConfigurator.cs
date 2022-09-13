@@ -1,9 +1,5 @@
 ﻿using Core.DBInteraction;
 using Core.PlayerNS.InventoryNS.Equipment.Weapons;
-using RPG.Components.PlayerNS.InventoryNS.Resources.Food;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Core.PlayerNS.InventoryNS
 {

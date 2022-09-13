@@ -1,8 +1,7 @@
-﻿using FluentNHibernate.Cfg;
-using System.Collections.Generic;
-using NHibernate.Tool.hbm2ddl;
+﻿using Core.DBInteraction.Mappings;
+using FluentNHibernate.Cfg;
 using NHibernate;
-using Core.DBInteraction.Mappings;
+using NHibernate.Tool.hbm2ddl;
 
 namespace Core.DBInteraction
 {

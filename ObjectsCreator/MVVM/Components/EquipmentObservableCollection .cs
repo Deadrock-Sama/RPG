@@ -1,11 +1,9 @@
 ﻿using Core.PlayerNS.InventoryNS.Equipment;
 using ObjectsCreator.MVVM.Models;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Text;
 
 namespace ObjectsCreator.MVVM.Components
 {

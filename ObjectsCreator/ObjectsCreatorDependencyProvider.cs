@@ -1,11 +1,8 @@
 ﻿using Castle.MicroKernel.Registration;
 using Core.Containers;
 using Core.DBInteraction;
-using NHibernate;
 using ObjectsCreator.MVVM.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ObjectsCreator
 {

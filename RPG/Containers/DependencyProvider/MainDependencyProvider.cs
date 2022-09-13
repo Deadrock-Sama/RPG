@@ -6,7 +6,6 @@ using NHibernate;
 using RPG.Components.MainMenuNS;
 using RPG.Components.MainMenuNS.Items;
 using RPG.Components.Menus;
-using RPG.Components.PlayerNS;
 using RPG.Components.PlayerNS.PlayerPage.PlayerActionMenu.Items;
 using RPG.Components.PlayerSelection;
 using RPG.Components.PlayerSelection.Items;
