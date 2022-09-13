@@ -1,6 +1,8 @@
 ﻿using Core.DBInteraction;
 using Core.PlayerNS;
 using Core.PlayerNS.Classes;
+using Core.PlayerNS.InventoryNS;
+using Core.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +28,11 @@ namespace TelegramAPI.TelegramBotNS.Components
                                                                    "Выбери класс \n /warrior \n /archer \n /wizard",
                                                                    "Поздравляю. Теперь вы полноценный игрок! Начать игру /StartGame",
                                                                    "Ну хватит дурить, начинай уже игру /StartGame"};
+        public CreatingPlayerComponent(SessionMessageSender sender, RepositoryShell repositoryShell, User user) : base(sender, repositoryShell)
+        {
+            _player = new() { Info = new() , User = user};
 
+        }
         public override async void HandleCommand(string command)
         {
             switch (_currentStage)
@@ -47,6 +53,14 @@ namespace TelegramAPI.TelegramBotNS.Components
                     HandleCommandAfterCompletion();
                     break;
             }
+        }
+        public override bool IsAnotherComponentAvailable(string componentName) => _availableComponents.Contains(componentName);
+
+        public override bool IsComponentAvailable() => _currentStage != CreatingPlayerStage.Completed;
+
+        public override async void SendStartMessage()
+        {
+            await base._sender.SendMessage("Создаем игрока!");
         }
 
         private async void HandleStart()
@@ -87,13 +101,11 @@ namespace TelegramAPI.TelegramBotNS.Components
             var ChosenClass = classes[gameClass];
 
             _player.PlayerClass = ChosenClass;
-            //_player.SetInventory();
+            SetInventory();
             
-            base._repositoryShell.AddOrUpdate(_player.Info);
+            base._repositoryShell.AddOrUpdate(_player);
             await base._sender.SendMessage($"Установлен класс: {ChosenClass.ToString()}!");
             await base._sender.SendMessage(_creatingPlayerMessages[3]);
-
-
 
             _currentStage = CreatingPlayerStage.Completed;
         }
@@ -103,20 +115,15 @@ namespace TelegramAPI.TelegramBotNS.Components
             await base._sender.SendMessage(_creatingPlayerMessages[4]);
         }
 
-        public override bool IsAnotherComponentAvailable(string componentName) => _availableComponents.Contains(componentName);
-
-        public override bool IsComponentAvailable() => _currentStage != CreatingPlayerStage.Completed;
-
-        public override async void SendStartMessage()
+        private void SetInventory()
         {
-           await base._sender.SendMessage("Создаем игрока!");
+
+            var invConfigurator = new InventoryConfigurator(_player, _repositoryShell);
+            invConfigurator.SetStartInventory();
+        
         }
 
-        public CreatingPlayerComponent(SessionMessageSender sender, RepositoryShell repositoryShell) : base(sender, repositoryShell)
-        {
-            _player = new() { Info = new() };
-
-        }
+        
         enum CreatingPlayerStage
         {
             Start,
