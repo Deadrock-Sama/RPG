@@ -12,8 +12,8 @@ namespace ObjectsCreator.MVVM.Models
 
     public class AuthorizationViewModel : ViewModel
     {
-        public Visibility AuthorizeVisibility { get; }
-        public Visibility RegisterVisibility { get; } = Visibility.Hidden;
+        public bool AuthorizeVisibility { get; }
+        public bool RegisterVisibility { get; }
 
 
         public string Password
@@ -63,8 +63,8 @@ namespace ObjectsCreator.MVVM.Models
             if (admin == null)
             {
                 //Считается ли это, что модель знает, как реализован вид?
-                RegisterVisibility = Visibility.Visible;
-                AuthorizeVisibility = Visibility.Hidden;
+                RegisterVisibility = true;
+                AuthorizeVisibility = false;
             }
             else
             {

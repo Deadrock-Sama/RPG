@@ -22,19 +22,30 @@
                       Style="{StaticResource MahApps.Styles.PasswordBox}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:TextBoxHelper.Watermark="Пароль"></PasswordBox>
 
 
-        <Button x:Name="RegisterButton" Visibility="{Binding RegisterVisibility}" Content="Register" Command="{Binding Register}">
+        <Button x:Name="RegisterButton" Visibility="Hidden" Content="Register" Command="{Binding Register}">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Visibility" Value="Visible"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding RegisterVisibility}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="AuthorizeButton" Visibility="Visible"  Content="Login" Command="{Binding Authorize}" CommandParameter="{Binding ElementName=Password}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Visibility" Value="Visible"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding AuthorizeVisibility}" Value="false">
                             <Setter Property="Visibility" Value="Hidden"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="AuthorizeButton" Visibility="{Binding AuthorizeVisibility}" Content="Login" Command="{Binding Authorize}" CommandParameter="{Binding ElementName=Password}"/>
 
     </StackPanel>
 </UserControl>
