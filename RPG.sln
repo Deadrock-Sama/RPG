@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32014.148
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPG", "RPG\RPG.csproj", "{C4A1836E-AC74-4B29-A672-56B55CB95E67}"
 EndProject
@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "WebAndTelegram\Web.c
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegramAPI", "TelegramAPI\TelegramAPI.csproj", "{C673441B-87F4-4F4C-A844-4DC47358B881}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{BFEEEF93-B3E2-4B9C-A62A-20B8846F58C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{BFEEEF93-B3E2-4B9C-A62A-20B8846F58C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameSiteMvc", "GameSiteMvc\GameSiteMvc.csproj", "{91D74688-6EDB-4DBE-820A-072AFD8B8BF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{BFEEEF93-B3E2-4B9C-A62A-20B8846F58C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFEEEF93-B3E2-4B9C-A62A-20B8846F58C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFEEEF93-B3E2-4B9C-A62A-20B8846F58C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91D74688-6EDB-4DBE-820A-072AFD8B8BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91D74688-6EDB-4DBE-820A-072AFD8B8BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91D74688-6EDB-4DBE-820A-072AFD8B8BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91D74688-6EDB-4DBE-820A-072AFD8B8BF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
