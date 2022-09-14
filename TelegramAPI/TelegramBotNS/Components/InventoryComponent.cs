@@ -17,11 +17,14 @@ namespace TelegramAPI.TelegramBotNS.Components
         public override async void SendStartMessage()
         {
            await base._sender.SendMessage("Инвентарь:");
+
         }
 
         public InventoryComponent(SessionMessageSender sender, RepositoryShell repo) : base(sender, repo)
         {
          
+
+
         }
     }
 }

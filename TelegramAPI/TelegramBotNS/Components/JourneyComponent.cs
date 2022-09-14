@@ -15,7 +15,7 @@ namespace TelegramAPI.TelegramBotNS.Components
 
         public override async void SendStartMessage()
         {
-            await base._sender.SendMessage("Вот ты и покидаешь город и натыкаешься на...");
+            await _sender.SendMessage("Вот ты и покидаешь город и натыкаешься на...");
         }
 
         public JourneyComponent(SessionMessageSender sender, RepositoryShell repositoryShell) : base(sender, repositoryShell)

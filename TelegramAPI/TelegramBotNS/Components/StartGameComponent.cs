@@ -7,7 +7,7 @@ namespace TelegramAPI.TelegramBotNS.Components
         public StartGameComponent(SessionMessageSender sender, RepositoryShell repositoryShell) : base(sender, repositoryShell)
         {
 
-            base._availableComponents.Add("/createplayer");
+            _availableComponents.Add("/createplayer");
         }
 
         public override string TranslationCommand => "/start";
@@ -19,7 +19,7 @@ namespace TelegramAPI.TelegramBotNS.Components
 
         public override async void SendStartMessage()
         {
-            await base._sender.SendMessage("Игра началась. Отправь /createPlayer, чтобы создать персонажа");
+            await _sender.SendMessage("Игра началась. Отправь /createPlayer, чтобы создать персонажа");
         }
     }
 }
