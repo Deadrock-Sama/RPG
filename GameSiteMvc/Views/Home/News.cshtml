@@ -1,0 +1,24 @@
+﻿@model NewsViewModel
+
+<body class="background content-layout-center">
+      
+        <ul>
+            @{
+            var allNews = Model.GetNews();
+            foreach (var news in allNews)
+            {
+                <li>
+                    <section class="bg-secondary border border-dark">
+                    <h4 class="m-2 border-bottom  border-dark pb-lg-1">@news.Key</h4>
+                    <p class="m-2">@news.Value</p>
+                </section>
+            </li>
+            <br/>
+            
+            }
+             }
+        </ul>
+
+
+    
+</body>

@@ -30,6 +30,10 @@ namespace GameSiteMvc.Controllers
             return View();
         }
 
+        public IActionResult News()
+        {
+            return View(new NewsViewModel());
+        }
         public IActionResult Privacy()
         {
             return View();
