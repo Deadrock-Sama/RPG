@@ -20,12 +20,17 @@ namespace GameSiteMvc.Controllers
             _myFirstPage = myFirstPage;
         }
 
-        public IActionResult MyFirstPage()
+        public IActionResult Home()
         {
-            return View(_myFirstPage);
+            return View();
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Account()
         {
             return View();
         }

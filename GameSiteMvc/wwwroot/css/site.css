@@ -76,3 +76,7 @@ body {
     background-size: cover;
 
 }
+
+.center {
+    top:50%;
+} 
