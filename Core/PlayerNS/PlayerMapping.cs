@@ -15,10 +15,8 @@ namespace Core.PlayerNS
                 .Cascade.AllDeleteOrphan()
                 .Not.LazyLoad()
                 .Not.Nullable();
-            References(e => e.PlayerClass)
-                .Cascade.AllDeleteOrphan()
-                .Not.LazyLoad()
-                .Not.Nullable();
+            Map(e => e.PlayerClass);
+               
         }
     }
 }

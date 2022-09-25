@@ -41,10 +41,7 @@ namespace Core.DBInteraction.Mappings
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<UserMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<ItemControllerMapping>());
             mappingConfigurator.AddMapping(c => c.FluentMappings.Add<ItemMapping>());
-            mappingConfigurator.AddMapping(c => c.FluentMappings.Add<PlayerClassMapping>());
-            mappingConfigurator.AddMapping(c => c.FluentMappings.Add<ArcherMapping>());
-            mappingConfigurator.AddMapping(c => c.FluentMappings.Add<WarriorMapping>());
-            mappingConfigurator.AddMapping(c => c.FluentMappings.Add<WizardMapping>());
+
 
             return mappingConfigurator;
         }
