@@ -13,6 +13,7 @@ namespace Core.PlayerNS.InventoryNS.Equipment.Weapons
                .Not.LazyLoad();
             Map(e => e.EffectsMethod);
             Map(e => e.IsStartItem);
+            Map(e => e.PlayerClass);
 
         }
     }
