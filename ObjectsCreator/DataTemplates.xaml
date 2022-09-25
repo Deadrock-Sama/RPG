@@ -15,4 +15,7 @@
     <DataTemplate DataType="{x:Type viewModels:MainContentViewModel}">
         <views:MainContentView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:RegistrationViewModel}">
+        <views:RegistrationView/>
+    </DataTemplate>
 </ResourceDictionary>

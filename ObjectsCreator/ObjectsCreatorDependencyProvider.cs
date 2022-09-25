@@ -34,6 +34,8 @@ namespace ObjectsCreator
 
             yield return Component.For<ObjectTablesViewModel>();
 
+            yield return Component.For<RegistrationViewModel>();
+
         }
     }
 }
