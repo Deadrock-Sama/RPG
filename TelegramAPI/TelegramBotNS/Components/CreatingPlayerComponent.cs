@@ -88,12 +88,12 @@ namespace TelegramAPI.TelegramBotNS.Components
         private async void HandleSettingClass(string gameClass)
         {
 
-            Dictionary<string, PlayerClass> classes = new Dictionary<string, PlayerClass>();
+            Dictionary<string, PlayerClasses> classes = new();
 
 
-            classes.Add("/warrior", new Warrior());
-            classes.Add("/archer", new Archer());
-            classes.Add("/wizard", new Wizard());
+            classes.Add("/warrior", PlayerClasses.Warrior);
+            classes.Add("/archer", PlayerClasses.Archer);
+            classes.Add("/wizard", PlayerClasses.Wizard);
 
             var ChosenClass = classes[gameClass];
 
