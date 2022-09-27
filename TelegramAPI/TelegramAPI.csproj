@@ -9,6 +9,7 @@
 	<ItemGroup>
 		<PackageReference Include="Castle.Windsor" Version="5.1.2" />
 		<PackageReference Include="Npgsql" Version="6.0.6" />
+		<PackageReference Include="System.Reactive" Version="5.0.0" />
 		<PackageReference Include="Telegram.Bot" Version="18.0.0" />
 	</ItemGroup>
 

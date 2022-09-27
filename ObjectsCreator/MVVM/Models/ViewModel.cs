@@ -3,11 +3,6 @@ using System.Runtime.CompilerServices;
 
 namespace ObjectsCreator.MVVM.Models
 {
-    /// <summary>
-    /// Interaction logic for Authorization.xaml
-    /// </summary>
-
-
     //public class ViewModel : INotifyPropertyChanged
     //{
     //    public event PropertyChangedEventHandler PropertyChanged;
@@ -68,7 +63,6 @@ namespace ObjectsCreator.MVVM.Models
     //        PropertyChanged?.Invoke(this, propertyChangedEventArgs);
     //    }
     //}
-
     public class ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

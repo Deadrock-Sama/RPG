@@ -13,11 +13,13 @@ namespace GameSiteMvc.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly MyFirstPageViewModel _myFirstPage;
+        private readonly GameSessionsInfoViewModel _gameSessionsInfo;
 
-        public HomeController(ILogger<HomeController> logger, MyFirstPageViewModel myFirstPage)
+        public HomeController(ILogger<HomeController> logger, MyFirstPageViewModel myFirstPage, GameSessionsInfoViewModel gameSessionsInfo)
         {
             _logger = logger;
             _myFirstPage = myFirstPage;
+            _gameSessionsInfo = gameSessionsInfo;
         }
 
         public IActionResult Home()
@@ -34,7 +36,10 @@ namespace GameSiteMvc.Controllers
         {
             return View();
         }
-
+        public IActionResult GameSessionsInfoViewModel()
+        {
+            return View(_gameSessionsInfo);
+        }
         public IActionResult News()
         {
             return View(new NewsViewModel());

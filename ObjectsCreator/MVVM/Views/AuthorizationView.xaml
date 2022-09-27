@@ -18,7 +18,7 @@
     </UserControl.Resources>
     <StackPanel>
         <TextBox Text="{Binding Login,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MahApps.Styles.TextBox}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:TextBoxHelper.Watermark="логин"/>
-        <PasswordBox x:Name="Password" comp:PasswordBoxAssistant.BindPassword="true" 
+        <PasswordBox x:Name="Password" comp:PasswordBoxAssistant.BindPassword="true" comp:PasswordBoxAssistant.BoundPassword="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       Style="{StaticResource MahApps.Styles.PasswordBox}" mah:TextBoxHelper.UseFloatingWatermark="True" mah:TextBoxHelper.Watermark="Пароль"></PasswordBox>
 
 

@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace ObjectsCreator.MVVM.Models
 {
-    public class RegistrationViewModel : ViewModel
+    public class RegistrationViewModel : ValidatableViewModel
     {
         public string Password
         {
@@ -50,46 +50,43 @@ namespace ObjectsCreator.MVVM.Models
 
         private void RegisterAction(object parameter)
         {
-            _password = PasswordBoxAssistant.GetBoundPassword(parameter as DependencyObject);
-            var checkingResult = isDataAvailable();
-
-            if (checkingResult.Result)
-            {
-
-                var newAdmin = new User();
-                newAdmin.IsAdmin = true;
-                newAdmin.Login = _login;
-                newAdmin.Password = new Cryptograph().CreateMD5(_password);
-
-                _repositoryShell.AddOrUpdate(newAdmin);
-
-                _navigator.Show(_objectTablesViewModel);
-            }
-            else
-            {
-                MessageBox.Show(checkingResult.Message);
-            }
-        }
-
-        private dynamic isDataAvailable()
-        {
+            ClearError(nameof(Login));
+            ClearError(nameof(Password));
 
             var dataEntered = !string.IsNullOrEmpty(_login) && !string.IsNullOrEmpty(_password);
+            if (string.IsNullOrEmpty(_login))
+            {
+                SetError("Поле должно быть заполнено", nameof(Login));
+            }
+            if (string.IsNullOrEmpty(_password))
+            {
+                SetError("Поле должно быть заполнено", nameof(Password));
+            }
 
             if (dataEntered)
             {
                 var loginExist = _repositoryShell.GetAll<User>().FirstOrDefault(e => e.Login == _login) != null;
-
-                var message = loginExist ? "Такой логин уже есть" : "";   
-                return new { Result = !loginExist, Message = message};
+                if (loginExist)
+                {
+                    SetError("Такой логин уже есть", nameof(Login));
+                    return;
+                }
             }
-            else 
+            else
             {
-                return new { Result = dataEntered, Message = "Укажите данные"};
+                return;
             }
 
+
+
+            var newAdmin = new User();
+            newAdmin.IsAdmin = true;
+            newAdmin.Login = _login;
+            newAdmin.Password = new Cryptograph().CreateMD5(_password);
+
+            _repositoryShell.AddOrUpdate(newAdmin);
+
+            _navigator.Show(_objectTablesViewModel);
         }
-
-
     }
 }

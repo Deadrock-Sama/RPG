@@ -29,6 +29,8 @@ namespace RPG.Containers.DependencyProvider
         {
 
             yield return Component.For<GameManager>();
+            yield return Component.For<ISessionCount, ISessionCountEditor>()
+                .ImplementedBy<OpendSessionsService>();
 
             yield return Component.For<IRepositoryShell, RepositoryShell>()
                .Instance(_repositoryShell);

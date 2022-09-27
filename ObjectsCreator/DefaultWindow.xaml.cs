@@ -15,7 +15,7 @@ namespace ObjectsCreator
     /// <summary>
     /// Логика взаимодействия для DefaultWindow.xaml
     /// </summary>
-    public partial class DefaultWindow : Window
+    public partial class DefaultWindow 
     {
         public DefaultWindow()
         {
