@@ -2,6 +2,7 @@
 using Core.Users;
 using ObjectsCreator.MVVM.Components;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -13,8 +14,6 @@ namespace ObjectsCreator.MVVM.Models
     public class AuthorizationViewModel : ViewModel
     {
         public bool AuthorizeVisibility { get; }
-        public bool RegisterVisibility { get; }
-
 
         public string Password
         {
@@ -34,72 +33,48 @@ namespace ObjectsCreator.MVVM.Models
                 Notify();
             }
         }
-        public ICommand Register { get; }
+
         public ICommand Authorize { get; }
+        public ICommand Register { get; }
 
         private string _login;
         private string _password;
 
-        private int _adminID;
+        private List<int> _adminsID;
 
         private readonly RepositoryShell _repositoryShell;
         private readonly AppNavigator _navigator;
 
         private readonly ObjectTablesViewModel _objectTablesViewModel;
+        private readonly RegistrationViewModel _registrationViewModel;
 
-        public AuthorizationViewModel(AppNavigator navigator, RepositoryShell repositoryShell, ObjectTablesViewModel objectTablesViewModel)
+        public AuthorizationViewModel(AppNavigator navigator, RepositoryShell repositoryShell, ObjectTablesViewModel objectTablesViewModel, RegistrationViewModel registrationViewModel)
         {
-
-            var dependencyObject = new DependencyObject();
                
             Register = new RelayCommand(RegisterAction);
             Authorize = new RelayCommand(AuthorizeAction);
             _navigator = navigator;
             _repositoryShell = repositoryShell;
             _objectTablesViewModel = objectTablesViewModel;
+            _registrationViewModel = registrationViewModel;
 
-            var admin = _repositoryShell.GetAll<User>().FirstOrDefault(p => p.IsAdmin);
-
-            if (admin == null)
-            {
-                //Считается ли это, что модель знает, как реализован вид?
-                RegisterVisibility = true;
-                AuthorizeVisibility = false;
-            }
-            else
-            {
-                //По идее, для большей безопасности можно было бы хранить пароли в отдельной таблице?
-                _adminID = admin.Id;
-                
-            }
+            _adminsID = _repositoryShell
+                        .GetAll<User>()
+                        .Where(p => p.IsAdmin)
+                        .Select(p => p.Id)
+                        .ToList();           
+            
         }
 
         private void RegisterAction(object parameter)
         {
-
-            if (!string.IsNullOrEmpty(_login) && !string.IsNullOrEmpty(_password))
-            {
-
-                var newAdmin = new User();
-                newAdmin.IsAdmin = true;
-                newAdmin.Login = _login;
-                newAdmin.Password = CreateMD5(_password);
-
-                _repositoryShell.AddOrUpdate(newAdmin);
-
-                _navigator.Show(_objectTablesViewModel);
-            }
-            else
-            {
-                MessageBox.Show("Необходимо указать логин и пароль");
-
-            }
+            _navigator.Show(_registrationViewModel);
         }
 
         private void AuthorizeAction(object parameter)
         {
             
-            var admin = _repositoryShell.GetAll<User>().FirstOrDefault(e => e.Id == _adminID);
+            var admin = _repositoryShell.GetAll<User>().FirstOrDefault(e => _adminsID.Contains(e.Id));
 
             if (admin == null)
             {
@@ -110,7 +85,7 @@ namespace ObjectsCreator.MVVM.Models
             var password = PasswordBoxAssistant.GetBoundPassword(parameter as DependencyObject);
             
 
-            if (admin.Login == Login && admin.Password == CreateMD5(password))
+            if (admin.Login == Login && admin.Password == new Cryptograph().CreateMD5(password))
             {
                 _navigator.Show(_objectTablesViewModel);
             }
@@ -121,18 +96,6 @@ namespace ObjectsCreator.MVVM.Models
             }
         }
 
-        private string CreateMD5(string input)
-        {
-
-            var md5 = System.Security.Cryptography.MD5.Create();
-
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-            byte[] hashBytes = md5.ComputeHash(inputBytes);
-            
-            return BitConverter.ToString(hashBytes)
-                .ToLower()
-                .Replace("-", "");
-
-        }
+       
     }
 }
