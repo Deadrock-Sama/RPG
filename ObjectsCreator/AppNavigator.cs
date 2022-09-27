@@ -1,4 +1,5 @@
 ﻿using ObjectsCreator.MVVM.Models;
+using System;
 using System.Collections.Generic;
 
 namespace ObjectsCreator
@@ -16,7 +17,8 @@ namespace ObjectsCreator
             }
         }
 
-        private Stack<object> _history { get; } = new Stack<object>();
+        private readonly Stack<object> _history = new();
+        private readonly Stack<object> _forwardHistory  = new();
         private object _current;
 
         
@@ -32,10 +34,37 @@ namespace ObjectsCreator
 
         public void Back()
         {
-            if (_history.Count > 0)
+
+            _forwardHistory.Push(Current);
+            if (isBackAble())
             {
                 Current = _history.Pop();
+                return;
             }
         }
+
+        public void Close()
+        {
+            if (isBackAble())
+            {
+                Current = _history.Pop();
+                return;
+            }
+            Environment.Exit(0);
+        }
+
+        public void Forward()
+        {
+            _history.Push(Current);
+
+            if (isForwardAble())
+            {
+                Current = _forwardHistory.Pop();
+            }
+        }
+
+        public bool isBackAble() => _history.Count > 0;
+        public bool isForwardAble() => _forwardHistory.Count > 0; 
+        
     }
 }
