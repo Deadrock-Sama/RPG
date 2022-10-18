@@ -1,11 +1,24 @@
-﻿namespace GameSiteMvc.Models
+﻿using System.Net.Http;
+
+namespace GameSiteMvc.Models
 {
     public class GameSessionsInfoService
     {
-        public int Count => 8;
+        public int Count => RecieveCount();
+        private readonly HttpClient client = new HttpClient();
+        private int RecieveCount()
+        {
 
-        //получает с бота информацию
-        //singleton
+            HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
+            httpRequestMessage.Method = HttpMethod.Get;
+            httpRequestMessage.RequestUri = new System.Uri("http://localhost:80/");
+            var responseMessage = client.Send(httpRequestMessage);
+            var result = responseMessage.Content.ReadAsStringAsync().Result;
+
+            return int.Parse(result);
+        }
+
+
     }
 
 

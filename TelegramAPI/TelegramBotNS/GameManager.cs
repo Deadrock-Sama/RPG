@@ -1,65 +1,28 @@
 ﻿using Castle.Windsor;
 using Core.Containers;
 using Core.DBInteraction;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Subjects;
 using System.Timers;
 using Telegram.Bot.Types;
 using GameUser = Core.Users.User;
 
 namespace TelegramAPI.TelegramBotNS
 {
-    public interface ISessionCountEditor
-    {
-        void Add();
-        void Remove();
-        void Clear();
-    }
-    public interface ISessionCount
-    {
-        IObservable<int> CountObservable { get; }
-        int Count { get; }
-    }
-
-    public class OpendSessionsService : ISessionCount, ISessionCountEditor
-    {
-        private readonly BehaviorSubject<int> _countSubject = new BehaviorSubject<int>(0);
-        public IObservable<int> CountObservable => _countSubject;
-        public int Count => _countSubject.Value;
-
-        public void Add()
-        {
-            _countSubject.OnNext(Count + 1);
-        }
-
-        public void Clear()
-        {
-            _countSubject.OnNext(0);
-        }
-
-        public void Remove()
-        {
-            _countSubject.OnNext(Count - 1);
-        }
-    }
-
-
     public class GameManager
     {
         private readonly IWindsorContainer _container;
         private readonly Dictionary<string, GameSession> _openedSessions = new();
         private readonly Dictionary<string, IWindsorContainer> _containers = new();
         private readonly RepositoryShell _repositoryShell;
-        private readonly ISessionCountEditor _sessionCountEditor;
+        private readonly ISessionCounter _sessionCounter;
         private Timer _timer;
 
-        public GameManager(IWindsorContainer container, RepositoryShell repositoryShell, ISessionCountEditor sessionCountEditor)
+        public GameManager(IWindsorContainer container, RepositoryShell repositoryShell, ISessionCounter sessionCountEditor)
         {
             _container = container;
             _repositoryShell = repositoryShell;
-            _sessionCountEditor = sessionCountEditor;
+            _sessionCounter = sessionCountEditor;
             SetTimer();
         }
 
@@ -71,7 +34,7 @@ namespace TelegramAPI.TelegramBotNS
             }
             else
             {
-                _sessionCountEditor.Add();
+                _sessionCounter.Add();
                 var user = GetUser(userId);
                 var child = new ContainerBuilder().CreateChild(_container);
                 child.Register(new GameSessionDependencyProvider(child, user, chat));
@@ -101,7 +64,7 @@ namespace TelegramAPI.TelegramBotNS
             {
                 if (session.Value.IsNeedToClose)
                 {
-                    _sessionCountEditor.Remove();
+                    _sessionCounter.Remove();
                     _openedSessions.Remove(session.Key);
                 }
             }

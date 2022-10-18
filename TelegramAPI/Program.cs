@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using TelegramAPI.TelegramBotNS;
 
 namespace TelegramAPI
@@ -8,11 +9,17 @@ namespace TelegramAPI
 
         static void Main(string[] args)
         {
-            var bot = new TelegramBot();
-            bot.Start();
+            
+           
+           // listener.Stop();
+
+            //var bot = new TelegramBot();
+            //bot.Start();
 
             Console.Read();
             
         }
+
+       
     }
 }

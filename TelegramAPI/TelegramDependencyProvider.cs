@@ -29,7 +29,7 @@ namespace RPG.Containers.DependencyProvider
         {
 
             yield return Component.For<GameManager>();
-            yield return Component.For<ISessionCount, ISessionCountEditor>()
+            yield return Component.For<ISessionCounter>()
                 .ImplementedBy<OpendSessionsService>();
 
             yield return Component.For<IRepositoryShell, RepositoryShell>()
